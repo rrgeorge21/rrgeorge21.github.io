@@ -1,0 +1,1843 @@
+<!DOCTYPE html>
+<html lang="en"><div id="saka-gui-root" style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; z-index: 2147483647; opacity: 1; pointer-events: none;"><div><div><style>
+@font-face {
+  font-family: Roboto; -moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased;
+  font-style: normal; font-weight: normal; src: url(moz-extension://4c777a7e-01f1-a242-9307-e3b099e3a0c6/Roboto-Regular.tff) format('tff');
+}
+.saka-hint-body {
+  all: initial;
+position: absolute;
+z-index: 2147483647;
+opacity: 1;
+font-family: Roboto, sans-serif;
+font-weight: 900;
+padding: 0.15rem 0.25rem;
+border: 0px solid;
+text-align: center;
+text-decoration: none;
+text-transform: uppercase;
+vertical-align: middle;
+font-size: 12px;
+color: #3f51F5;
+background-color: #ffffff;
+border-color: #ffffff;
+box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+border-radius: 4px;
+transform: translate3d(0%, -50%, 0)
+}
+.saka-hint-normal-char {
+  
+}
+.saka-hint-active-char {
+  opacity: 0.5
+}</style><div style="position: absolute; left: 0px; top: 0px;"></div></div></div></div><link type="text/css" id="dark-mode" rel="stylesheet" href=""><style type="text/css" id="dark-mode-custom-style"></style><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+<meta content="The Dark Jedi Brotherhood is a free online Star Wars fan club devoted to exploring the mystical nature of the Dark (and Light) Side of the Force. The Brotherhood prides itself on offering a rich environment that far exceeds anything offered by other online clubs." name="description">
+<meta content="gaming,clans,houses,club,star wars,brotherhood,swtor,fan fiction,lightsaber,dark jedi,light jedi,writing,sith,jedi,mercenary,mandalorian" name="keywords">
+<meta content="Dark Jedi Brotherhood" property="og:site_name">
+<title>Dark Jedi Brotherhood</title>
+
+<meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="Puxt6Ujw+fyGWaEYMfjxjiyyg97BGe2dYHTF4AwGvz/M4kZimtBli/IePrDC2eNIJxZYKwZnva0SRx8F9gWo6A==">
+<meta name="csp-nonce">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="https://www.darkjedibrotherhood.com/news.rss">
+<link rel="stylesheet" media="all" href="GM%20Muz%20Ashen%20Keibatsu_files/theme-splash-sith-432fec5194502b66464cda5f08016692304f2ef0ff.css">
+<link rel="stylesheet" media="all" href="GM%20Muz%20Ashen%20Keibatsu_files/application-3c42720dc30982f0b1b8c1081965166e4d6aef1b76fd67e9.css">
+<link rel="stylesheet" media="screen" href="GM%20Muz%20Ashen%20Keibatsu_files/application-f0d4083072b443b8000f62cc09b6ce02.css">
+<script async="" src="GM%20Muz%20Ashen%20Keibatsu_files/analytics.js"></script><script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ ga('create', 'UA-293496-5', 'darkjedibrotherhood.com');
+ ga('set', 'anonymizeIp', true);
+ ga('send', 'pageview');
+</script>
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACeElEQVQ4jV2TTUhUURTH77vvvjczOZONM84shBgIP8AgFdGhdBqdZBx1/LYRS0WFlDRspsJAk9JVi2pRUS4KDZKioE1t2xS0CqJFtIkWgbYwW7Srxa/Fm/caWxy493/Px/+c+z9CCMFek5imGyEkQkg0TXfOQkiklGia9s9fKYUQAl3XMQyjwFFhGAY+X7GD6brhBHo8HutsZ5NSIoTANE1M03Sq+P1+By9kWnAXuFwu50FKid9fTCgUxDA1qqoqUEoSCgUpKyvb46uUQkip8hSt4PLyQ/T0drKyuszC5RyTU2NcvHSexaUFEokWKisr0XUdTdOxYvP9GYZBJHKQvv40p0czVB+u4PHmQ968fc39tdvU1FYzPTNFNjtPJBJx5uQwCIfDpFJJGhrruHptkdbEMeazZ9ja/srgUJrmWJSV1WXq6+vo7u6mtDSMUqbNQNDU1ESqo43Y8aNMTI6w+3Obre9f+PT5PTu739j5sc3JTB/xeIyOjnYaGqJ261aCaDRKV7qdhsY6chdmefJ0g/VH9/jw8R2bTx7w8tULsrk5amuPkEy2UVNTl9dIfgZer5eenjSdXUmWriwQCHqZOTvO7z+/yAz3Eiwt5sbN66RSSeLxOG73PouBlMrOREnJATLDA/QPpBkdG2Z9Y407d2/x7PkmI6eG6OtPMzExnheRLJyB1YbL5cLnK2JgsIds7hytiWbaUydoTcSYnZsmkWjB6/U6ks9/o8AwDGxJW3eLkTIEwWAJUlq42+129GLJPq9E2zRNcyRtJwwEAui6vgezTdd1RKE07WWyt1EphcdTlB/yfgf7r4hwKlj0bGlLR66FmB1sL9tfLedrTsuhY7cAAAAASUVORK5CYII="></head>
+<body class="character_sheets show theme-sith skin-splash">
+<nav class="bg-light fixed-top navbar navbar-expand-lg navbar-light" id="main_navbar" role="navigation">
+<div class="container">
+<a class="navbar-brand djb flex-grow-1 flex-lg-grow-0" href="https://www.darkjedibrotherhood.com/">
+Dark Brotherhood
+</a>
+<button class="navbar-toggler" data-target="#navbar-collapse-main" data-toggle="collapse" type="button">
+<span class="sr-only">Toggle Navigation</span>
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbar-collapse-main">
+<ul class="navbar-nav mr-auto">
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
+Main
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://www.darkjedibrotherhood.com/about">About the DJB</a>
+<a class="dropdown-item" href="https://www.darkjedibrotherhood.com/competitions">Competitions</a>
+<a class="dropdown-item" href="https://www.darkjedibrotherhood.com/acc">Antei Combat Center</a>
+<a class="dropdown-item" href="https://www.darkjedibrotherhood.com/shadow_academy">Shadow Academy</a>
+<div class="dropdown-divider"></div>
+<a class="dropdown-item" href="https://discourse.darkjedibrotherhood.com/">Discussion Forums</a>
+<a class="dropdown-item" href="https://www.darkjedibrotherhood.com/news/archive">News Archive</a>
+<div class="dropdown-divider"></div>
+<a class="dropdown-item" href="https://www.darkjedibrotherhood.com/chat">Brotherhood Chat</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
+Rosters
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://www.darkjedibrotherhood.com/units">Clans of the Brotherhood</a>
+<a class="dropdown-item" href="https://www.darkjedibrotherhood.com/units/dark_council">Dark Council</a>
+<a class="dropdown-item" href="https://www.darkjedibrotherhood.com/units/rogues">Rogues</a>
+<div class="dropdown-divider"></div>
+<a class="dropdown-item" href="https://www.darkjedibrotherhood.com/members/search">Search</a>
+<a class="dropdown-item" href="https://www.darkjedibrotherhood.com/members/statistics">Statistics</a>
+<div class="dropdown-divider"></div>
+<a class="dropdown-item" href="https://www.darkjedibrotherhood.com/societies/2"><i class="djb-icon logo-society-gmrg"></i>
+GMRG Society
+</a><a class="dropdown-item" href="https://www.darkjedibrotherhood.com/societies/4"><i class="djb-icon logo-society-sa"></i>
+SA Society
+</a><a class="dropdown-item" href="https://www.darkjedibrotherhood.com/societies/5"><i class="djb-icon logo-society-inq"></i>
+Inquisitorius
+</a><a class="dropdown-item" href="https://www.darkjedibrotherhood.com/societies/6"><i class="djb-icon logo-society-syn"></i>
+Shroud Syndicate
+</a></div>
+</li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
+Resources
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://wiki.darkjedibrotherhood.com/">DJB Wiki</a>
+<div class="dropdown-divider"></div>
+<a class="dropdown-item" href="https://wiki.darkjedibrotherhood.com/view/Fiction_Center">Fiction Center</a>
+<a class="dropdown-item" href="https://www.darkjedibrotherhood.com/calendar">Event Calendar</a>
+<div class="dropdown-divider"></div>
+<a class="dropdown-item" href="https://wiki.darkjedibrotherhood.com/view/Codex">Codex</a>
+<a class="dropdown-item" href="https://wiki.darkjedibrotherhood.com/view/Covenant">Covenant</a>
+<a class="dropdown-item" href="https://wiki.darkjedibrotherhood.com/view/Category:Policies">Policies</a>
+<div class="dropdown-divider"></div>
+<a class="dropdown-item" href="https://www.darkjedibrotherhood.com/factions">Factions</a>
+<a class="dropdown-item" href="https://www.darkjedibrotherhood.com/stores">Item Stores</a>
+<a class="dropdown-item" href="https://www.darkjedibrotherhood.com/item_prototypes">Item Research</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
+Gaming
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://wiki.darkjedibrotherhood.com/view/Gaming_Information">Gaming Information</a>
+<a class="dropdown-item" href="https://discourse.darkjedibrotherhood.com/category/gaming">Gaming Forums</a>
+<div class="dropdown-divider"></div>
+<a class="dropdown-item" href="https://www.darkjedibrotherhood.com/gaming_matches">PvP activity records</a>
+<a class="dropdown-item" href="https://www.darkjedibrotherhood.com/gaming_activity_reports">PvE/PvO activity records</a>
+</div>
+</li>
+</ul>
+<ul class="nav navbar-nav pull-right d-none d-lg-inline mr-3">
+<li class="nav-item dropdown" id="navbar-search-dropdown">
+<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
+<i class="fa fa-search"></i>
+</a>
+<div class="dropdown-menu p-0">
+<form class="navbar-form" id="navbar-search-form dropdown-item" action="https://www.darkjedibrotherhood.com/members/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓"><input placeholder="Search Name or ID" id="navbar-search-input" class="search-query form-control search" data-autocomplete="https://www.darkjedibrotherhood.com/members/autocomplete_member_name" type="text" name="member[name]">
+</form></div>
+</li>
+</ul>
+<ul class="nav navbar-nav navbar-right" id="contextual-navigation-dropdown">
+<li class="nav-item"><a class="nav-link" href="https://www.darkjedibrotherhood.com/members/sign_up">Join</a></li>
+<li class="nav-item"><a class="nav-link" href="https://www.darkjedibrotherhood.com/members/sign_in">Sign in</a></li>
+
+</ul>
+<form class="navbar-form d-inline d-lg-none" id="new_member" action="https://www.darkjedibrotherhood.com/members/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓"><input placeholder="Search Name or ID" id="q" class="search-query form-control search" data-autocomplete="https://www.darkjedibrotherhood.com/members/autocomplete_member_name" type="text" name="member[name]">
+</form></div>
+</div>
+</nav>
+
+<header class="site-head">
+<div class="flag-container">
+<div class="flag-inner">
+<div class="left-flag"></div>
+<div class="right-flag"></div>
+</div>
+</div>
+<div class="inner container">
+<div class="pull-right">
+<div class="social-media">
+<a target="_blank" title="Facebook" href="https://www.facebook.com/darkjedibrotherhoodofficial/"><i class="fa fa-facebook-square"></i>
+</a><a target="_blank" title="Twitter" href="https://www.twitter.com/swdjb/"><i class="fa fa-twitter-square"></i>
+</a><a target="_blank" title="DJB Subreddit" href="https://www.reddit.com/r/darkjedibrotherhood"><i class="fa fa-reddit-square"></i>
+</a><a target="_blank" href="https://darkjedibrotherhood.deviantart.com/"><i class="fa fa-deviantart"></i>
+</a><a target="_blank" href="https://steamcommunity.com/groups/swdjb"><i class="fa fa-steam-square"></i>
+</a><a target="_blank" title="RSS Feed" href="https://www.darkjedibrotherhood.com/news.rss"><i class="fa fa-rss-square"></i>
+</a><a target="_blank" title="Holocron (Announcements Mailing List)" href="https://groups.google.com/forum/#!forum/dbholocron"><i class="fa fa-envelope-square"></i>
+</a></div>
+</div>
+<a alt="Dark Jedi Brotherhood" class="logo" href="https://www.darkjedibrotherhood.com/"></a>
+</div>
+</header>
+<div class="container">
+<div class="content mb-3">
+<div class="row">
+<div class="col-md-12">
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-12">
+<div class="page-title"><h3>
+Current
+Character Sheet for
+Muz Ashen Keibatsu
+</h3>
+</div>
+</div>
+</div>
+<div class="row"><div class="col-md-12">
+<div class="card character-sheet-header-card mb-3 pb-3">
+<div class="card-body">
+<div class="row">
+<div class="col-12 avatar-wrapper">
+<div class="avatar avatar-large img-avatar img-thumbnail mx-auto tooltipped" style="background-image: url(//darkjedibrotherhood.nyc3.digitaloceanspaces.com/members/avatars/000/003/714/original/3714-avatar.png);" title="" data-original-title="Muz Ashen Keibatsu"></div>
+</div>
+<div class="col-12 text-center">
+<h2 class="text-truncate">
+<span class="tooltipped" title="" data-original-title="Grand Master">Grand Master</span>
+Muz Ashen Keibatsu
+</h2>
+</div>
+<div class="col-12 text-center">
+Grand Master,
+Clan Naga Sadow
+</div>
+<div class="col-12 text-center text-truncate">
+Male
+Human,
+<span class="order" style="color: #85adad;">Force Disciple</span>,
+<span class="discipline popovered tooltip-hint" data-container="#popover-container-9117" data-content="&lt;p&gt;&lt;em&gt;“Don't blink.”&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;The Marauder embraces the Force in its rawest form, drawing on a wide range of emotion to act as fuel for their furnace. They flow through the battlefield, leaving a wake of carnage behind them. They use Amplification to augment their physical capabilities, carving through their opponents with mechanical efficiency. The Marauder believes that the best defense is a good offense; never hesitating, never faltering, and never backing down. &lt;/p&gt;
+
+&lt;p&gt;Marauders gain:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;&lt;em&gt;Battlefield Awareness&lt;/em&gt;, which modifies the Force Power: &lt;strong&gt;Precognition&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;&lt;strong&gt;Battle Haste&lt;/strong&gt;, a unique Force Power for Marauders&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+" data-html="true" data-placement="bottom" data-trigger="click" title="" data-original-title="Marauder">Marauder</span>,
+<span style="color: #ff33ff;">
+Krath Adherent
+</span>
+</div>
+<div class="col-12 text-center">
+<strong>Height:</strong>
+1.88 m / 6'2" -
+<strong>Weight:</strong>
+87.0 kg / 192 lbs
+</div>
+<div class="col-12 text-center">
+<strong>Age:</strong>
+<span class="tooltipped tooltip-hint" data-html="true" title="" data-original-title="Current: 39 years &lt;br/&gt; At approval: 39 years">
+39 years
+</span>
+-
+<strong>Right Handed</strong>
+</div>
+<div class="character-sheet-status">
+</div>
+</div>
+</div>
+<div class="sizeless-popover" id="popover-container-9117"></div>
+</div>
+
+<div class="row align-items-stretch">
+<div class="col-lg-6 col-md-5 mb-3">
+<div class="card h-100">
+<div class="card-header">Physical Description</div>
+<div class="card-body">
+<div class="markdown userinput">
+<div class="thumbnail pull-right small-thumbnail border border-white rounded ml-1 mb-1">
+<a href="https://darkjedibrotherhood.nyc3.digitaloceanspaces.com/sabers/images/000/006/364/original/Muz2019.png"><img src="GM%20Muz%20Ashen%20Keibatsu_files/Muz2019.png">
+</a></div>
+<p>Appearing to be in his mid twenties with long, dark brown hair,and a 
+Kyataran goatee, Muz is the image of a noble of his homeworld.  Tall and
+ thin, but built lithely, the Master spends many hours training his body
+ and shows very little signs of aging.  Featureless black eyes are set 
+against relatively pale skin, with rather pronounced cheekbones marking 
+him as a Keibatsu. Muz's left arm was severed in battle at the bicep, 
+replaced with a cybernetic prosthetic of his own make.  Scars adorn his 
+back and left shoulder from assassination attempts, and Sith tattoos 
+across his chest and biceps remain unseen, yet glow in dark purple tones
+ when viewed with force assisted sight.</p>
+
+<p><a href="https://darkjedibrotherhood.nyc3.digitaloceanspaces.com/assets/assets/000/000/471/original/CSMuz.jpg?1394585855" rel="nofollow" target="_blank">Character Image</a></p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-7 col-lg-6 mb-3">
+<div class="card h-100">
+<div class="card-header">
+<div class="paginator fullwidth-popover" id="popover-68">
+<a class="popovered btn btn-light btn-sm border-0" data-container="#popover-68" data-content="&lt;p&gt;This is the typical everyday wear for Muz.  This is to mean that he was not expecting trouble or real conflict.&lt;/p&gt;
+
+&lt;p&gt;His belt is set to carry his lightsabers in black and deep purple holsters to match the belt and pouches, rather than the usual belt clip.  using the standard clock mapping with noon being the front belt buckle, Muz carries his purple and red blades at about 10 and 2 respectively, near the front of his belt for easy access, the holsters canted for cross-draw.  His golden lightsabers are kept in holsters at 8 and 4, generally hidden behind the warcoat.  Small pouches for equipment hover at 9 and 3, between the sabers.  A dropdown holster, built the same as the other holsters and pouches, rests on his left thigh.  Small interior pockets in his warcoat take care of any additional storage needs, without sacrificing the tailored lines of the garment.  If Muz is carrying his Diamond Sword, it is worn on his left hip for cross draw.&lt;/p&gt;
+
+&lt;p&gt;Muz's prosthetic arm has a an opening panel which reveals a built-in performance datapad, holoprojector and advanced sensor.  The metals of the arm have been impregnated with the fabric of his Silver Sash, making the arm saber resistant.&lt;/p&gt;
+" data-html="true" data-placement="top" data-toggle="popover" data-trigger="focus" role="button" tabindex="0" title="" data-original-title="Loadout Description">
+<i class="fa fa-info fa-fw"></i>
+</a>
+</div>
+Loadout:
+Everyday Carry
+</div>
+<div class="card-body p-0 pb-3">
+<div class="loadout loadout-small loadout-version-3">
+<div class="loadout-container">
+<img class="loadout-paperdoll" src="GM%20Muz%20Ashen%20Keibatsu_files/paperdoll-male-a97cc86a47af38777d8821092f80aa98037f0e818bef2.png">
+<div class="card loadout-slot loadout-slot-backpack loadout-slot-restricted loadout-slot-size-5">
+<div class="card-header text-center text-nowrap p-0" title="Backpack">
+<small>
+Backpack
+</small>
+</div>
+<div class="card-body loadout-slot-body p-0" id="loadout-slot-backpack-container">
+
+</div>
+</div>
+<div class="card loadout-slot loadout-slot-size-5 loadout-slot-weapon">
+<div class="card-header text-center text-nowrap p-0" title="Weapon">
+<small>
+Weapon
+</small>
+</div>
+<div class="card-body loadout-slot-body p-0" id="loadout-slot-weapon-container">
+<div class="dynamic_popover loadout-item-wrapper sizeless-popover" id="popover-item-46460">
+<a class="item legendary loadout-item popovered" data-container="#popover-item-46460" data-content="&lt;div class='item-tooltip-wrapper'&gt;
+&lt;div class='pull-right'&gt;
+&lt;div class='tooltip-item-image'&gt;&lt;img height='64' src='//darkjedibrotherhood.nyc3.digitaloceanspaces.com/items/item_prototypes/images/000/000/730/small/weapons_Eldersaber.png?1478126513' /&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+&lt;strong class='item legendary'&gt;Muz&amp;#39;s Dark Amethyst Lightsaber&lt;/strong&gt;
+&lt;br&gt;
+&lt;small&gt;(Elder Lightsaber)&lt;/small&gt;
+&lt;br&gt;
+&lt;em&gt;
+Type:
+Weapon (Lightsaber)
+&lt;br&gt;
+Category:
+Lightsaber
+&lt;/em&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Elder Lightsaber Cosmetic: 
+Dossier
+&lt;/p&gt;
+&lt;p&gt;
+Dual-Phase Lightsaber: 
+Dual-phase Length
+&lt;/p&gt;
+&lt;p&gt;
+&lt;i class='djb-icon icon-credit'&gt;&lt;/i&gt;
+64,800
+&lt;/p&gt;
+&lt;/div&gt;
+" data-delay="100" data-html="true" data-placement="top" data-trigger="hover" href="https://www.darkjedibrotherhood.com/items/46460-elder-lightsaber" target="_blank" data-original-title="" title="">
+<img src="GM%20Muz%20Ashen%20Keibatsu_files/weapons_Eldersaber.png">
+</a>
+</div>
+<div class="dynamic_popover loadout-item-wrapper sizeless-popover" id="popover-item-46462">
+<a class="item legendary loadout-item popovered" data-container="#popover-item-46462" data-content="&lt;div class='item-tooltip-wrapper'&gt;
+&lt;div class='pull-right'&gt;
+&lt;div class='tooltip-item-image'&gt;&lt;img height='64' src='//darkjedibrotherhood.nyc3.digitaloceanspaces.com/items/item_prototypes/images/000/000/730/small/weapons_Eldersaber.png?1478126513' /&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+&lt;strong class='item legendary'&gt;Muz&amp;#39;s Curved Bloodshine Red Lightsaber&lt;/strong&gt;
+&lt;br&gt;
+&lt;small&gt;(Elder Lightsaber)&lt;/small&gt;
+&lt;br&gt;
+&lt;em&gt;
+Type:
+Weapon (Lightsaber)
+&lt;br&gt;
+Category:
+Lightsaber
+&lt;/em&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Elder Lightsaber Cosmetic: 
+Dossier
+&lt;/p&gt;
+&lt;p&gt;
+Dual-Phase Lightsaber: 
+Dual-phase Length
+&lt;/p&gt;
+&lt;p&gt;
+&lt;i class='djb-icon icon-credit'&gt;&lt;/i&gt;
+64,800
+&lt;/p&gt;
+&lt;/div&gt;
+" data-delay="100" data-html="true" data-placement="top" data-trigger="hover" href="https://www.darkjedibrotherhood.com/items/46462-elder-lightsaber" target="_blank" data-original-title="" title="">
+<img src="GM%20Muz%20Ashen%20Keibatsu_files/weapons_Eldersaber.png">
+</a>
+</div>
+<div class="dynamic_popover loadout-item-wrapper sizeless-popover" id="popover-item-428">
+<a class="item legendary loadout-item popovered" data-container="#popover-item-428" data-content="&lt;div class='item-tooltip-wrapper'&gt;
+&lt;div class='pull-right'&gt;
+&lt;div class='tooltip-item-image'&gt;&lt;img height='64' src='//darkjedibrotherhood.nyc3.digitaloceanspaces.com/items/item_prototypes/images/000/000/724/small/weapons_goldenlightsaber.png?1478126586' /&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+&lt;strong class='item legendary'&gt;Muz&amp;#39;s Curved Hilt Golden Lightsaber&lt;/strong&gt;
+&lt;br&gt;
+&lt;small&gt;(Golden Lightsaber)&lt;/small&gt;
+&lt;br&gt;
+&lt;em&gt;
+Type:
+Weapon (Lightsaber)
+&lt;br&gt;
+Category:
+Award
+&lt;/em&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Elder Lightsaber Cosmetic: 
+Dossier
+&lt;/p&gt;
+&lt;p&gt;
+Dual-Phase Lightsaber: 
+Dual-phase Length
+&lt;/p&gt;
+&lt;/div&gt;
+" data-delay="100" data-html="true" data-placement="top" data-trigger="hover" href="https://www.darkjedibrotherhood.com/items/428-golden-lightsaber" target="_blank" data-original-title="" title="">
+<img src="GM%20Muz%20Ashen%20Keibatsu_files/weapons_goldenlightsaber.png">
+</a>
+</div>
+<div class="dynamic_popover loadout-item-wrapper sizeless-popover" id="popover-item-315">
+<a class="item legendary loadout-item popovered" data-container="#popover-item-315" data-content="&lt;div class='item-tooltip-wrapper'&gt;
+&lt;div class='pull-right'&gt;
+&lt;div class='tooltip-item-image'&gt;&lt;img height='64' src='//darkjedibrotherhood.nyc3.digitaloceanspaces.com/items/item_prototypes/images/000/000/724/small/weapons_goldenlightsaber.png?1478126586' /&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+&lt;strong class='item legendary'&gt;Golden Lightsaber&lt;/strong&gt;
+&lt;br&gt;
+&lt;em&gt;
+Type:
+Weapon (Lightsaber)
+&lt;br&gt;
+Category:
+Award
+&lt;/em&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Elder Lightsaber Cosmetic: 
+Dossier
+&lt;/p&gt;
+&lt;p&gt;
+Dual-Phase Lightsaber: 
+Dual-phase Length
+&lt;/p&gt;
+&lt;/div&gt;
+" data-delay="100" data-html="true" data-placement="top" data-trigger="hover" href="https://www.darkjedibrotherhood.com/items/315-golden-lightsaber" target="_blank" data-original-title="" title="">
+<img src="GM%20Muz%20Ashen%20Keibatsu_files/weapons_goldenlightsaber.png">
+</a>
+</div>
+<div class="dynamic_popover loadout-item-wrapper sizeless-popover" id="popover-item-46463">
+<a class="epic item loadout-item popovered" data-container="#popover-item-46463" data-content="&lt;div class='item-tooltip-wrapper'&gt;
+&lt;div class='pull-right'&gt;
+&lt;div class='tooltip-item-image'&gt;&lt;img height='64' src='//darkjedibrotherhood.nyc3.digitaloceanspaces.com/items/item_prototypes/images/000/000/754/small/weapons_Synergy_WLD-5_Peacekeeper.png?1478121297' /&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+&lt;strong class='epic item'&gt;Synergy WLD-5 Peacekeeper&lt;/strong&gt;
+&lt;br&gt;
+&lt;em&gt;
+Type:
+Weapon (Blasters)
+&lt;br&gt;
+Category:
+Blaster Pistol
+&lt;/em&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Ranged Weapon Cosmetic: 
+Blackout
+&lt;/p&gt;
+&lt;p&gt;
+Blaster Modification: 
+Extended Mag
+&lt;/p&gt;
+&lt;p&gt;
+&lt;i class='djb-icon icon-credit'&gt;&lt;/i&gt;
+14,850
+&lt;/p&gt;
+&lt;/div&gt;
+" data-delay="100" data-html="true" data-placement="top" data-trigger="hover" href="https://www.darkjedibrotherhood.com/items/46463-synergy-wld-5-peacekeeper" target="_blank" data-original-title="" title="">
+<img src="GM%20Muz%20Ashen%20Keibatsu_files/weapons_Synergy_WLD-5_Peacekeeper.png">
+</a>
+</div>
+
+</div>
+</div>
+<div class="card loadout-slot loadout-slot-size-1 loadout-slot-technology">
+<div class="card-header text-center text-nowrap p-0" title="Technology">
+<small>
+Tech
+</small>
+</div>
+<div class="card-body loadout-slot-body p-0" id="loadout-slot-technology-container">
+<div class="dynamic_popover loadout-item-wrapper sizeless-popover" id="popover-item-260">
+<a class="item legendary loadout-item popovered" data-container="#popover-item-260" data-content="&lt;div class='item-tooltip-wrapper'&gt;
+&lt;div class='pull-right'&gt;
+&lt;div class='tooltip-item-image'&gt;&lt;img height='64' src='//darkjedibrotherhood.nyc3.digitaloceanspaces.com/items/item_prototypes/images/000/000/735/small/accessory_silversash.png?1478133333' /&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+&lt;strong class='item legendary'&gt;Silver Sash&lt;/strong&gt;
+&lt;br&gt;
+&lt;em&gt;
+Type:
+Combat Enhancement
+&lt;br&gt;
+Category:
+Award
+&lt;/em&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Granted: 
+Sith Alchemy Armor
+&lt;/p&gt;
+&lt;/div&gt;
+" data-delay="100" data-html="true" data-placement="top" data-trigger="hover" href="https://www.darkjedibrotherhood.com/items/260-silver-sash" target="_blank" data-original-title="" title="">
+<img src="GM%20Muz%20Ashen%20Keibatsu_files/accessory_silversash.png">
+</a>
+</div>
+
+</div>
+</div>
+<div class="card loadout-slot loadout-slot-restricted loadout-slot-size-1 loadout-slot-space-vehicle">
+<div class="card-header text-center text-nowrap p-0" title="Space Vehicle">
+<small>
+Space
+</small>
+</div>
+<div class="card-body loadout-slot-body p-0" id="loadout-slot-space-vehicle-container">
+<div class="dynamic_popover loadout-item-wrapper sizeless-popover" id="popover-item-46950">
+<a class="item legendary loadout-item popovered" data-container="#popover-item-46950" data-content="&lt;div class='item-tooltip-wrapper'&gt;
+&lt;div class='pull-right'&gt;
+&lt;div class='tooltip-item-image'&gt;&lt;img height='64' src='//darkjedibrotherhood.nyc3.digitaloceanspaces.com/items/item_prototypes/images/000/000/831/small/fallenspear.png?1479179305' /&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+&lt;strong class='item legendary'&gt;The Fallen Spear&lt;/strong&gt;
+&lt;br&gt;
+&lt;small&gt;(Autochthonian Dragon-class Skirmisher)&lt;/small&gt;
+&lt;br&gt;
+&lt;em&gt;
+Type:
+Space Vehicle
+&lt;br&gt;
+Category:
+Assault Ship
+&lt;/em&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Granted: 
+The Lion&amp;#39;s Den
+&lt;/p&gt;
+&lt;p&gt;
+Space Vehicle Cosmetic: 
+Fateful Signs
+&lt;/p&gt;
+&lt;p&gt;
+&lt;i class='djb-icon icon-credit'&gt;&lt;/i&gt;
+1,620,000
+&lt;/p&gt;
+&lt;/div&gt;
+" data-delay="100" data-html="true" data-placement="top" data-trigger="hover" href="https://www.darkjedibrotherhood.com/items/46950-autochthonian-dragon-class-skirmisher" target="_blank" data-original-title="" title="">
+<img src="GM%20Muz%20Ashen%20Keibatsu_files/fallenspear.png">
+</a>
+</div>
+
+</div>
+</div>
+<div class="card loadout-slot loadout-slot-land-vehicle loadout-slot-restricted loadout-slot-size-1">
+<div class="card-header text-center text-nowrap p-0" title="Land Vehicle">
+<small>
+Land
+</small>
+</div>
+<div class="card-body loadout-slot-body p-0" id="loadout-slot-land-vehicle-container">
+<div class="dynamic_popover loadout-item-wrapper sizeless-popover" id="popover-item-47928">
+<a class="item loadout-item popovered uncommon" data-container="#popover-item-47928" data-content="&lt;div class='item-tooltip-wrapper'&gt;
+&lt;div class='pull-right'&gt;
+&lt;div class='tooltip-item-image'&gt;&lt;img height='64' src='//darkjedibrotherhood.nyc3.digitaloceanspaces.com/items/item_prototypes/images/000/000/442/small/grvehicles_mandalorianspeeder.png?1468937611' /&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+&lt;strong class='item uncommon'&gt;Muz&amp;#39;s Speeder Bike&lt;/strong&gt;
+&lt;br&gt;
+&lt;small&gt;(Mandalorian Speeder Bike)&lt;/small&gt;
+&lt;br&gt;
+&lt;em&gt;
+Type:
+Land Vehicle
+&lt;br&gt;
+Category:
+Speeder Bike
+&lt;/em&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Land Vehicle Modification: 
+Roadtrip
+&lt;/p&gt;
+&lt;p&gt;
+Land Vehicle Speeder Cosmetic: 
+Black and Amethyst
+&lt;/p&gt;
+&lt;p&gt;
+&lt;i class='djb-icon icon-credit'&gt;&lt;/i&gt;
+21,000
+&lt;/p&gt;
+&lt;/div&gt;
+" data-delay="100" data-html="true" data-placement="top" data-trigger="hover" href="https://www.darkjedibrotherhood.com/items/47928-mandalorian-speeder-bike" target="_blank" data-original-title="" title="">
+<img src="GM%20Muz%20Ashen%20Keibatsu_files/grvehicles_mandalorianspeeder.png">
+</a>
+</div>
+
+</div>
+</div>
+<div class="card loadout-slot loadout-slot-equipment loadout-slot-size-5">
+<div class="card-header text-center text-nowrap p-0" title="Equipment">
+<small>
+Equipment
+</small>
+</div>
+<div class="card-body loadout-slot-body p-0" id="loadout-slot-equipment-container">
+<div class="dynamic_popover loadout-item-wrapper sizeless-popover" id="popover-item-47998">
+<a class="item loadout-item popovered uncommon" data-container="#popover-item-47998" data-content="&lt;div class='item-tooltip-wrapper'&gt;
+&lt;div class='pull-right'&gt;
+&lt;div class='tooltip-item-image'&gt;&lt;img height='64' src='//darkjedibrotherhood.nyc3.digitaloceanspaces.com/items/item_prototypes/images/000/000/345/small/equipment_Performance_Datapad.png?1469145600' /&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+&lt;strong class='item uncommon'&gt;Performance Datapad&lt;/strong&gt;
+&lt;br&gt;
+&lt;em&gt;
+Type:
+Equipment
+&lt;br&gt;
+Category:
+Electronics
+&lt;/em&gt;
+&lt;/p&gt;
+&lt;p&gt;
+&lt;i class='djb-icon icon-credit'&gt;&lt;/i&gt;
+360
+&lt;/p&gt;
+&lt;/div&gt;
+" data-delay="100" data-html="true" data-placement="top" data-trigger="hover" href="https://www.darkjedibrotherhood.com/items/47998-performance-datapad" target="_blank" data-original-title="" title="">
+<img src="GM%20Muz%20Ashen%20Keibatsu_files/equipment_Performance_Datapad.png">
+</a>
+</div>
+<div class="dynamic_popover loadout-item-wrapper sizeless-popover" id="popover-item-48066">
+<a class="common item loadout-item popovered" data-container="#popover-item-48066" data-content="&lt;div class='item-tooltip-wrapper'&gt;
+&lt;div class='pull-right'&gt;
+&lt;div class='tooltip-item-image'&gt;&lt;img height='64' src='//darkjedibrotherhood.nyc3.digitaloceanspaces.com/items/item_prototypes/images/000/000/372/small/equipment_hydrospanner.png?1469144287' /&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+&lt;strong class='common item'&gt;Hydrospanner&lt;/strong&gt;
+&lt;br&gt;
+&lt;em&gt;
+Type:
+Equipment
+&lt;br&gt;
+Category:
+Field Tools
+&lt;/em&gt;
+&lt;/p&gt;
+&lt;p&gt;
+&lt;i class='djb-icon icon-credit'&gt;&lt;/i&gt;
+55
+&lt;/p&gt;
+&lt;/div&gt;
+" data-delay="100" data-html="true" data-placement="top" data-trigger="hover" href="https://www.darkjedibrotherhood.com/items/48066-hydrospanner" target="_blank" data-original-title="" title="">
+<img src="GM%20Muz%20Ashen%20Keibatsu_files/equipment_hydrospanner.png">
+</a>
+</div>
+<div class="dynamic_popover loadout-item-wrapper sizeless-popover" id="popover-item-48007">
+<a class="item loadout-item popovered rare" data-container="#popover-item-48007" data-content="&lt;div class='item-tooltip-wrapper'&gt;
+&lt;div class='pull-right'&gt;
+&lt;div class='tooltip-item-image'&gt;&lt;img height='64' src='//darkjedibrotherhood.nyc3.digitaloceanspaces.com/items/item_prototypes/images/000/000/334/small/equipment_advancedsvanner.png?1469133533' /&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+&lt;strong class='item rare'&gt;Advanced Scanner&lt;/strong&gt;
+&lt;br&gt;
+&lt;em&gt;
+Type:
+Equipment
+&lt;br&gt;
+Category:
+Electronics
+&lt;/em&gt;
+&lt;/p&gt;
+&lt;p&gt;
+&lt;i class='djb-icon icon-credit'&gt;&lt;/i&gt;
+855
+&lt;/p&gt;
+&lt;/div&gt;
+" data-delay="100" data-html="true" data-placement="top" data-trigger="hover" href="https://www.darkjedibrotherhood.com/items/48007-advanced-scanner" target="_blank" data-original-title="" title="">
+<img src="GM%20Muz%20Ashen%20Keibatsu_files/equipment_advancedsvanner.png">
+</a>
+</div>
+<div class="dynamic_popover loadout-item-wrapper sizeless-popover" id="popover-item-48060">
+<a class="item loadout-item popovered uncommon" data-container="#popover-item-48060" data-content="&lt;div class='item-tooltip-wrapper'&gt;
+&lt;div class='pull-right'&gt;
+&lt;div class='tooltip-item-image'&gt;&lt;img height='64' src='//darkjedibrotherhood.nyc3.digitaloceanspaces.com/items/item_prototypes/images/000/000/343/small/equipment_Holo_Projector.png?1469144205' /&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+&lt;strong class='item uncommon'&gt;Holoprojector&lt;/strong&gt;
+&lt;br&gt;
+&lt;em&gt;
+Type:
+Equipment
+&lt;br&gt;
+Category:
+Electronics
+&lt;/em&gt;
+&lt;/p&gt;
+&lt;p&gt;
+&lt;i class='djb-icon icon-credit'&gt;&lt;/i&gt;
+885
+&lt;/p&gt;
+&lt;/div&gt;
+" data-delay="100" data-html="true" data-placement="top" data-trigger="hover" href="https://www.darkjedibrotherhood.com/items/48060-holoprojector" target="_blank" data-original-title="" title="">
+<img src="GM%20Muz%20Ashen%20Keibatsu_files/equipment_Holo_Projector.png">
+</a>
+</div>
+
+</div>
+</div>
+<div class="card loadout-slot loadout-slot-companion loadout-slot-size-1">
+<div class="card-header text-center text-nowrap p-0" title="Companion">
+<small>
+Comp
+</small>
+</div>
+<div class="card-body loadout-slot-body p-0" id="loadout-slot-companion-container">
+<div class="dynamic_popover loadout-item-wrapper sizeless-popover" id="popover-item-48115">
+<a class="epic item loadout-item popovered" data-container="#popover-item-48115" data-content="&lt;div class='item-tooltip-wrapper'&gt;
+&lt;div class='pull-right'&gt;
+&lt;div class='tooltip-item-image'&gt;&lt;img height='64' src='//darkjedibrotherhood.nyc3.digitaloceanspaces.com/items/item_prototypes/images/000/000/285/small/droids_hk.png?1468931245' /&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+&lt;strong class='epic item'&gt;HK-81 &amp;quot;Hekate&amp;quot;&lt;/strong&gt;
+&lt;br&gt;
+&lt;small&gt;(HK-series Assassin Droid)&lt;/small&gt;
+&lt;br&gt;
+&lt;em&gt;
+Type:
+Droid
+&lt;br&gt;
+Category:
+Combat Droid
+&lt;/em&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Droid Modification: 
+Memory Upgrade
+&lt;/p&gt;
+&lt;p&gt;
+Droid Combat Modification: 
+Increased Agility
+&lt;/p&gt;
+&lt;p&gt;
+Droid Personality: 
+Anodized Apprentice
+&lt;/p&gt;
+&lt;p&gt;
+Droid Cosmetic: 
+Krath War Droid
+&lt;/p&gt;
+&lt;p&gt;
+&lt;i class='djb-icon icon-credit'&gt;&lt;/i&gt;
+86,400
+&lt;/p&gt;
+&lt;/div&gt;
+" data-delay="100" data-html="true" data-placement="top" data-trigger="hover" href="https://www.darkjedibrotherhood.com/items/48115-hk-series-assassin-droid" target="_blank" data-original-title="" title="">
+<img src="GM%20Muz%20Ashen%20Keibatsu_files/droids_hk.png">
+</a>
+</div>
+
+</div>
+</div>
+<div class="card loadout-slot loadout-slot-cybernetic loadout-slot-size-1">
+<div class="card-header text-center text-nowrap p-0" title="Cybernetic">
+<small>
+CyNet
+</small>
+</div>
+<div class="card-body loadout-slot-body p-0" id="loadout-slot-cybernetic-container">
+<div class="dynamic_popover loadout-item-wrapper sizeless-popover" id="popover-item-47940">
+<a class="common item loadout-item popovered" data-container="#popover-item-47940" data-content="&lt;div class='item-tooltip-wrapper'&gt;
+&lt;div class='pull-right'&gt;
+&lt;div class='tooltip-item-image'&gt;&lt;img height='64' src='//darkjedibrotherhood.nyc3.digitaloceanspaces.com/items/item_prototypes/images/000/000/274/small/accessory_cybernetic.png?1468927893' /&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+&lt;strong class='common item'&gt;Cybernetic&lt;/strong&gt;
+&lt;br&gt;
+&lt;em&gt;
+Type/Category:
+Cybernetic
+&lt;/em&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Cybernetic: 
+Exposed Cybernetic Arm
+&lt;/p&gt;
+&lt;p&gt;
+&lt;i class='djb-icon icon-credit'&gt;&lt;/i&gt;
+50
+&lt;/p&gt;
+&lt;/div&gt;
+" data-delay="100" data-html="true" data-placement="top" data-trigger="hover" href="https://www.darkjedibrotherhood.com/items/47940-cybernetic" target="_blank" data-original-title="" title="">
+<img src="GM%20Muz%20Ashen%20Keibatsu_files/accessory_cybernetic.png">
+</a>
+</div>
+
+</div>
+</div>
+<div class="card loadout-slot loadout-slot-back loadout-slot-size-1">
+<div class="card-header text-center text-nowrap p-0" title="Back">
+<small>
+Back
+</small>
+</div>
+<div class="card-body loadout-slot-body p-0" id="loadout-slot-back-container">
+<div class="dynamic_popover loadout-item-wrapper sizeless-popover" id="popover-item-48025">
+<a class="epic item loadout-item popovered" data-container="#popover-item-48025" data-content="&lt;div class='item-tooltip-wrapper'&gt;
+&lt;div class='pull-right'&gt;
+&lt;div class='tooltip-item-image'&gt;&lt;img height='64' src='//darkjedibrotherhood.nyc3.digitaloceanspaces.com/items/item_prototypes/images/000/000/256/small/back_armorweavecloak.png?1469108610' /&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+&lt;strong class='epic item'&gt;Ashen&amp;#39;s Warcoat&lt;/strong&gt;
+&lt;br&gt;
+&lt;small&gt;(Armorweave Cloak)&lt;/small&gt;
+&lt;br&gt;
+&lt;em&gt;
+Type:
+Back
+&lt;br&gt;
+Category:
+Cover
+&lt;/em&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Back Cover Cosmetic: 
+Ashen&amp;#39;s Warcoat
+&lt;/p&gt;
+&lt;p&gt;
+&lt;i class='djb-icon icon-credit'&gt;&lt;/i&gt;
+2,700
+&lt;/p&gt;
+&lt;/div&gt;
+" data-delay="100" data-html="true" data-placement="top" data-trigger="hover" href="https://www.darkjedibrotherhood.com/items/48025-armorweave-cloak" target="_blank" data-original-title="" title="">
+<img src="GM%20Muz%20Ashen%20Keibatsu_files/back_armorweavecloak.png">
+</a>
+</div>
+
+</div>
+</div>
+<div class="card loadout-slot loadout-slot-armor loadout-slot-size-1">
+<div class="card-header text-center text-nowrap p-0" title="Armor">
+<small>
+Armor
+</small>
+</div>
+<div class="card-body loadout-slot-body p-0" id="loadout-slot-armor-container">
+<div class="dynamic_popover loadout-item-wrapper sizeless-popover" id="popover-item-48624">
+<a class="epic item loadout-item popovered" data-container="#popover-item-48624" data-content="&lt;div class='item-tooltip-wrapper'&gt;
+&lt;div class='pull-right'&gt;
+&lt;div class='tooltip-item-image'&gt;&lt;img height='64' src='//darkjedibrotherhood.nyc3.digitaloceanspaces.com/items/item_prototypes/images/000/000/304/small/armor_tailored.png?1479569720' /&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+&lt;strong class='epic item'&gt;Muz&amp;#39;s Casual Clothes&lt;/strong&gt;
+&lt;br&gt;
+&lt;small&gt;(Tailored Brotherhood Robes)&lt;/small&gt;
+&lt;br&gt;
+&lt;em&gt;
+Type:
+Armor
+&lt;br&gt;
+Category:
+Special Armor
+&lt;/em&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Armor Modification: 
+Sound Suppression Augment
+&lt;/p&gt;
+&lt;p&gt;
+Special Armor Category: 
+Light Armor
+&lt;/p&gt;
+&lt;p&gt;
+Armor Cosmetic: 
+Comfortable with Cruelty
+&lt;/p&gt;
+&lt;p&gt;
+Armor Resistance Modification : 
+Comfort Body Glove
+&lt;/p&gt;
+&lt;p&gt;
+&lt;i class='djb-icon icon-credit'&gt;&lt;/i&gt;
+15,660
+&lt;/p&gt;
+&lt;/div&gt;
+" data-delay="100" data-html="true" data-placement="top" data-trigger="hover" href="https://www.darkjedibrotherhood.com/items/48624-tailored-brotherhood-robes" target="_blank" data-original-title="" title="">
+<img src="GM%20Muz%20Ashen%20Keibatsu_files/armor_tailored.png">
+</a>
+</div>
+
+</div>
+</div>
+<div class="card loadout-slot loadout-slot-accessory loadout-slot-size-2">
+<div class="card-header text-center text-nowrap p-0" title="Accessory">
+<small>
+Accessory
+</small>
+</div>
+<div class="card-body loadout-slot-body p-0" id="loadout-slot-accessory-container">
+<div class="dynamic_popover loadout-item-wrapper sizeless-popover" id="popover-item-47937">
+<a class="common item loadout-item popovered" data-container="#popover-item-47937" data-content="&lt;div class='item-tooltip-wrapper'&gt;
+&lt;div class='pull-right'&gt;
+&lt;div class='tooltip-item-image'&gt;&lt;img height='64' src='//darkjedibrotherhood.nyc3.digitaloceanspaces.com/items/item_prototypes/images/000/000/132/small/accessory_familyheirloom.png?1478039848' /&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+&lt;strong class='common item'&gt;Keibatsu Ring&lt;/strong&gt;
+&lt;br&gt;
+&lt;small&gt;(Family Heirloom)&lt;/small&gt;
+&lt;br&gt;
+&lt;em&gt;
+Type/Category:
+Accessory
+&lt;/em&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Family Heirloom: 
+Keibatsu Ring
+&lt;/p&gt;
+&lt;p&gt;
+&lt;i class='djb-icon icon-credit'&gt;&lt;/i&gt;
+50
+&lt;/p&gt;
+&lt;/div&gt;
+" data-delay="100" data-html="true" data-placement="top" data-trigger="hover" href="https://www.darkjedibrotherhood.com/items/47937-family-heirloom" target="_blank" data-original-title="" title="">
+<img src="GM%20Muz%20Ashen%20Keibatsu_files/accessory_familyheirloom.png">
+</a>
+</div>
+<div class="dynamic_popover loadout-item-wrapper sizeless-popover" id="popover-item-58879">
+<a class="item legendary loadout-item popovered" data-container="#popover-item-58879" data-content="&lt;div class='item-tooltip-wrapper'&gt;
+&lt;div class='pull-right'&gt;
+&lt;div class='tooltip-item-image'&gt;&lt;img height='64' src='//darkjedibrotherhood.nyc3.digitaloceanspaces.com/items/item_prototypes/images/000/000/963/small/elder_holocron.png?1523126089' /&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+&lt;strong class='item legendary'&gt;The Eos Holocron&lt;/strong&gt;
+&lt;br&gt;
+&lt;small&gt;(Elder Holocron)&lt;/small&gt;
+&lt;br&gt;
+&lt;em&gt;
+Type/Category:
+Accessory
+&lt;/em&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Elder Holocron: 
+The Black Holocron
+&lt;/p&gt;
+&lt;p&gt;
+&lt;i class='djb-icon icon-credit'&gt;&lt;/i&gt;
+7,695
+&lt;/p&gt;
+&lt;/div&gt;
+" data-delay="100" data-html="true" data-placement="top" data-trigger="hover" href="https://www.darkjedibrotherhood.com/items/58879-elder-holocron" target="_blank" data-original-title="" title="">
+<img src="GM%20Muz%20Ashen%20Keibatsu_files/elder_holocron.png">
+</a>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="card-footer text-center">
+<ul class="pagination pagination-sm card-header-pagination mb-0">
+
+
+<li class="active page page-item">
+<a class="page-link" href="https://www.darkjedibrotherhood.com/character_sheets/9117">1</a>
+</li>
+
+<li class="page page-item">
+<a rel="next" class="page-link" href="https://www.darkjedibrotherhood.com/character_sheets/9117?page=2">2</a>
+</li>
+
+<li class="page page-item">
+<a class="page-link" href="https://www.darkjedibrotherhood.com/character_sheets/9117?page=3">3</a>
+</li>
+
+<li class="page-item next">
+<a rel="next" class="page-link" href="https://www.darkjedibrotherhood.com/character_sheets/9117?page=2"><span class="d-none d-md-inline">Next</span>
+›
+</a>
+</li>
+
+<li class="page-item last">
+<a class="page-link" href="https://www.darkjedibrotherhood.com/character_sheets/9117?page=3"><span class="d-none d-md-inline">Last</span>
+»
+</a>
+</li>
+
+</ul>
+
+</div>
+</div>
+
+</div>
+</div>
+<div class="row align-items-stretch justify-content-around">
+<div class="col-md-6 mb-3">
+<div class="card h-100">
+<div class="card-header">
+To See With a God's Eyes
+(General Aspect)
+</div>
+<div class="card-body">
+<div class="markdown"><p>The pinnacles of the Brotherhood are the Grand 
+Masters, and none have lasted nearly as long in office as Muz.  The 
+depth of understanding he has of how the Universe works is enough to 
+drive anyone insane.  Rather than succumb to gibbering madness, Muz uses
+ the insight to devastating effect in all that he does.  This pushes him
+ outside of normality, making it difficult for him to relate to most 
+sentients in the universe.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-6 mb-3">
+<div class="card h-100">
+<div class="card-header">
+The Lion of Tarthos
+(General Aspect)
+</div>
+<div class="card-body">
+<div class="markdown"><p>Muz is quiet.  He doesn't give speeches, he 
+doesn't chastise, he doesn't wisecrack.  He is warrior-born, and doesn't
+ believe that using his mouth is useful in most cases.  When he does 
+talk, he uses direct and plain terms.  The real communication from Muz 
+will be 95% non-verbal.  Eyebrow movements explain confusion, amusement,
+ contemplation.  Lowering his head and watching someone through the tops
+ of his eyes denotes that he perceives a threat.  Lowering his center of
+ balance and shifting his feet slightly, while often only noticed by 
+master saberists, often precludes swift attack.  Muz often lets his 
+actions speak for him, be it in vulgar displays of power to set an 
+example or in silent approval. Muz may be quiet, but when he roars, it 
+is something to behold.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row align-items-stretch justify-content-around">
+<div class="col-md-6 mb-3">
+<div class="card h-100">
+<div class="card-header">
+Fallen Jedi
+(Personality Aspect)
+</div>
+<div class="card-body">
+<div class="markdown"><p>Taken from his home as a child to be trained by
+ Jedi, Muz learned much from the ascetic order,  As time passed, he 
+found that the Order was plagued by their own hubris and hypocrisy. 
+After Muz sacrificed much to save others, but came perilously close to 
+the dark side in doing so, the order reprimanded him harshly out of fear
+ of the Dark Side, and Muz left the Jedi to join the Brotherhood, where 
+he found new purpose and old family.  His feelings for his family and 
+friends is unusual among the Dark Side, and is often seen by other Sith 
+as a weakness or vulnerability.  Muz believes otherwise, using his 
+emotions for loved ones as the passion referenced in the Sith Code to 
+make him powerful.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-6 mb-3">
+<div class="card h-100">
+<div class="card-header">
+Lord of the Krath
+(Personality Aspect)
+</div>
+<div class="card-body">
+<div class="markdown"><p>The Sith teach that strength is to be found by 
+constant strife, not only against enemies, but also against themselves. 
+ Muz holds with a different philosophy.  Seeing the internal squabbles 
+as wasteful, he seeks instead to push the Brotherhood towards a common 
+goal, rather than the traditional Sith winnowing.  He is not ignorant of
+ the ways of the Sith, but rather uses them to his ends whenever 
+possible, redirecting the innate competitive nature of the Clans and 
+Houses towards outside accomplishment.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row align-items-stretch justify-content-around">
+<div class="col-md-6 mb-3">
+<div class="card h-100">
+<div class="card-header">
+Warrior Born
+(Combat Aspect)
+</div>
+<div class="card-body">
+<div class="markdown"><p>Born the eldest son to a feudal warlord, Muz 
+was trained from an early age to be a warrior.  As a result, Muz tends 
+to use his powers in an enhancement fashion, using powers that augment 
+or add effectiveness to skills he already has.  This is not to say that 
+he won't use other powers or that he doesn't use them when needed, but 
+rather that it is more in his nature to use what he has already and use 
+the Force to bump it up a notch.  His best weapon may be the Force, but 
+his first weapon is himself.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-6 mb-3">
+<div class="card h-100">
+<div class="card-header">
+Scholar of the Saber
+(Combat Aspect)
+</div>
+<div class="card-body">
+<div class="markdown"><p>Even though Muz has studied all the lightsaber 
+forms extensively, he won't just throw down into a combat with little 
+provocation.  He is a connoisseur of the lightsaber forms, and relishes 
+the ability to hone his own skill.  Even so, Muz views entering a combat
+ as something that only one person walks away from.  Since he wishes to 
+avoid unnecessary loss to the brotherhood, he has to feel as though he 
+has something to learn from the opponent or that the opponent must be 
+destroyed for his goals to succeed before he engages in a duel.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row align-items-stretch">
+<div class="col-md-6 mb-3">
+<div class="card h-100">
+<div class="card-header">Skills</div>
+<table class="table table-striped mb-0">
+<tbody><tr>
+<td class="">
+Sovereign (+6)
+</td>
+<td>
+<div class="skillrow">
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;Measures the amount of control your character has over their body when in motion such as running, climbing, dodging, or swimming. &lt;em&gt;Athletics&lt;/em&gt; represents the combination of balance, coordination and agility your character can perform when they are uninjured, well rested, and at their peak.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Athletics&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Skills#Athletics&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Athletics</a>
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;Measures an individual’s ability to use logical reasoning to problem solve, think abstractly and comprehend complex ideas or schemes. &lt;em&gt;Intellect&lt;/em&gt; often manifests itself as your character’s wit, and how apt you are at &lt;strong&gt;applying&lt;/strong&gt; knowledge and learning from experience.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Intellect&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Skills#Intellect&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Intellect</a>
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;An individual&amp;#39;s skill in their &lt;em&gt;Primary Lightsaber Form&lt;/em&gt;. This skill must be trained (minimum of +1) to be used and &lt;strong&gt;cannot&lt;/strong&gt; be used untrained.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Primary Lightsaber Form&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Skills#Primary_Lightsaber_Form&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Primary Lightsaber Form</a>
+</div>
+</td>
+</tr>
+<tr>
+<td class="">
+Master (+5)
+</td>
+<td>
+<div class="skillrow">
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;&lt;em&gt;Resolve&lt;/em&gt; is your character&amp;#39;s willpower and their ability to handle stress, keep a level head, and stand firm in the face of danger. It is also your character&amp;#39;s mental resilience against both skills and the effects of Force-based intrusions of the mind such as &lt;em&gt;Intimidation&lt;/em&gt;, &lt;strong&gt;Mind Trick&lt;/strong&gt;, &lt;strong&gt;Illusion&lt;/strong&gt;, &lt;strong&gt;Terror&lt;/strong&gt;, and &lt;em&gt;Force Interrogation&lt;/em&gt;.  The higher a character’s &lt;em&gt;Resolve&lt;/em&gt; is, relative to an attack/threat Skill or Force Power, the less effective the attack&amp;#39;s result is in conjunction with that character&amp;#39;s skills. Only in the scenario of an extreme disparity in ability could &lt;em&gt;Resolve&lt;/em&gt; outright prevent the onset of an ability.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Resolve +5:&lt;/strong&gt; You have been fighting a losing battle for weeks, but can still stand in the middle of a warzone facing a superior foe that outnumbers you 10-1 and has you surrounded without losing heart, and carry on the fight.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Resolve&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Skills#Resolve&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Resolve</a>
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;An individual&amp;#39;s &lt;em&gt;Secondary Lightsaber Form&lt;/em&gt; that becomes available to Equites. This skill must be trained (minimum of +1) to use and cannot be used untrained.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Secondary Lightsaber Form +5:&lt;/strong&gt; Masters come to you for advice and training.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Secondary Lightsaber Form&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Skills#Secondary_Lightsaber_Form&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Secondary Lightsaber Form</a>
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;The ability to effectively wield multiple &lt;strong&gt;weapons&lt;/strong&gt; at the same time. As rank increases, proficiency increases. Starting with a clear “Primary” hand, your off-hand becomes less and less prominent as your ability to use disparate or similar weapons rises. &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Dual Wielding +5:&lt;/strong&gt; You don’t have an off-hand. You can fight with any combination of weapons without any extra concentration.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Dual Wielding&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Skills#Dual_Wielding&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Dual Wielding</a>
+</div>
+</td>
+</tr>
+<tr>
+<td class="">
+Adept (+4)
+</td>
+<td>
+<div class="skillrow">
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;Measures an individual&amp;#39;s ability to inspire anyone in his or her company, ranging from a small team to an entire Clan. It is also the ability to rally others to a cause, to convince them that a course of action is right and without the need for manipulation. Some lead by example, and some by eloquent words. Presence fuses with the luck of knowing the right things to say at the right time. &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Leadership +4:&lt;/strong&gt; You effortlessly gain the faith and trust of those you come into contact with. The mere mention of your name inspires intense loyalty among your subordinates and naysayers will quickly get shut down, even if your orders don’t make sense at the moment. Your subordinates believe they can do almost anything with you at the helm.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Leadership&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Skills#Leadership&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Leadership</a>
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;Measures an individual&amp;#39;s ability to read their surroundings through observation alone. It highlights your character&amp;#39;s attention to detail &lt;em&gt;without&lt;/em&gt; aid from the Force, and how well they can react to changes in their surroundings. Perception manifests itself when scanning a room for traps or weighing the truth of someone&amp;#39;s words.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Perception +4:&lt;/strong&gt; Even the smallest detail can reveal pertinent information, and even the best actors have problems hiding their “tells”.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Perception&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Skills#Perception&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Perception</a>
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;Measures how long an individual can maintain their peak &lt;em&gt;Athletic&lt;/em&gt; ability and full &lt;em&gt;Might&lt;/em&gt;. It weighs how well your character maintains their stamina through obstacles like fatigue and non-inhibiting wounds (doesn’t prevent proper functioning), maintaining their level of physical stamina over a period of time despite feeling pain or tiredness.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Stamina +4:&lt;/strong&gt; After finishing running a marathon, you are ready to run another. Even with non-inhibiting wounds, you can keep pushing your body with little sleep, and it will take a while for it to catch up with you.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Stamina&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Skills#Stamina&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Stamina</a>
+</div>
+</td>
+</tr>
+<tr>
+<td class="">
+Proficient (+3)
+</td>
+<td>
+<div class="skillrow">
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;An individual&amp;#39;s &lt;em&gt;Primary Martial Arts Form&lt;/em&gt;. This skill must be trained (minimum of +1) to use. &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Primary Martial Arts Form +3:&lt;/strong&gt; You’ve earned your Black Belt and have mastered the core techniques of your respective Form.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Primary Martial Arts Form&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Skills#Primary_Martial_Arts_Form&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Primary Martial Arts Form</a>
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;Measures the core competencies needed to successfully command larger scale military units be they fleets or armies. This includes a sufficient base of knowledge on and application of: allied and enemy capabilities, common strategies and tactics and how to employ them.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Tactics +3:&lt;/strong&gt; You understand the difference between spending lives under your command, and wasting them. You have a keen understanding of complex strategies employed in war and conflict, have studied the maneuvers and techniques employed throughout history, and can mix them with your own experiences to craft new strategies that others may not have come up with yet.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Tactics&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Skills#Tactics&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Tactics</a>
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;An individual&amp;#39;s skill with creating, tweaking, or modifying armor and weapons. This skill also carries a sense of artistic ability, and covers using a forge for weapons or machinery for armor.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Crafting +3:&lt;/strong&gt; Once something is in your hands, it rarely reflects the original configuration after you’ve heavily modified it to suit your needs. You can work with the right materials and the right tools to create advanced weapons and armors in less than ideal conditions.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Crafting&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Skills#Crafting&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Crafting</a>
+</div>
+</td>
+</tr>
+<tr>
+<td class="">
+Trained (+2)
+</td>
+<td>
+<div class="skillrow">
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;Covers any energy-based firearm from hold-out pistols to Repeating and Sniper Rifles. It measures your character’s proficiency in using them as a weapon as well as your understanding of the different blaster types and how they function. With more skill comes the ability to adapt over a wider range of blaster types.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Blasters +2:&lt;/strong&gt; You are skilled with two types of blaster weapons (pistol, rifles, repeaters). You can effortlessly track moving targets and draw beads on them in fair weather conditions and in battle. Accuracy decreases in rougher conditions.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Blasters&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Skills#Blasters&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Blasters</a>
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;For each Skill Point placed in the Lore Skill, your character has studied a subject intensely and is considered an expert in that field. This knowledge is on par with an academic or vocational 2-4 year program. Beginning with one subject at Skill +1, you gain an additional subject for each respective point.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Lore +2:&lt;/strong&gt; Two additional subjects of lore.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Lore&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Skills#Lore&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Lore</a>
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;The ability for an individual to understand the hardware functions and ministrations of computers, droids, and gadgets. The ability to repair, build, deconstruct and rebuild machines and to tinker with their designs and functions. Beginning with a basic understanding of what different circuits and functions on a computer, droid, and gadget do, this skill allows an individual to eventually take that knowledge and transform it into repairing and rebuilding machines in increasingly disparate states of repair.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Mechanic +2:&lt;/strong&gt; Given time, you can restore full functionality to damaged computers, droids, and gadgets.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Mechanic&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Skills#Mechanic&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Mechanic</a>
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;Measure an individual&amp;#39;s capacity for raw feats of physical strength. &lt;em&gt;Might&lt;/em&gt; represents the force that can be applied towards moving, throwing, or otherwise displacing matter when uninjured, well rested, or otherwise in peak condition. It is indicative of the force behind attacks as well as labor oriented tasks.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Might +2:&lt;/strong&gt; Heavy boxes, bags, and large objects such as metal chairs offer little difficulty and you know exactly how to leverage your physicality with enough preparation. Untrained attacks will leave an unprotected opponent shaken when full force is applied.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Might&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Skills#Might&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Might</a>
+</div>
+</td>
+</tr>
+<tr>
+<td class="">
+Learned (+1)
+</td>
+<td>
+<div class="skillrow">
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;An individual’s ability to operate and coordinate any vehicle that requires more than one pilot and cannot be operated effectively and entirely from a single terminal, anything from an AT-AT to a Capital Ship. This includes larger freighters, barges, and mobile artillery. &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Pilot (L) +1:&lt;/strong&gt; You know the basics of piloting larger vehicles and know your way around the common consoles with only occasionally asking for a tip. You understand the basics of how a Capital ship runs, and can speak the jargon language of some of the crew.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Pilot (L)&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Skills#Pilot_.28L.29&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Pilot (L)</a>
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;A fighter&amp;#39;s ability to use a range of bladed melee weapons. This includes: Swords, Knives, Spears, Axes, and Vibroweapons of the same types. Starting with an understanding of one type of weapon, as an individual progresses, he or she can expand on not just mastery over a single type of bladed weapon, but competency in others.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Bladed Weapons +1:&lt;/strong&gt; You are skilled with the core forms of a bladed weapon type of your choice and are a competent combatant.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Bladed Weapons&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Skills#Bladed_Weapons&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Bladed Weapons</a>
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;&lt;em&gt;Linguistics&lt;/em&gt; refers to an individual&amp;#39;s ability to read, write, and analyze text, speech, and transcriptions from different languages. All characters have a base understanding of their own native language and galactic basic. &lt;em&gt;Linguistics&lt;/em&gt; covers the addition of new languages to an individual&amp;#39;s repertoire, one for each rank in the skill.  When used untrained, this skill grants proficiency in all common languages associated with the individual&amp;#39;s species.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Linguistics +1:&lt;/strong&gt; One additional language.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Linguistics&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Skills#Linguistics&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Linguistics</a>
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;An individual’s ability to identify, control, and operate starfighters, speeder bikes, pod-racers, small freighters, and other space or ground vehicles that require a single pilot. An individual would also have a basic understanding of how to engage and use the weaponry on their vehicle relative to their skill level. Piloting (S) also covers the character&amp;#39;s effectiveness in using jetpacks or jetboots in combat.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Pilot (S) +1:&lt;/strong&gt; You know the basics of piloting smaller vehicles and know your way around a single type of vehicle. You can execute basic handling maneuvers and coordinate with a squadron.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Pilot (S)&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Skills#Pilot_.28S.29&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Pilot (S)</a>
+</div>
+</td>
+</tr>
+<tr>
+<td>Mediocre (+0)</td>
+<td>
+<div class="skillrow">
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;An individual's ability to plot routes through space. Many forego this skill in favor of astromech droids, but droids can only serve predefined routes. The ability to observe, analyze, and implement navigation in space can be an invaluable tool. Starting with a basic understanding of how hyperspace routes are determined, as an individual progresses through this skill he or she will gain a stronger understanding of the astronomical anomalies that affect navigation through space and eventually implement new routes through hyperspace to take advantage of this understanding. While using this skill untrained, an individual would have some knowledge of the major hyperspace routes through the galaxy, but that's it.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Astrogation +0:&lt;/strong&gt; You know of major hyperspace lanes.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Astrogation&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Skills#Astrogation&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Astrogation</a>
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;A character's ability to use a range of blunted melee weapons in combat. This includes: Quaterstaves, Electrostaves, and Hammers and any kind of bludgeoning weapon like a cudgel or batton. Starting with an understanding of one type of weapon, as an individual progresses, he or she can expand on not just mastery over a single type of blunt weapon, but competency in others.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Blunt Weapons +0:&lt;/strong&gt; You know which end of a blunt weapon is designed for hurting and which is for holding. Smash with the heavy bit.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Blunt Weapons&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Skills#Blunt_Weapons&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Blunt Weapons</a>
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;An individual's ability to &lt;em&gt;“handle”&lt;/em&gt; (interact, mount, and ride) a creature. It also measures the individual’s level of empathy and understanding when interpreting a creature's intent or actions. &lt;/p&gt;
+
+&lt;p&gt;Creatures are classified as either: &lt;strong&gt;&lt;em&gt;Domesticated&lt;/em&gt;&lt;/strong&gt;, &lt;strong&gt;&lt;em&gt;Tameable&lt;/em&gt;&lt;/strong&gt;, or &lt;strong&gt;&lt;em&gt;Untameable&lt;/em&gt;&lt;/strong&gt;, with the individual’s Skill level offering different degrees of control and proficiency in relation to the creature's respective classification.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Creature Handling +0:&lt;/strong&gt; With great focus and determination, you can handle a creature that is &lt;strong&gt;&lt;em&gt;Domesticated&lt;/em&gt;&lt;/strong&gt;  with mixed success. &lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Creature Handling&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Skills#Creature_Handling&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Creature Handling</a>
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;An individual's ability to conduct negotiations between representatives. This relates to maintaining contacts, as well as understanding the nuances of conversational warfare. Starting with a firm understanding of the &quot;power&quot; of words, an individual progresses in this skill to become a fencer of the tongue; a being capable of maintaining a vast network of individuals while able to say exactly the right things in order to facilitate the best outcome for his or her own purposes. &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Diplomacy +0:&lt;/strong&gt; You know the difference between an insult and a compliment. In addition, you understand that words have power, but not quite how to apply them to every situation.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Diplomacy&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Skills#Diplomacy&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Diplomacy</a>
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;An individual's ability to understand and observe changes in the personality or emotions of others, make connections, and relate to them. An Empath can use this knowledge to their advantage, whether that be sympathizing with a positive cause and support it, or sympathizing with a negative cause and debunk it. &lt;em&gt;Empathy&lt;/em&gt; supports a multitude of other skills, as the trust built can be used to bolster or lower &lt;em&gt;Resolve&lt;/em&gt;, &lt;em&gt;Manipulate&lt;/em&gt; others into agreeing with you, and even heighten efforts in &lt;em&gt;Leadership&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Empathy +0:&lt;/strong&gt; Basic ability to read emotion and body language. You can discern that when someone is crying, they are probably upset about something.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Empathy&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Skills#Empathy&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Empathy</a>
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;The understanding of explosive devices such as bombs, grenades, missiles, and anything else that goes &quot;boom&quot;. You possess the knowledge of their chemical compositions, components, and most importantly, their effects on the world around them.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Explosives +0:&lt;/strong&gt; “What’s that ticking sound?” You know how to pull a pin and chuck a grenade, and the general effect it will have.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Explosives&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Skills#Explosives&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Explosives</a>
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;An individual's ability to extract information from a target and the time and effort required to do so. This includes an understanding of interrogation techniques for a variety of circumstances and is not limited to verbal methods of coercion but includes physical acts and threats such as torture or teasing. Time and patience can alter effectiveness.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Interrogation +0:&lt;/strong&gt; “Who is your Daddy, and what does he do?” You can get name, rank and serial number without much trouble, but finding the true culprit behind stealing the cookie jar in the mess hall can be difficult.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Interrogation&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Skills#Interrogation&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Interrogation</a>
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;&lt;em&gt;Intimidation&lt;/em&gt; is an individual's ability to bully, frighten, or scare another into a course of action they might otherwise have refused to do.  &lt;em&gt;Intimidation&lt;/em&gt;, unlike &lt;em&gt;Manipulation&lt;/em&gt;, does not typically cause an individual to actively believe something different, it simply forces that individual into a course of action out of fear of mental or physical harm.  Initially, this skill would allow an individual to bully a mentally weak target into an action he or she is hesitant to take, while subsequent levels of the skill allows an intimidator to coerce more unwilling targets into action.  Used untrained, this skill allows an individual to yell loudly, stomp around, and maybe convince someone to do something in order to get him or her just to be quiet.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Intimidation +0:&lt;/strong&gt; You know that the promise of danger can sway others into action, but not enough to fashion those threats into a weapon of your own.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Intimidation&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Skills#Intimidation&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Intimidation</a>
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;An individual's ability to spend time in order to detect and discover clues through active searching. Initially, this skill resembles something closer to rummaging, but with training, it can be used to detect everything from inconsistencies in bank statements to biological samples at a crime scene, and the implications of each.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Investigation +0:&lt;/strong&gt; Common awareness of things happening around you.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Investigation&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Skills#Investigation&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Investigation</a>
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;An individual's ability to change the perception or behavior of others through verbal persuasion. This includes the uses of negative and positive reinforcement, covert intimidation, falsification, seduction, and is generally limited to verbal and social methods of coercion. This skill allows an individual to change the behavior or perception of mentally stronger targets and, over time and with exposure, to increase the severity of the change until eventually the manipulator is able to change the behavior and perception of very strong willed individuals to do or believe something they wouldn't have before, all the while making them think it was their decision the entire time. &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Manipulation +0:&lt;/strong&gt; “Come on. Do it. Do the truffle shuffle!” With enough hassle, you can convince others to do your bidding.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Manipulation&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Skills#Manipulation&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Manipulation</a>
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;An individual's understanding of physiology, anatomy, cell structure and various systems (such as nerves, digestive, and vascular) on their native species. Through experience, one can learn how to treat subjects of multiple races beyond his or her own as well as expand his or her knowledge in how best to treat different types of injuries. &lt;em&gt;Medicine&lt;/em&gt; not only grants the ability to heal, but the ability to harm as well- an expert in medicine will know what cures poison, but can use the very same knowledge to accelerate or even create their own poison.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Medicine +0:&lt;/strong&gt; You know the importance of hydration, how to execute the heimlich maneuver, and that it is important to keep blood on the inside of your body, not the outside.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Medicine&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Skills#Medicine&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Medicine</a>
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;A character's ability to make use of and utilize weapons that do not fall into a conventional category or school of training. This can be anything as archaic as a bow and arrow to throwing projectiles, dart guns, and whips. &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Miscellaneous Weapons +0:&lt;/strong&gt; You know how to point and shoot a dart gun or bow, flick projectiles and crack a whip.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Miscellaneous Weapons&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Skills#Miscellaneous_Weapons&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Miscellaneous Weapons</a>
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;An individual's understanding of computer systems, software, the security used to protect them, and the nature of the strings of 0's and 1's that make up the root of computer technology. Beginning with a basic understanding of how, generally, to penetrate secure systems, an individual with a basic training in Slicing can use even slightly complex software, and with advanced training, that individual will be able to gain entrance to increasingly secure systems and electronics. When using this skill untrained, you have basic knowledge of how to use a computer terminal; for instance, you know that pressing ALT+F4 will not save your progress on a computer terminal and is much more likely to cause it to close.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Slicing +0:&lt;/strong&gt; “Have you tried turning it on and off again?” Basic understanding of how terminals and computer systems work. You know how to change your Clanmate's background to something inappropriate if they leave their terminal unlocked.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Slicing&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Skills#Slicing&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Slicing</a>
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;Covers the understanding and technical applications of firearms that use an explosive chemical to launch a solid projectile (a &quot;slug&quot;) at high velocity. Unlike Blasters, the more primitive slugs cannot be deflected or redirected by a lightsaber. When a slug makes contact with a lightsaber blade it simply melts, and the remaining embers can potentially land on the lightsaber-wielder's hands or face.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Slugthrowers +0:&lt;/strong&gt; You can point and shoot, but any hits are lucky shots at best.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Slugthrowers&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Skills#Slugthrowers&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Slugthrowers</a>
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;Measures an individual’s ability to use deception as a means to achieve a goal through lying, acting, or misdirection. Training in &lt;em&gt;Subterfuge&lt;/em&gt; helps a character to better blend in with their surroundings and is integral in telling a convincing lie, whether it be verbal or through acting the part of a cover identity. It is also useful for disguising or masking emotion.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Subterfuge +0:&lt;/strong&gt; You know that it’s probably a bad idea to wear bright orange jumpsuits if you want to sneak up on people in an urban environment. You can tell white lies, but can clam up if called on the spot.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Subterfuge&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Skills#Subterfuge&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Subterfuge</a>
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;An individual's ability to stay alive in otherwise difficult environments. This relates directly to the arts of scavenging, hunting, and resourcefulness. Starting with a basic understanding of what is required to continue living, as an individual progresses in this skill they will become more adept at acquiring the necessities of survival in even the most inhospitable of climates where others would otherwise perish. &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Survival +0:&lt;/strong&gt; Moss grows on the north side of the tree... or something like that. Basic common sense and resourcefulness.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Survival&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Skills#Survival&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Survival</a>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+<div class="col-md-6 mb-3">
+<div class="card h-100">
+<div class="card-header">Force Powers</div>
+<table class="table table-striped mb-0">
+<tbody><tr>
+<td class="">
+Grand Master (+6)
+</td>
+<td>
+<div class="skillrow">
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;&lt;strong&gt;Precognition&lt;/strong&gt; is the Jedi’s ability to perceive immediate and intentional danger to themself through the Force as it enters their sphere of awareness — which is a fancy way of saying the space around the immediate person. This power often manifests itself in the form of gut intuition to dodge an incoming attack, like a slight nudge or “voice” advising them to duck under a blaster bolt that would have otherwise split their forehead.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Precognition&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Force_Powers#Precognition&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Precognition</a>
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;&lt;strong&gt;Telekinesis&lt;/strong&gt; is the ability to lift, move and otherwise manipulate objects using the power of the Force — the energy that connects all things together — by directing it to enact their will. The result is a tangible manipulation of the Force as an energy that can be applied towards utilitarian uses as well as combative ones. This encompasses pushing, pulling, gripping, lifting, or even throwing physical objects, though the laws of physics still apply. Because of this, it is far easier to move something within a vacuum than an object in motion, where the user is working against gravity. Special training (Feats) allows for more advanced combat techniques.&lt;/p&gt;
+
+&lt;strong&gt;Related Feats:&lt;/strong&gt;
+&lt;span class='btn btn-secondary feat_btn btn-sm disabled tooltipped mt-0' data-container='body' data-html='true' data-placement='bottom' data-toggle='tooltip' title='Muz Ashen Keibatsu can turn his **Telekinesis** into a powerful blunt weapon that is capable of smashing foes with devestating force. This invisible &amp;#39;sledgehammer&amp;#39; can shatter a **Barrier** and stagger a foe off balance or knock them from their feet. While as powerful as a haymaker punch, this power is noticeably slower than other strikes, making it easier to dodge by more agile foes.'&gt;
+Hammer Time
+&lt;/span&gt;
+&lt;span class='btn btn-secondary feat_btn btn-sm disabled tooltipped mt-0' data-container='body' data-html='true' data-placement='bottom' data-toggle='tooltip' title='A master of the Force, Muz Ashen Keibatsu can control weaponry with his **Telekinesis** alone, without the need for hand gestures or concentrated focus. This allows Muz Ashen Keibatsu to fight while maintaining control over the telekinetic combat.'&gt;
+Telekinetic Combat Mastery
+&lt;/span&gt;
+&lt;span class='btn btn-secondary feat_btn btn-sm disabled tooltipped mt-0' data-container='body' data-html='true' data-placement='bottom' data-toggle='tooltip' title='Muz Ashen Keibatsu has studied the nuances involved in even the most complex application of **Telekinesis**. As such, he is able to devote partial concentration to locking a single plasma-based projectile in place. The bolt will remain stationary, suspended mid-motion, until Muz Ashen Keibatsu releases it or loses concentration. Once free, the projectile will continue on its original path.'&gt;
+Plasma Lock
+&lt;/span&gt;
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Telekinesis&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Force_Powers#Telekinesis&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Telekinesis</a>
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;Allows a Jedi to perform amazing feats of &lt;em&gt;physical&lt;/em&gt; prowess. By channeling the Force, a Jedi could run faster, jump higher, hit harder, and even react faster. This ability allows the user to push beyond the normal limits of their physical bodies and perform superhuman feats.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Amplification&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Force_Powers#Amplification&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Amplification</a>
+</div>
+</td>
+</tr>
+<tr>
+<td class="">
+Master (+5)
+</td>
+<td>
+<div class="skillrow">
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;&lt;strong&gt;Barrier&lt;/strong&gt; manifests the Force into a translucent defensive corona that can absorb any kind of &lt;em&gt;physical&lt;/em&gt; attacks. These &lt;strong&gt;Barriers&lt;/strong&gt; protect only the user, requiring them to remain stationary, and will shatter after enough impact. &lt;strong&gt;Barrier&lt;/strong&gt; can stop repeated hits from conventional weapons (including blasters and other energy-based weaponry), but will shatter on heavy impact with things such as explosions or large projectiles like boulders.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Barrier +5:&lt;/strong&gt; A master of conjuring &lt;strong&gt;Barriers&lt;/strong&gt; may summon them at will, even when fatigued or under heavy duress.&lt;/p&gt;
+
+&lt;strong&gt;Related Feats:&lt;/strong&gt;
+&lt;span class='btn btn-secondary feat_btn btn-sm disabled tooltipped mt-0' data-container='body' data-html='true' data-placement='bottom' data-toggle='tooltip' title='Muz Ashen Keibatsu has developed a talent for being able to redirect **Force Lightning** dispersed with **Barrier**. This ability involves bouncing the attack back at the original sender, or even at another target all together while also strengthening the potency of the attack.'&gt;
+Bounce It
+&lt;/span&gt;
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Barrier&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Force_Powers#Barrier&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Barrier</a>
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;&lt;strong&gt;Farsight&lt;/strong&gt; is the ability to gain vague impressions of events happening in other places or times using the Force, typically achieved through long meditation sessions. These visions focus on strong imagery and emotions. The future is always in motion, however, and is thus subject to change.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Farsight +5:&lt;/strong&gt; The Jedi’s mind sees with surprising clarity, with their visions being inseparable from having a vivid dream. Not only can they identify major key moments in the possible future, but also events that surround them, giving them a far more complete interpretation of what may transpire within years of these events occurring.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Farsight&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Force_Powers#Farsight&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Farsight</a>
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;Perhaps the most sinister power in a Force user’s repertoire, &lt;strong&gt;Suppression&lt;/strong&gt; allows the user to disrupt an opponent’s ability to draw and utilize the Force, reducing and negating several of the crucial Force enhancements many Force users rely upon. With special training (Feats), Force users can even affect small areas, or temporarily sever someone’s connection to the Force entirely.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Suppression +5:&lt;/strong&gt; A Master of &lt;strong&gt;Suppression&lt;/strong&gt; can effortlessly reduce their target’s connection to the Force at will, with minimal concentration required.&lt;/p&gt;
+
+&lt;strong&gt;Related Feats:&lt;/strong&gt;
+&lt;span class='btn btn-secondary feat_btn btn-sm disabled tooltipped mt-0' data-container='body' data-html='true' data-placement='bottom' data-toggle='tooltip' title='Rather than focusing on an individual, Muz Ashen Keibatsu has learned to spread **Suppression** over a small area, nullifying the effects of the Force that step into Muz Ashen Keibatsu’s sphere of awareness.'&gt;
+Nullify
+&lt;/span&gt;
+&lt;span class='btn btn-secondary feat_btn btn-sm disabled tooltipped mt-0' data-container='body' data-html='true' data-placement='bottom' data-toggle='tooltip' title='Muz Ashen Keibatsu’s mastery of the Force can allow him to completely nullify a Force-user&amp;#39;s ability to connect with the Force. This effect can last as long as the Master wills it in accordance with his **Suppression** Force Power level.'&gt;
+Time Out
+&lt;/span&gt;
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Suppression&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Force_Powers#Suppression&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Suppression</a>
+</div>
+</td>
+</tr>
+<tr>
+<td class="">
+Adept (+4)
+</td>
+<td>
+<div class="skillrow">
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;One of the most rudimentary powers of the Jedi, &lt;strong&gt;Sense&lt;/strong&gt; is the ability to open one&amp;#39;s mind to the omniscient awareness of the Force and to use it to detect the presence, feelings, emotions, intentions, alignment, and Force strength of other beings. As the Jedi grows more connected with the Force, they can decipher the heightened awareness with greater clarity and less effort of will. All Jedi have the basic ability to feel the Force, but training is required to make any kind of use out of it.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Sense +4:&lt;/strong&gt; With only a moment’s concentration, the Jedi can connect with the Force to detect the proximity, presence, feelings, emotions, alignment, and Force strength of sentient beings around them, even while in combat or under duress. The details are clear enough to paint a picture of what is happening, unless the Jedi is under heavy duress.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Sense&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Force_Powers#Sense&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Sense</a>
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;&lt;strong&gt;Force Lightning&lt;/strong&gt; is the ability to manifest the Force into violent energy from the user’s own body in the form of electricity directed at a single target in a burst. &lt;strong&gt;Force Lightning&lt;/strong&gt; can fry sensitive electronics and will cause extreme pain in the recipient. With more advanced training (Feats), this ability can be augmented into a sustained attack or even hit multiple targets.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Force Lightning +4:&lt;/strong&gt; Jedi can put themselves into the required mindset almost instantaneously and can call on &lt;strong&gt;Force Lightning&lt;/strong&gt; repeatedly before being drained.&lt;/p&gt;
+
+&lt;strong&gt;Related Feats:&lt;/strong&gt;
+&lt;span class='btn btn-secondary feat_btn btn-sm disabled tooltipped mt-0' data-container='body' data-html='true' data-placement='bottom' data-toggle='tooltip' title='With power only a Grand Master could ever hope to wield, Muz Ashen Keibatsu can unleash a full storm of **Force Lightning** at a distance. Muz Ashen Keibatsu can even amplify his **Force Lightning** with enough power to take down a starfighter or shuttle overhead.'&gt;
+Tempest
+&lt;/span&gt;
+&lt;span class='btn btn-secondary feat_btn btn-sm disabled tooltipped mt-0' data-container='body' data-html='true' data-placement='bottom' data-toggle='tooltip' title='Muz Ashen Keibatsu has developed a talent for being able to redirect **Force Lightning** dispersed with **Barrier**. This ability involves bouncing the attack back at the original sender, or even at another target all together while also strengthening the potency of the attack.'&gt;
+Bounce It
+&lt;/span&gt;
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Force Lightning&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Force_Powers#Force_Lightning&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Force Lightning</a>
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;&lt;strong&gt;Telepathy&lt;/strong&gt; is the ability to instantly receive or read the thoughts and intentions of others. This power is more suited to utilitarian applications but can still be applied to combative scenarios. With training, it becomes easier to send more complex messages while tapping into the passive thoughts and intentions of others. Even tapping into multiple minds becomes possible for a skilled practitioner. While it is possible to communicate over great distances with those the user has forged a strong bond with, generally the practitioner must be near the individual.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Telepathy +4:&lt;/strong&gt; A Jedi adept at &lt;strong&gt;Telepathy&lt;/strong&gt; can communicate with multiple individuals easily. When not under duress, they can glimpse the passive thoughts and intentions of multiple minds while actively concentrating.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Telepathy&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Force_Powers#Telepathy&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Telepathy</a>
+</div>
+</td>
+</tr>
+<tr>
+<td class="">
+Disciple (+3)
+</td>
+<td>
+<div class="skillrow">
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;The &lt;strong&gt;Mind Trick&lt;/strong&gt; is one of the most famous uses of the Force in that it gives the Jedi the ability to directly affect the mind of another sentient being. The memories, thoughts, and opinions of a target are left open to the user&amp;#39;s machinations and can be manipulated temporarily. This allows for the target to be more easily swayed or nudged in the direction the user desires, even forcing them into unconsciousness if strong enough. It also allows for memories to be probed and even implanted, or opinions to be altered. Unlike &lt;em&gt;Manipulation&lt;/em&gt; or &lt;em&gt;Interrogation&lt;/em&gt;, this ability is instantaneous and thus can be useful in combat or other real-time scenarios.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Mind Trick +3:&lt;/strong&gt; With consistent training, the Jedi can more easily influence their target with minimal concentration against those of lesser &lt;em&gt;Resolve&lt;/em&gt;.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Mind Trick&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Force_Powers#Mind_Trick&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Mind Trick</a>
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;&lt;strong&gt;Battle Meditation&lt;/strong&gt; is a Force Power used to boost the combat effectiveness of allies and reduce the effectiveness of enemies. With further training the Jedi can influence their tactical coordination and teamwork as well. &lt;strong&gt;Battle Meditation&lt;/strong&gt; can generally turn a narrow victory into a rout, a narrow defeat into a narrow victory, or minimize the losses of a significant  defeat. &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Battle Meditation +3:&lt;/strong&gt; The Jedi can easily affect multiple small sized groups fighting independently, influencing their courage, morale and will to fight, and improving or reducing their coordination with each other. The Jedi will often turn the tide of small battles in their favour.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Battle Meditation&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Force_Powers#Battle_Meditation&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Battle Meditation</a>
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;A Jedi’s ability to use the Force to cure their own &lt;em&gt;physical&lt;/em&gt; injuries or those of others. Both Dark and Light side applications have the ability to set broken bones, close open wounds, and restore bodily functions and various systems that keep a body from perishing. The more talented a Jedi is with &lt;strong&gt;Healing&lt;/strong&gt;, the easier and less taxing the ability becomes. &lt;strong&gt;Healing&lt;/strong&gt; will only accelerate the process that the body would normally undergo. The power cannot allow a Jedi to regrow lost limbs, for example.  &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Healing +3:&lt;/strong&gt; With consistent training, the Jedi can heal others as well as themselves. At this level, &lt;strong&gt;Healing&lt;/strong&gt; others requires the Jedi to remain stationary and their full concentration dedicated to the task. Healing others’ serious injuries can take up to a full day.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Healing&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Force_Powers#Healing&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Healing</a>
+</div>
+</td>
+</tr>
+<tr>
+<td class="">
+Studied (+2)
+</td>
+<td>
+<div class="skillrow">
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;This Force Power utilizes some of the most twisted methods of drawing upon the Force. Users can utilize &lt;strong&gt;Terror&lt;/strong&gt; to haunt enemies with their own latent fears, making individuals question their motives and morals to crush their morale. &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Terror +2:&lt;/strong&gt; With an effort of will, the Jedi can invoke panic and fear in another being when not in combat or under duress. At this rank, it can take up to a minute for the power to cause the target’s fear to fully rise to the surface.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Terror&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Force_Powers#Terror&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Terror</a>
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;Allows a Jedi the ability to use the Force to trick the five senses (sight, hearing, taste, smell, and touch) of a sentient being into perceiving something other than reality. Complex sensations — such as pain, odors and flavors — are more demanding on both the user and the believability of the Illusion, and the mind will reject the most severe instances. The more accomplished a Jedi is with &lt;strong&gt;Illusions&lt;/strong&gt;, the easier it is to affect the mind of other sentient beings.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Illusion +2:&lt;/strong&gt; With further study, the Jedi can conjure an &lt;strong&gt;Illusion&lt;/strong&gt; with partial concentration, if not engaged in direct combat or under too much duress.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Illusion&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Force_Powers#Illusion&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Illusion</a>
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;The ability to manipulate and control one’s bodily functions through the Force. This includes the ability to dull or temporarily ignore pain, regulate body temperature, slow breathing, or even entering a trance-like state of hibernation for survival purposes. &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Control Self +2:&lt;/strong&gt; With additional training, a Jedi is able to ignore intense pain and shape bodily functions and temperature to their will with less concentration than before.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Control Self&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Force_Powers#Control_Self&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Control Self</a>
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;By manipulating light and shadows with the Force, the Jedi can use &lt;strong&gt;Force Cloak&lt;/strong&gt; to vanish from view and become invisible. A Jedi cloaked in the Force in such a manner is undetectable to the naked eye or even by technology and scanners such as infrared or night vision, but still able to be detected by another Jedi’s &lt;strong&gt;Sense&lt;/strong&gt; or &lt;em&gt;Precognition&lt;/em&gt; abilities. The Jedi must also remain immobile when cloaked.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Force Cloak +2:&lt;/strong&gt; With further study, the Jedi requires less concentration to maintain &lt;strong&gt;Force Cloak&lt;/strong&gt; and can chose which part of their body the cloak starts at.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Force Cloak&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Force_Powers#Force_Cloak&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Force Cloak</a>
+</div>
+</td>
+</tr>
+<tr>
+<td class="">
+Initiate (+1)
+</td>
+<td>
+<div class="skillrow">
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;&lt;strong&gt;Blackness&lt;/strong&gt; uses the Force to create a sphere around a single target in which all light is eliminated. This power is initially draining, able to affect only a small area. As the Jedi’s power increases, they are able to affect a larger area with greater ease. &lt;strong&gt;Blackness&lt;/strong&gt; prevents natural vision and optical technology (such as cameras), but not the use of the power &lt;strong&gt;Sense&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Blackness +1:&lt;/strong&gt; At its most basic level, &lt;strong&gt;Blackness&lt;/strong&gt; is limited to a sphere roughly two meters in diameter, fixed on the center of the user. It takes about a second for the darkness to descend, and the effect will only last several seconds.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Blackness&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Force_Powers#Blackness&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Blackness</a>
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;&lt;strong&gt;Slow&lt;/strong&gt; allows a Jedi to fog the senses of a target through the Force, hindering their movement and with more advanced training (Feats), stun them in place or bring them to a complete halt. &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Slow +1:&lt;/strong&gt; Initially, a Jedi can slow or hinder the movement of a target with their full attention set to the task.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Slow&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Force_Powers#Slow&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Slow</a>
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;&lt;strong&gt;Concealment&lt;/strong&gt; is the ability for a Jedi to mask their connection and identity with the Force. This goes for hiding a Jedi’s strength in the Force as well as alignment. While &lt;strong&gt;Force Cloak&lt;/strong&gt; renders the Jedi invisible from the eye, &lt;strong&gt;Concealment&lt;/strong&gt; can veil a user invisible to those searching through the Force. The more skilled a Jedi is with this ability, the easier it is to maintain a veil of &lt;strong&gt;Concealment&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Concealment +1:&lt;/strong&gt; Initially, the Jedi can hide their signature, strength, and alignment in the Force with their full concentration devoted to the task.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Concealment&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Force_Powers#Concealment&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Concealment</a>
+<a class="btn btn-secondary btn-sm skill_btn mt-1 popovered" data-content="&lt;p&gt;The Force connects all living things, and with training, a Force-user can develop the ability to reach out and make a connection with a target creature.  &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Creature Control +1:&lt;/strong&gt; With full concentration, you can connect with a &lt;strong&gt;&lt;em&gt;Domesticated&lt;/em&gt;&lt;/strong&gt; creature.&lt;/p&gt;
+
+" data-html="true" data-placement="bottom" data-toggle="popover" data-trigger="focus" tabindex="0" title="" data-original-title="Creature Control&lt;a target=&quot;_blank&quot; class=&quot;pull-right&quot; href=&quot;https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Force_Powers#Creature_Control&quot;&gt;&lt;i class=&quot;fa fa-external-link&quot;&gt;&lt;/i&gt;
+Wiki
+&lt;/a&gt;">Creature Control</a>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+</div>
+<div class="row align-items-stretch">
+<div class="col-md-6 mb-3">
+<div class="card h-100">
+<div class="card-header">Skill Feats</div>
+<div class="card-body">
+<span class="btn btn-secondary feat_btn mt-1 btn-sm disabled tooltipped" data-container="body" data-html="true" data-placement="bottom" data-toggle="tooltip" title="" data-original-title="&lt;p&gt;Muz Ashen Keibatsu's reflexes tend to take over in situations where muscle memory alone can prevent bodily harm. As such, Muz Ashen Keibatsu has a knack for catching or avoiding projectiles aimed at their body, even if focused elsewhere.&lt;/p&gt;
+">
+Lightning Reflexes
+</span>
+</div>
+</div>
+</div>
+<div class="col-md-6 mb-3">
+<div class="card h-100">
+<div class="card-header">Force Feats</div>
+<div class="card-body">
+<span class="btn btn-secondary feat_btn mt-1 btn-sm disabled tooltipped" data-container="body" data-html="true" data-placement="bottom" data-toggle="tooltip" title="" data-original-title="&lt;p&gt;Rather than focusing on an individual, Muz Ashen Keibatsu has learned to spread &lt;strong&gt;Suppression&lt;/strong&gt; over a small area, nullifying the effects of the Force that step into Muz Ashen Keibatsu’s sphere of awareness.&lt;/p&gt;
+">
+Nullify
+</span>
+<span class="btn btn-secondary feat_btn mt-1 btn-sm disabled tooltipped" data-container="body" data-html="true" data-placement="bottom" data-toggle="tooltip" title="" data-original-title="&lt;p&gt;Muz Ashen Keibatsu has developed a talent for being able to redirect &lt;strong&gt;Force Lightning&lt;/strong&gt; dispersed with &lt;strong&gt;Barrier&lt;/strong&gt;. This ability involves bouncing the attack back at the original sender, or even at another target all together while also strengthening the potency of the attack.&lt;/p&gt;
+">
+Bounce It
+</span>
+<span class="btn btn-secondary feat_btn mt-1 btn-sm disabled tooltipped" data-container="body" data-html="true" data-placement="bottom" data-toggle="tooltip" title="" data-original-title="&lt;p&gt;Elder Marauders are true masters of the battlefield, leveraging their powerful connection to the Force to perceive participants across the entire battlefield. Muz Ashen Keibatsu can perceive and mentally track enemy targets through the Force across a vast area. When engaging these enemies, he can track not only close-quarter attacks, but long range ones as well within his sphere of awareness.&lt;/p&gt;
+">
+Battlefield Awareness III
+</span>
+<span class="btn btn-secondary feat_btn mt-1 btn-sm disabled tooltipped" data-container="body" data-html="true" data-placement="bottom" data-toggle="tooltip" title="" data-original-title="&lt;p&gt;An Elder Marauder on the battlefield is one of the few things that can give a charging enemy pause. Muz Ashen Keibatsu’s alacrity, even in the chaos of battle, is rivaled by none. His strikes are not only quick but deadly accurate. As one foe falls, he is already focused on his next kill. Muz Ashen Keibatsu no longer feels any side effects of using this ability, and has even learned to store the haste in reserve to seamlessly accelerate back to his peak at a moment’s notice.&lt;/p&gt;
+">
+Battle Haste III
+</span>
+<span class="btn btn-secondary feat_btn mt-1 btn-sm disabled tooltipped" data-container="body" data-html="true" data-placement="bottom" data-toggle="tooltip" title="" data-original-title="&lt;p&gt;Muz Ashen Keibatsu can turn his &lt;strong&gt;Telekinesis&lt;/strong&gt; into a powerful blunt weapon that is capable of smashing foes with devestating force. This invisible 'sledgehammer' can shatter a &lt;strong&gt;Barrier&lt;/strong&gt; and stagger a foe off balance or knock them from their feet. While as powerful as a haymaker punch, this power is noticeably slower than other strikes, making it easier to dodge by more agile foes.&lt;/p&gt;
+">
+Hammer Time
+</span>
+<span class="btn btn-secondary feat_btn mt-1 btn-sm disabled tooltipped" data-container="body" data-html="true" data-placement="bottom" data-toggle="tooltip" title="" data-original-title="&lt;p&gt;With power only a Grand Master could ever hope to wield, Muz Ashen Keibatsu can unleash a full storm of &lt;strong&gt;Force Lightning&lt;/strong&gt; at a distance. Muz Ashen Keibatsu can even amplify his &lt;strong&gt;Force Lightning&lt;/strong&gt; with enough power to take down a starfighter or shuttle overhead.&lt;/p&gt;
+">
+Tempest
+</span>
+<span class="btn btn-secondary feat_btn mt-1 btn-sm disabled tooltipped" data-container="body" data-html="true" data-placement="bottom" data-toggle="tooltip" title="" data-original-title="&lt;p&gt;Muz Ashen Keibatsu’s mastery of the Force can allow him to completely nullify a Force-user's ability to connect with the Force. This effect can last as long as the Master wills it in accordance with his &lt;strong&gt;Suppression&lt;/strong&gt; Force Power level.&lt;/p&gt;
+">
+Time Out
+</span>
+<span class="btn btn-secondary feat_btn mt-1 btn-sm disabled tooltipped" data-container="body" data-html="true" data-placement="bottom" data-toggle="tooltip" title="" data-original-title="&lt;p&gt;A master of the Force, Muz Ashen Keibatsu can control weaponry with his &lt;strong&gt;Telekinesis&lt;/strong&gt; alone, without the need for hand gestures or concentrated focus. This allows Muz Ashen Keibatsu to fight while maintaining control over the telekinetic combat.&lt;/p&gt;
+">
+Telekinetic Combat Mastery
+</span>
+<span class="btn btn-secondary feat_btn mt-1 btn-sm disabled tooltipped" data-container="body" data-html="true" data-placement="bottom" data-toggle="tooltip" title="" data-original-title="&lt;p&gt;Muz Ashen Keibatsu has studied the nuances involved in even the most complex application of &lt;strong&gt;Telekinesis&lt;/strong&gt;. As such, he is able to devote partial concentration to locking a single plasma-based projectile in place. The bolt will remain stationary, suspended mid-motion, until Muz Ashen Keibatsu releases it or loses concentration. Once free, the projectile will continue on its original path.&lt;/p&gt;
+">
+Plasma Lock
+</span>
+</div>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6">
+<div class="card mb-3">
+<div class="card-header">General Feats</div>
+<div class="card-body">
+<span class="btn btn-secondary feat_btn mt-1 btn-sm disabled tooltipped" data-container="body" data-html="true" data-placement="bottom" data-toggle="tooltip" title="" data-original-title="&lt;p&gt;Some might call it luck. Others would argue that there are higher powers at work. Muz Ashen Keibatsu has a knack for avoiding potentially lethal strikes by acts that blur the line between chance and skill.&lt;/p&gt;
+">
+The Force is With Me
+</span>
+<span class="btn btn-secondary feat_btn mt-1 btn-sm disabled tooltipped" data-container="body" data-html="true" data-placement="bottom" data-toggle="tooltip" title="" data-original-title="&lt;p&gt;Humans are the most common species in most of the known galaxy, and can thus blend into crowds of other Humans seamlessly. While their own distinctive individual qualities such as hair color and height can set them apart, Muz Ashen Keibatsu is otherwise just another mug in a sea of faces.&lt;/p&gt;
+">
+Human: Just Another Face
+</span>
+<span class="btn btn-secondary feat_btn mt-1 btn-sm disabled tooltipped" data-container="body" data-html="true" data-placement="bottom" data-toggle="tooltip" title="" data-original-title="&lt;p&gt;As a Human, Muz Ashen Keibatsu can conform to new environments with relative ease. Not possessing traits such as scales, gills or fur, Muz Ashen Keibatsu is nonetheless adaptable to either cold or warm climates with minimal preparation. This makes most members of the Human species best-suited for the life of a colonist or traveler.&lt;/p&gt;
+">
+Human: Eye Of The Tiger
+</span>
+<span class="btn btn-secondary feat_btn mt-1 btn-sm disabled tooltipped" data-container="body" data-html="true" data-placement="bottom" data-toggle="tooltip" title="" data-original-title="&lt;p&gt;Muz Ashen Keibatsu is a Force Disciple of the Dark Path.  Force Disciples do not ascribe to the rigid teachings of the Jedi Order or the Sith, either because they were never exposed to them prior to the Brotherhood, or simply because they do not always see eye to eye with them.  Force Disciples are not united by any binding doctrine or philosophy, though Force Disciples of the Dark Path favor calling upon the dark side of the Force, eschewing the light.&lt;/p&gt;
+">
+Order Feat: Force Disciple (Dark) 
+</span>
+</div>
+</div>
+<div class="card mb-3">
+<div class="card-header">Knowledge</div>
+<table class="table table-striped mb-0">
+<tbody><tr>
+<td>Languages</td>
+<td>
+<ul>
+<li>Ancient Sith</li>
+<li>Basic</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td>Lore</td>
+<td>
+<ul>
+<li>Dark Side Artifacts and Rites</li>
+<li>Lightsaber Construction, Forms and Tactics</li>
+<li>Lore and History of the Brotherhood</li>
+<li>The history of the Galactic Civil War including the Alliance to Restore the Republic and the Galactic Empire</li>
+<li>The history of the modern era including the New Republic and post-Galactic Concordance conflicts</li>
+</ul>
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+<div class="col-md-6">
+<div class="card mb-3">
+<div class="card-header">Specialization</div>
+<table class="table table-striped mb-0">
+<tbody><tr>
+<td>Primary Martial Art</td>
+<td>
+<a target="_blank" href="https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Martial_Arts_Forms">Shadow Step</a>
+</td>
+</tr>
+<tr>
+<td>Secondary Martial Art</td>
+<td>
+None
+</td>
+</tr>
+<tr>
+<td>Primary Lightsaber Form</td>
+<td>
+<a target="_blank" href="https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Lightsaber_Forms">Sokan</a>
+</td>
+</tr>
+<tr>
+<td>Secondary Lightsaber Form</td>
+<td>
+<a target="_blank" href="https://wiki.darkjedibrotherhood.com/view/CS_Guide:_Lightsaber_Forms">Ataru</a>
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div class="modal fade" id="modal"></div>
+</div>
+<footer>
+<p class="text-center">
+© 1995-2019 Dark Jedi Brotherhood
+<br>
+<a href="https://wiki.darkjedibrotherhood.com/view/Copyrights_and_Disclaimers">Copyrights and Disclaimers</a>
+<br>
+<small>
+Version e238336 on branch master. This site is maintained by the Seneschal
+</small>
+</p>
+</footer>
+
+<script src="GM%20Muz%20Ashen%20Keibatsu_files/application-e451abb692c196974ba679e35bc0e9a27747ad6a85a28122b.js"></script>
+<script src="GM%20Muz%20Ashen%20Keibatsu_files/application-26df5af71028ed23a972.js"></script>
+
+<script>
+ $(function() {
+
+ });
+</script>
+
+</div>
+
+
+</body></html>
