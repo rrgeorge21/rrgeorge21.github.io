@@ -1,0 +1,78 @@
+@font-face {
+	font-family: Anton;
+	src: local("Anton Regular"), local("Anton-Regular"), url(https://fonts.gstatic.com/s/anton/v10/1Ptgg87LROyAm3Kz-Ck.woff) format("woff");
+	font-weight: 400;
+	font-style: normal;
+}
+@font-face {
+	font-family: Cinzel;
+	src: local("Cinzel Regular"), local("Cinzel-Regular"), url(https://fonts.gstatic.com/s/cinzel/v8/8vIJ7ww63mVu7gt79mT9.woff) format("woff");
+	font-weight: 400;
+	font-style: normal;
+}
+@font-face {
+	font-family: Dancing Script;
+	src: local("Dancing Script Bold"), local("DancingScript-Bold"), url(https://fonts.gstatic.com/s/dancingscript/v10/If2SXTr6YS-zF4S-kcSWSVi_szpbr_QqqiU.woff) format("woff");
+	font-weight: 700;
+	font-style: normal;
+}
+@font-face {
+	font-family: Germania One;
+	src: local("Germania One"), local("GermaniaOne-Regular"), url(https://fonts.gstatic.com/s/germaniaone/v6/Fh4yPjrqIyv2ucM2qzBjeS3uywhJ.woff) format("woff");
+	font-weight: 400;
+	font-style: normal;
+}
+@font-face {
+	font-family: Kavivanar;
+	src: local("Kavivanar Regular"), local("Kavivanar-Regular"), url(https://fonts.gstatic.com/s/kavivanar/v4/o-0IIpQgyXYSwhxP7_Jr5TRG.woff) format("woff");
+	font-weight: 400;
+	font-style: normal;
+}
+@font-face {
+	font-family: Pacifico;
+	src: local("Pacifico Regular"), local("Pacifico-Regular"), url(https://fonts.gstatic.com/s/pacifico/v14/FwZY7-Qmy14u9lezJ-6H6M8.woff) format("woff");
+	font-weight: 400;
+	font-style: normal;
+}
+@font-face {
+	font-family: Pangolin;
+	src: local("Pangolin Regular"), local("Pangolin-Regular"), url(https://fonts.gstatic.com/s/pangolin/v4/cY9GfjGcW0FPpi-tWMfN79o.woff) format("woff");
+	font-weight: 400;
+	font-style: normal;
+}
+@font-face {
+	font-family: Play;
+	src: local("Play Regular"), local("Play-Regular"), url(https://fonts.gstatic.com/s/play/v10/6aez4K2oVqwIvtU2GQ.woff) format("woff");
+	font-weight: 400;
+	font-style: normal;
+}
+@font-face {
+	font-family: Press Start 2P;
+	src: local("Press Start 2P Regular"), local("PressStart2P-Regular"), url(https://fonts.gstatic.com/s/pressstart2p/v7/e3t4euO8T-267oIAQAu6jDQyK3nVivU.woff) format("woff");
+	font-weight: 400;
+	font-style: normal;
+}
+@font-face {
+	font-family: Spirax;
+	src: local("Spirax-Regular"), url(https://fonts.gstatic.com/s/spirax/v7/buE3poKgYNLy0F3sWUFq.woff) format("woff");
+	font-weight: 400;
+	font-style: normal;
+}
+@font-face {
+	font-family: Ubuntu;
+	src: local("Ubuntu Regular"), local("Ubuntu-Regular"), url(https://fonts.gstatic.com/s/ubuntu/v13/4iCs6KVjbNBYlgoKfw7w.woff) format("woff");
+	font-weight: 400;
+	font-style: normal;
+}
+@font-face {
+	font-family: Unlock;
+	src: local("Unlock Regular"), local("Unlock-Regular"), url(https://fonts.gstatic.com/s/unlock/v8/7Au-p_8ykD-cDl72LwLV.woff) format("woff");
+	font-weight: 400;
+	font-style: normal;
+}
+@font-face {
+	font-family: ZCOOL XiaoWei;
+	src: local("ZCOOL XiaoWei Regular"), local("ZCOOLXiaoWei-Regular"), url(https://fonts.gstatic.com/s/zcoolxiaowei/v4/i7dMIFFrTRywPpUVX9_RJyM1UFWaGA.woff) format("woff");
+	font-weight: 400;
+	font-style: normal;
+}

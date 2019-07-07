@@ -1,0 +1,510 @@
+@import url( https://deathbattlefanon.fandom.com/load.php?mode=articles&only=styles&articles=u:dev:MediaWiki:ModernProfile/Masthead.css|u:dev:MediaWiki:ModernProfile/Wall.css|u:dev:MediaWiki:MessageWallPagination/code.css|u:dev:MediaWiki:FandomizedButtons.css|u:dev:MediaWiki:FandomizedFieldsets.css|u:dev:MediaWiki:ContribsButtons.css|u:dev:MediaWiki:SpoilerBlur/code.css|u:deathbattlefanon:MediaWiki:Withertastic.css );
+@import url( https://fonts.googleapis.com/css?family=Press+Start+2P|Dancing+Script:700|Pacifico|Pangolin|Unlock|Play|Germania+One|Kavivanar|Anton|Spirax|Ubuntu|Cinzel|ZCOOL+XiaoWei );
+@import url( //db.onlinewebfonts.com/c/69a627bbf80914ff1ab0296bedad76dc?family=Mega+Man+Battle+Network );
+@font-face {
+	font-family: Death Battle;
+	src: url(https://vignette.wikia.nocookie.net/character-stats-and-profiles/images/b/bd/GreatLakesNF.ttf/revision/latest?cb=20180129154826) format("truetype");
+}
+@font-face {
+	font-family: Helvetica Neue-45;
+	src: url(https://vignette.wikia.nocookie.net/youtubepoop/images/3/3f/HelveticaNeueLTStd-Lt.ttf/revision/latest?cb=20141218004331);
+}
+@font-face {
+	font-family: Fixedsys;
+	src: url(https://vignette.wikia.nocookie.net/life-is-strange/images/0/0f/Fixedsys.ttf/revision/latest?cb=20180713102223);
+}
+.page-header__contribution-buttons .wds-is-linked a:hover {
+	cursor: pointer;
+}
+.message .subtle {
+	pointer-events: none;
+}
+.voting-controls {
+	bottom: 8px; position: relative;
+}
+.message .follow {
+	bottom: 8px; position: relative;
+}
+.background-fixed {
+	background-size: cover !important;
+}
+.load-more a:hover {
+	text-decoration: none !important;
+}
+#cancelbuttontext {
+	text-decoration: none;
+}
+#WikiaArticle {
+	color: black; font-family: "Lucida Sans","Verdana";
+}
+.WikiaArticleComments {
+	color: black; font-family: "Lucida Sans","Verdana";
+}
+#WikiaMainContent h2 {
+	color: black; line-height: 30px; font-family: "Death Battle"; font-size: 31px; font-variant: small-caps;
+}
+#WikiaMainContent h3 {
+	color: black; line-height: 30px; font-family: "Death Battle" !important; font-size: 1.74em;
+}
+#WikiaMainContent h4 {
+	color: black; line-height: 30px; font-family: "Death Battle" !important; font-size: 1.32em !important;
+}
+.forum-thread-title {
+	font-family: Calibri; font-size: 17px;
+}
+.container {
+	font-family: "Verdana"; font-size: 13px;
+}
+#WikiaMainContent .pi-data h3 {
+	font-family: "Helvetica Neue-45" !important; font-size: 15.33px;
+}
+.railModule li {
+	font-family: "Helvetica";
+}
+.railModule font {
+	font-family: Helvetica;
+}
+.loaded h2 {
+	color: black; font-family: "Death Battle"; font-size: 2em !important;
+}
+.toc {
+	font-family: "Century Gothic"; font-weight: 600;
+}
+h1 {
+	letter-spacing: 0.36px;
+}
+h3 {
+	letter-spacing: 0.36px;
+}
+h4 {
+	letter-spacing: 0.36px;
+}
+#WikiaArticleFooter .speech-bubble-message {
+	font-family: "Lucida Sans";
+}
+.board h4 {
+	letter-spacing: 1.34px;
+}
+.WikiaPhotoGalleryPreview h2 {
+	color: white !important; font-family: "Helvetica Neue-45" !important; font-size: 25px !important;
+}
+.photo-module .has-icon {
+	letter-spacing: 0.67px;
+}
+#WikiaPage h1 {
+	font-weight: normal !important;
+}
+#WikiaPage h2 {
+	font-weight: normal !important;
+}
+#WikiaPage h3 {
+	font-weight: normal !important;
+}
+#WikiaPage h4 {
+	font-weight: normal !important;
+}
+#WikiaMainContent .mw-headline {
+	font-weight: normal !important;
+}
+.WikiaPage {
+	border: 3.6px solid rgb(196, 30, 58); border-image: none; box-shadow: 0px 0px 28px #c41e3a;
+}
+.wikia-menu-button > a:hover {
+	background: white;
+}
+.wikia-menu-button .drop:hover {
+	background: white;
+}
+.wikia-menu-button > li > a:hover {
+	background: white;
+}
+.wikia-menu-button > a:active {
+	background: white;
+}
+.wikia-menu-button .drop:active {
+	background: white;
+}
+.wikia-menu-button > li > a:active {
+	background: white;
+}
+.wikia-button:hover {
+	background: rgb(173, 216, 230); border: 2px solid rgb(105, 105, 105); border-image: none;
+}
+.wikia-single-button a:hover {
+	background: rgb(173, 216, 230); border: 2px solid rgb(105, 105, 105); border-image: none;
+}
+.wikia-menu-button:hover {
+	background: rgb(173, 216, 230); border: 2px solid rgb(105, 105, 105); border-image: none;
+}
+input[type='submit']:not(#searchSubmit):hover {
+	background: rgb(173, 216, 230); border: 2px solid rgb(105, 105, 105); border-image: none;
+}
+input[type='reset']:hover {
+	background: rgb(173, 216, 230); border: 2px solid rgb(105, 105, 105); border-image: none;
+}
+input[type='button']:hover {
+	background: rgb(173, 216, 230); border: 2px solid rgb(105, 105, 105); border-image: none;
+}
+.button:hover {
+	background: rgb(173, 216, 230); border: 2px solid rgb(105, 105, 105); border-image: none;
+}
+button:hover {
+	background: rgb(173, 216, 230); border: 2px solid rgb(105, 105, 105); border-image: none;
+}
+.tag {
+	color: inherit;
+}
+#WikiaMainContent a:hover {
+	transition:0.3s linear; color: rgb(0, 128, 128); text-decoration: none; text-shadow: 0px 0px 9.5px rgba(255,36,0,1), 0px 0px 9.5px rgba(255,36,0,1); -webkit-transition: all .3s linear 0s; -moz-transition: all .3s linear 0s; -o-transition: all .3s linear 0s;
+}
+.loaded a:hover {
+	transition:0.3s linear; color: rgb(0, 128, 128); text-decoration: none; text-shadow: 0px 0px 9.5px rgba(255,36,0,1), 0px 0px 9.5px rgba(255,36,0,1); -webkit-transition: all .3s linear 0s; -moz-transition: all .3s linear 0s; -o-transition: all .3s linear 0s;
+}
+#WikiaUserPagesHeader a:hover {
+	transition:0.3s linear; color: rgb(0, 128, 128); text-decoration: none; text-shadow: 0px 0px 9.5px rgba(255,36,0,1), 0px 0px 9.5px rgba(255,36,0,1); -webkit-transition: all .3s linear 0s; -moz-transition: all .3s linear 0s; -o-transition: all .3s linear 0s;
+}
+#backtotop button {
+	border-radius: 25px !important; color: black; font-family: "Arial Black";
+}
+#jumptobottom button {
+	border-radius: 25px !important; color: black; font-family: "Arial Black";
+}
+a#view-source:hover {
+	cursor: pointer !important;
+}
+.allpagesredirect {
+	font-style: italic;
+}
+.allpagesredirect::after {
+	color: rgb(128, 128, 128); content: " (redirect)";
+}
+.watchlistredir {
+	font-style: italic;
+}
+#file img {
+	background: url("https://images.wikia.nocookie.net/central/images/5/5d/Checker-16x16.png");
+}
+h2 {
+	margin-top: 20px;
+}
+.toc {
+	margin-top: 20px;
+}
+a[href$=':Big_the_cat_10'] {
+	color: orangered; font-family: "Press Start 2P"; font-variant: normal; font-weight: bold; text-shadow: 2px 2px 0px gold;
+}
+a[href$='/Big the cat_10'] {
+	color: orangered; font-family: "Press Start 2P"; font-variant: normal; font-weight: bold; text-shadow: 2px 2px 0px gold;
+}
+a[href$='/wiki/User:Shadow7615'] {
+	color: rgb(200, 8, 21); font-family: "Calibri"; font-size: 16px; font-variant: small-caps; font-weight: bold;
+}
+a[href$='/User:Shadow7615'] {
+	color: rgb(200, 8, 21); font-family: "Calibri"; font-size: 16px; font-variant: small-caps; font-weight: bold;
+}
+a[href$='User:Shadow7615'] {
+	color: rgb(200, 8, 21); font-family: "Calibri"; font-size: 16px; font-variant: small-caps; font-weight: bold;
+}
+a[href$=':Shadow7615'] {
+	color: rgb(200, 8, 21); font-family: "Calibri"; font-size: 16px; font-variant: small-caps; font-weight: bold;
+}
+a[href$='Withersoul_235'] {
+	background: linear-gradient(-330deg, teal, rgb(1, 121, 111), rgb(41, 171, 135), rgb(0, 168, 119), rgb(0, 159, 107)); color: transparent; font-family: "Unlock"; font-size: 20px !important; text-shadow: 0px 0px 12px tomato !important; -moz-background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; _background: none; _color: crimson; _text-shadow: 0 0 12px tomato;
+}
+a[href$='Withersoul+235'] {
+	background: linear-gradient(-330deg, teal, rgb(1, 121, 111), rgb(41, 171, 135), rgb(0, 168, 119), rgb(0, 159, 107)); color: transparent; font-family: "Unlock"; font-size: 20px !important; text-shadow: 0px 0px 12px tomato !important; -moz-background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; _background: none; _color: crimson; _text-shadow: 0 0 12px tomato;
+}
+a[href$='Withersoul 235'] {
+	background: linear-gradient(-330deg, teal, rgb(1, 121, 111), rgb(41, 171, 135), rgb(0, 168, 119), rgb(0, 159, 107)); color: transparent; font-family: "Unlock"; font-size: 20px !important; text-shadow: 0px 0px 12px tomato !important; -moz-background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; _background: none; _color: crimson; _text-shadow: 0 0 12px tomato;
+}
+a[href$='Withersoul_235']:hover {
+	text-shadow: 0px 0px 12px black !important;
+}
+a[href$='Withersoul+235']:hover {
+	text-shadow: 0px 0px 12px black !important;
+}
+a[href$='Withersoul 235']:hover {
+	text-shadow: 0px 0px 12px black !important;
+}
+.speech-bubble-message .edited-by > a[href$='Withersoul_235'].subtle::after {
+	background: none !important; color: crimson !important; font-size: 13px; font-weight: bold; content: "[Bureaucrat • Admin • Content Moderator]"; text-shadow: 1px 0.5px black; -webkit-text-fill-color: crimson;
+}
+@media screen and (min-width:0px) and (min-resolution:72dpi)
+{
+a[href$='Withersoul_235'] {
+	background: none !important; color: crimson; text-shadow: 0px 0px 12px tomato !important;
+}
+a[href$='Withersoul+235'] {
+	background: none !important; color: crimson; text-shadow: 0px 0px 12px tomato !important;
+}
+}
+.page-User_Withersoul_235 .discussion-details > em {
+	font-weight: bold;
+}
+.page-User_Withersoul_235 .discussion-label {
+	font-weight: bold;
+}
+.page-Message_Wall_Withersoul_235 .discussion-details > em {
+	font-weight: bold;
+}
+.page-Message_Wall_Withersoul_235 .discussion-label {
+	font-weight: bold;
+}
+.page-User_blog_Withersoul_235 .discussion-details > em {
+	font-weight: bold;
+}
+.page-User_blog_Withersoul_235 .discussion-label {
+	font-weight: bold;
+}
+.page-Special_Contributions_Withersoul_235 .discussion-details > em {
+	font-weight: bold;
+}
+.page-Special_Contributions_Withersoul_235 .discussion-label {
+	font-weight: bold;
+}
+a[href$=':PlozAlcachaz'] {
+	color: purple; font-family: "Germania One"; font-size: 22px; font-style: italic; text-shadow: 0px 0px 20px #880085;
+}
+a[href$='/PlozAlcachaz'] {
+	color: purple; font-family: "Germania One"; font-size: 22px; font-style: italic; text-shadow: 0px 0px 20px #880085;
+}
+a[href$=':SuperSaiyan2Link'] {
+	color: rgb(255, 51, 0) !important; font-family: "Anton"; font-size: 17.67px; text-shadow: 0px 0px 20px white, 1px 1px 0px white;
+}
+a[href$='/SuperSaiyan2Link'] {
+	color: rgb(255, 51, 0) !important; font-family: "Anton"; font-size: 17.67px; text-shadow: 0px 0px 20px white, 1px 1px 0px white;
+}
+a[href$='/wiki/User:I%27m_Lynda'] {
+	color: rgb(83, 104, 120) !important; font-family: "Open Sans",serif !important; font-size: 16px !important; font-variant: small-caps !important; font-weight: bold !important;
+}
+a[href$='/User:I%27m_Lynda'] {
+	color: rgb(83, 104, 120) !important; font-family: "Open Sans",serif !important; font-size: 16px !important; font-variant: small-caps !important; font-weight: bold !important;
+}
+a[href$='User:I%27m_Lynda'] {
+	color: rgb(83, 104, 120) !important; font-family: "Open Sans",serif !important; font-size: 16px !important; font-variant: small-caps !important; font-weight: bold !important;
+}
+a[href$=':I%27m_Lynda'] {
+	color: rgb(83, 104, 120) !important; font-family: "Open Sans",serif !important; font-size: 16px !important; font-variant: small-caps !important; font-weight: bold !important;
+}
+a[href$='/wiki/User:DENSTIFY1'] {
+	color: orangered; font-family: "Open Sans",serif; font-size: 16px; font-variant: small-caps; font-weight: bold;
+}
+a[href$='/User:DENSTIFY1'] {
+	color: orangered; font-family: "Open Sans",serif; font-size: 16px; font-variant: small-caps; font-weight: bold;
+}
+a[href$='User:DENSTIFY1'] {
+	color: orangered; font-family: "Open Sans",serif; font-size: 16px; font-variant: small-caps; font-weight: bold;
+}
+a[href$=':DENSTIFY1'] {
+	color: orangered; font-family: "Open Sans",serif; font-size: 16px; font-variant: small-caps; font-weight: bold;
+}
+a[href$='/wiki/User:Simbiothero'] {
+	color: rgb(83, 104, 120); font-family: "Open Sans",serif; font-size: 16px; font-variant: small-caps; font-weight: bold;
+}
+a[href$='/User:Simbiothero'] {
+	color: rgb(83, 104, 120); font-family: "Open Sans",serif; font-size: 16px; font-variant: small-caps; font-weight: bold;
+}
+a[href$='User:Simbiothero'] {
+	color: rgb(83, 104, 120); font-family: "Open Sans",serif; font-size: 16px; font-variant: small-caps; font-weight: bold;
+}
+a[href$=':Simbiothero'] {
+	color: rgb(83, 104, 120); font-family: "Open Sans",serif; font-size: 16px; font-variant: small-caps; font-weight: bold;
+}
+a[href$=':UTC_Scrappy'] {
+	color: rgb(31, 117, 254); font-family: "Spirax"; font-size: 18px; font-weight: bold; text-shadow: 0px 0px 15px #1f75fe;
+}
+a[href$='/UTC_Scrappy'] {
+	color: rgb(31, 117, 254); font-family: "Spirax"; font-size: 18px; font-weight: bold; text-shadow: 0px 0px 15px #1f75fe;
+}
+a[href$=':Vrokorta'] {
+	color: orangered; font-family: "Cooper Black"; font-size: 22px; text-shadow: 3px -2px 20px red;
+}
+a[href$='/Vrokorta'] {
+	color: orangered; font-family: "Cooper Black"; font-size: 22px; text-shadow: 3px -2px 20px red;
+}
+a[href$='Gogeta46power'] {
+	color: hotpink; font-family: "Pangolin"; font-size: 18px; text-shadow: 2px 1px 0px black;
+}
+a[href$='Raiando'] {
+	background: none; color: rgb(130, 7, 7); font-family: "ZCOOL XiaoWei"; font-size: 23px; font-style: normal; -webkit-text-fill-color: #820707;
+}
+a[href$='Necromercer'] {
+	color: rgb(154, 78, 174); font-family: Comic Sans MS; -webkit-text-fill-color: #9A4EAE;
+}
+a[href$=':UltimateDespairDaniel'] {
+	color: blue; font-family: "Fixedsys"; font-size: 25px;
+}
+a[href$='/UltimateDespairDaniel'] {
+	color: blue; font-family: "Fixedsys"; font-size: 25px;
+}
+a[href$=':BonBooker'] {
+	color: turquoise; text-transform: lowercase; font-family: "Comic Sans MS"; text-shadow: 1px 0px 0px black, 0px 1.2px 0px black;
+}
+a[href$='/BonBooker'] {
+	color: turquoise; text-transform: lowercase; font-family: "Comic Sans MS"; text-shadow: 1px 0px 0px black, 0px 1.2px 0px black;
+}
+a[href$='/wiki/User:Gold-sans_mobile'] {
+	color: rgb(83, 104, 120); font-family: "Open Sans",serif; font-size: 16px; font-variant: small-caps; font-weight: bold;
+}
+a[href$='/User:Gold-sans_mobile'] {
+	color: rgb(83, 104, 120); font-family: "Open Sans",serif; font-size: 16px; font-variant: small-caps; font-weight: bold;
+}
+a[href$='User:Gold-sans_mobile'] {
+	color: rgb(83, 104, 120); font-family: "Open Sans",serif; font-size: 16px; font-variant: small-caps; font-weight: bold;
+}
+a[href$=':Gold-sans_mobile'] {
+	color: rgb(83, 104, 120); font-family: "Open Sans",serif; font-size: 16px; font-variant: small-caps; font-weight: bold;
+}
+a[href$='Cletus16'] {
+	background: none !important; color: rgb(255, 165, 0) !important; font-family: "Pacifico" !important; font-style: normal !important; -webkit-text-fill-color: #FFA500;
+}
+a[href$=':BangJang96'] {
+	color: rgb(237, 41, 57); font-family: "Ubuntu"; font-size: 20px; text-shadow: 5px 0.5px 6px crimson;
+}
+a[href$='/BangJang96'] {
+	color: rgb(237, 41, 57); font-family: "Ubuntu"; font-size: 20px; text-shadow: 5px 0.5px 6px crimson;
+}
+a[href$='Sharaku_Jr.'] {
+	background: none !important; color: rgb(237, 41, 57); font-family: "Mega Man Battle Network"; font-size: 12px; font-weight: bold; -webkit-text-fill-color: #ED2939;
+}
+a[href$='Sharaku Jr.'] {
+	background: none !important; color: rgb(237, 41, 57); font-family: "Mega Man Battle Network"; font-size: 12px; font-weight: bold; -webkit-text-fill-color: #ED2939;
+}
+a[href$='Sharaku+Jr.'] {
+	background: none !important; color: rgb(237, 41, 57); font-family: "Mega Man Battle Network"; font-size: 12px; font-weight: bold; -webkit-text-fill-color: #ED2939;
+}
+a[href$='EmperorDedede'] {
+	color: rgb(0, 112, 187); font-family: Comic Sans MS; -webkit-text-fill-color: #0070BB;
+}
+a[href$=':End_Bringer_Nyx'] {
+	color: black; text-transform: uppercase; font-family: "Press Start 2P"; text-shadow: 0px 0px 20px #ffffff;
+}
+a[href$='/End_Bringer_Nyx'] {
+	color: black; text-transform: uppercase; font-family: "Press Start 2P"; text-shadow: 0px 0px 20px #ffffff;
+}
+a[href$='Zinniax-13'] {
+	color: crimson; font-family: "Cinzel"; font-size: 20px; text-shadow: 6px 3px 11px red;
+}
+#OtherSitesModule h2 {
+	letter-spacing: 1.5px; font-size: 25px !important; border-bottom-color: red; border-bottom-width: 4px; border-bottom-style: outset;
+}
+#OtherSitesModule hr {
+	height: 3px; background-color: black;
+}
+#OtherSitesModule .text {
+	font-weight: bold;
+}
+#OtherSitesModule img {
+	transition:0.6863s; transform: rotate(0deg) scale(0.9) skew(-180deg) translate(0px);
+}
+#OtherSitesModule img:hover {
+	transform: rotate(-1deg) scale(1.04) skew(-180deg) translate(0px);
+}
+#OtherSitesModule .editsection {
+	display: none;
+}
+.speech-bubble-message .edited-by > a[href$='Withersoul_235'].subtle::after {
+	color: crimson; font-size: 17px; font-weight: bold; content: "[Bureaucrat • Admin • Content Moderator]"; text-shadow: 1px 0.5px black;
+}
+.speech-bubble-message .edited-by > a[href$='Gogeta46power'].subtle::after {
+	color: crimson; text-transform: uppercase; font-size: 14px; font-weight: bold; content: "[Discussions Moderator]"; text-shadow: 1px 0.5px black;
+}
+.speech-bubble-message .edited-by > a[href$='Big_the_cat_10'].subtle::after {
+	content: "[Head Bureaucrat]";
+}
+.speech-bubble-message .edited-by > a[href$='SuperSaiyan2Link'].subtle::after {
+	text-transform: uppercase; font-size: 17px; content: "[Bureaucrat • Admin • Chat Moderator]"; text-shadow: 1px 0.5px black;
+}
+.message .edited-by > a[href$='Cletus16'].subtle::after {
+	color: crimson; font-family: "Lucida Sans"; font-size: 17px; font-variant: small-caps; font-weight: bold; content: "[Chat Moderator]"; text-shadow: 1px 0.5px black;
+}
+.message .edited-by > a[href$='BonBooker'].subtle::after {
+	color: crimson; font-family: "Lucida Sans"; font-size: 17px; font-variant: small-caps; font-weight: bold; content: "[Chat Moderator]"; text-shadow: 1px 0.5px black;
+}
+.message .edited-by > a[href$='Gold-sans_mobile'].subtle::after {
+	color: crimson; font-family: "Lucida Sans"; font-size: 17px; font-variant: small-caps; font-weight: bold; content: "[Chat Moderator]"; text-shadow: 1px 0.5px black;
+}
+.speech-bubble-message .edited-by > a[href$='I%27m_Lynda'].subtle::after {
+	text-transform: uppercase; font-size: 13px; content: "[Admin • Content Moderator]"; text-shadow: 1px 0.5px black;
+}
+.message .edited-by > a[href$='Raiando'].subtle::after {
+	color: crimson; font-family: "Lucida Sans"; font-size: 17px; font-variant: small-caps; font-weight: bold; content: "[Discussions Moderator]"; text-shadow: 1px 0.5px black;
+}
+.message .edited-by > a[href$='Gogeta46power'].subtle::after {
+	color: crimson; font-family: "Lucida Sans"; font-size: 17px; font-variant: small-caps; font-weight: bold; content: "[Discussions Moderator]"; text-shadow: 1px 0.5px black;
+}
+.page-MediaWiki_ImportJS .mw-content-ltr pre {
+	border: 3px solid red; border-image: none; color: yellow; box-shadow: 0px 0px 30px red; text-shadow: 2px 1px black; background-color: black;
+}
+.page-MediaWiki_ProfileTags .mw-content-ltr pre {
+	border: 3px solid red; border-image: none; color: yellow; box-shadow: 0px 0px 30px red; text-shadow: 2px 1px black; background-color: black;
+}
+.inactive-user {
+	border: 2px solid black; border-image: none; font-family: "Verdana"; box-shadow: 0px 0px 10px black; background-color: rgb(83, 104, 120) !important;
+}
+.tag-founder {
+	border: 3px solid black; border-image: none; color: black; font-weight: 800; box-shadow: 0px 0px 20px; background-color: whitesmoke !important;
+}
+.tag-bureaucrat {
+	border: 3px solid black; border-image: none; font-family: "Verdana"; box-shadow: 0px 0px 10px #00ad83; background-color: teal !important;
+}
+.tag-admin {
+	border: 3px solid black; border-image: none; font-family: "Verdana"; box-shadow: 0px 0px 10px brown; background-color: maroon !important;
+}
+.tag-moderator {
+	border: 3px solid black; border-image: none; color: black; font-family: "Verdana"; box-shadow: 0px 0px 10px orange; background-color: white !important;
+}
+.tag-operator {
+	border: 3px solid black; border-image: none; color: black; font-family: "Verdana"; box-shadow: 0px 0px 10px red; background-color: gold !important;
+}
+.tag-content_moderator {
+	border: 3px solid black; border-image: none; font-family: "Verdana"; box-shadow: 0px 0px 10px lightgreen; background-color: rgb(0, 171, 102) !important;
+}
+.tag-superordinate {
+	border: 3px solid black; border-image: none; font-family: "Verdana"; box-shadow: 0px 0px 10px yellow; background-color: indigo !important;
+}
+.tag-discussions_moderator {
+	border: 3px solid black; border-image: none; font-family: "Verdana"; box-shadow: 0px 0px 10px yellow; background-color: rgb(255, 121, 0) !important;
+}
+.tag-superintendent {
+	border: 3px solid black; border-image: none; font-family: "Verdana"; box-shadow: 0px 0px 10px black; background-color: green !important;
+}
+.tag-chat_moderator {
+	border: 3px solid black; border-image: none; font-family: "Verdana"; box-shadow: 0px 0px 10px hotpink; background-color: blueviolet !important;
+}
+.tag-rollback {
+	border: 3px solid black; border-image: none; font-family: "Verdana"; box-shadow: 0px 0px 10px blue; background-color: rgb(31, 117, 254) !important;
+}
+.Wall .message-1 {
+	border-left-color: currentColor !important; border-left-width: medium !important; border-left-style: none !important;
+}
+ul.tabbernav li.tabberactive a {
+	color: gold !important; background-color: maroon !important;
+}
+.tabbernav a {
+	border: 3px solid crimson !important; border-image: none !important; color: yellow !important; font-family: "Play"; font-size: 15px; box-shadow: 0px 0px 60px orange; background-color: brown !important;
+}
+.WikiaArticle a.external::after {
+	content: none; background-image: none;
+}
+.WikiaArticle a[href^='gopher://']::after {
+	content: none; background-image: none;
+}
+.UserProfileMasthead .details li {
+	list-style-type: none;
+}
+#MessageWallActionsButton {
+	top: 110px; right: 250px; position: relative;
+}
+.post .speech-bubble-message {
+	margin-top: 60px;
+}
+#MessageWallActionsButton {
+	display: none;
+}
+[data-user='Withersoul 235'].speech-bubble-message {
+	font-family: "Play"; font-size: 16px;
+}
+[data-user='Withersoul 235'].speech-bubble-message {
+	font-family: "Play"; font-size: 16px;
+}
