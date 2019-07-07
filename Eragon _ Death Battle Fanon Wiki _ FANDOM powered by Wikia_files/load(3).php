@@ -1,0 +1,3 @@
+#ca-view-source{cursor:pointer !important}#source-toc{padding:10px 0;border-top:1px solid #CCC;border-bottom:1px solid #CCC;font-size:14px}#source-toc li{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}#source-code{white-space:pre-wrap}#source-code a{text-decoration:underline;color:inherit}
+
+/* cache key: deathbattlefanon:resourceloader:filter:minify-css:7:61c10ad10120bf40a735ea23806abd88 */
