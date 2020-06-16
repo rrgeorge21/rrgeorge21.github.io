@@ -94,7 +94,7 @@ ol.references li:target,sup.reference:target{
 }
 	#content a.external{
 		background: none !important;
-		padding-right: 0 !important;
+		padding-right: -5cm !important;
 	}
 	sup,sub{
 		line-height:1
