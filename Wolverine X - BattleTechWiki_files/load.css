@@ -92,10 +92,6 @@ ol.references li:target,sup.reference:target{
 		word-wrap:break-word;
 		overflow:auto
 }
-	#content a.external{[href ^="https://"]
-		background-image: none !important;
-		padding-right: 0 !important;
-	}
 	sup,sub{
 		line-height:1
 }
@@ -1397,6 +1393,10 @@ span.diffchange{
 	background:none !important;
 	padding:0 !important
 }
+#bodycontent a.external{[href ^="https://"]
+		background-image: none !important;
+		padding-right: 0 !important;
+	}
 .portlet{
 	border:none;
 	margin:0 0 10px;
