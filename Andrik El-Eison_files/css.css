@@ -2644,7 +2644,8 @@ div.ribbonBox .ribbon-wrapper{
 }
 @media (min-width:651px){
     .p-header{
-        position:static;
+        position:-webkit-sticky;
+        position:sticky;
         top:0px;
         z-index:400
     }
