@@ -2642,7 +2642,13 @@ div.ribbonBox .ribbon-wrapper{
     -webkit-backdrop-filter:blur(5px);
     backdrop-filter:blur(5px)
 }
-
+@media (min-width:651px){
+    .p-header{
+        position:static;
+        top:0px;
+        z-index:400
+    }
+}
 .focus-logo--name{
     font-weight:bold
 }
