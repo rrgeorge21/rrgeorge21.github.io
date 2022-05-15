@@ -1,0 +1,90 @@
+// ------------------------------------------
+// Image Resize To Proportion By Posiden5665
+// Written for Jcink.com
+// ------------------------------------------
+
+function resizerReplacement(iClone, reduced, origWidth, origHeight){
+	var nDiv = document.createElement("div");
+	nDiv.style.backgroundColor = "transparent";
+	nDiv.style.padding = "1px";
+	nDiv.style.width = parseInt(origWidth * reduced/100) + "px";
+	nDiv.style.display = "inline-block";
+	nDiv.innerHTML = "Reduced to " + Math.round(reduced) + "% of original (" + origWidth + " x " + origHeight + ")<br />";
+	iClone.style.cursor = "pointer";
+	iClone.onclick = function(){
+		window.open(iClone.src);
+	};
+	nDiv.appendChild(iClone);
+	return nDiv;
+}
+
+var tds = document.getElementsByTagName("td");
+function imageResizerInit(){
+for(var i = 0; i < tds.length; i++){
+	if(tds[i].className == "post1" || tds[i].className == "post2" || tds[i].className == "poll-question-x"){
+		if(tds[i].getElementsByTagName("span").length > 0 && tds[i].getElementsByTagName("span")[0].className == "postdetails"){
+			//Do nothing looking at postdetails section
+		}else{
+			var tdImages = tds[i].getElementsByTagName("img");
+			var postWidth = tds[i].clientWidth;
+			
+			for(var x = 0; x < tdImages.length; x++){
+				tdImages[x].onload = function(){
+					var origWidth = this.clientWidth;
+					var origHeight = this.clientHeight;
+					if(this.clientWidth >= this.clientHeight){
+						if(this.clientWidth > parseInt(postWidth * .98) || this.clientWidth > maxWidth){
+							if(maxWidth == null){
+								var reduced = parseInt(this.clientWidth * .95) * 100 / origWidth;
+							}else{
+								var reduced = maxWidth * 100 / origWidth;
+							}
+							
+													
+						// 1000% bugfix... wtf
+						if(Math.round(reduced) < 101) {
+
+							this.style.width = parseInt(origWidth * reduced/100) + "px";
+							this.style.height = parseInt(origHeight * reduced/100) + "px";
+							
+							var iClone = this.cloneNode(false);
+							nDiv = resizerReplacement(iClone, reduced, origWidth, origHeight);
+								this.parentNode.replaceChild(nDiv, this);
+						}
+						
+						}
+					}else{
+						if(this.clientHeight > maxHeight){
+							if(maxHeight == null){
+								var reduced = parseInt(this.clientHeight * .98) * 100 / origHeight;
+							}else{
+								var reduced = maxHeight * 100 / origHeight;
+
+							}
+														
+						// 1000% bugfix... wtf
+						if(Math.round(reduced) < 101) {
+
+							this.style.width = parseInt(origWidth * reduced/100) + "px";
+							this.style.height = parseInt(origHeight * reduced/100) + "px";
+
+							var iClone = this.cloneNode(false);
+							nDiv = resizerReplacement(iClone, reduced, origWidth, origHeight);
+							this.parentNode.replaceChild(nDiv, this);
+
+						}
+
+						}
+					}
+				};
+				
+				if(tdImages[x].complete == true){
+					tdImages[x].onload();
+				}
+			}
+		}
+	}
+}
+}
+
+imageResizerInit();
