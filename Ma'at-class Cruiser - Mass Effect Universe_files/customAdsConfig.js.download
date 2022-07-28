@@ -1,0 +1,6 @@
+var CUSTOM_ADS_HEADER_LINK='https://jelliesmobi.com/cid/10159';var CUSTOM_ADS_RIGHT_LINK='https://jelliesmobi.com/cid/10159';var CUSTOM_ADS_FOOTER_LINK='https://jelliesmobi.com/cid/10159';var CUSTOM_ADS_STICKY_FOOTER_LINK='https://jelliesmobi.com/cid/10159';var CUSTOM_ADS_HEADER=false;var CUSTOM_ADS_RIGHT=false;var CUSTOM_ADS_FOOTER=false;var CUSTOM_ADS_MOBILE_HEADER=false;var CUSTOM_ADS_MOBILE_FOOTER=false;var CUSTOM_ADS_MOBILE_STICKY_FOOTER=false;if(CUSTOM_RIGHT==5){CUSTOM_ADS_RIGHT='https://tapatalk-upload.s3.amazonaws.com/ads/model600.jpg';CUSTOM_ADS_RIGHT_LINK='https://jelliesmobi.com/cid/10159';}
+if(CUSTOM_HEADER==5){CUSTOM_ADS_HEADER='https://tapatalk-upload.s3.amazonaws.com/ads/model728.jpg';CUSTOM_ADS_HEADER_LINK='https://jelliesmobi.com/cid/10159';}
+if(CUSTOM_FOOTER==5){CUSTOM_ADS_MOBILE_FOOTER='https://tapatalk-upload.s3.amazonaws.com/ads/model300.jpg';}
+if(CUSTOM_STICKY_FOOTER==1){CUSTOM_ADS_MOBILE_STICKY_FOOTER='https://tapatalk-upload.s3.amazonaws.com/ads/nhl-300x100.jpg';}
+function custom_ads_click(action,type){var url='www.tapatalk.com';switch(type){case 'header':url=CUSTOM_ADS_HEADER_LINK;break;case 'right':url=CUSTOM_ADS_RIGHT_LINK;break;case 'footer':url=CUSTOM_ADS_FOOTER_LINK;break;case 'stickyFooter':url=CUSTOM_ADS_STICKY_FOOTER_LINK;break;}
+window.open(url);}

@@ -1,0 +1,50 @@
+if(typeof getFullConfigData!=="function"){var configDataObj=undefined;function getFullConfigData(){if($('.config_data_for_js').length>0){return JSON.parse($('.config_data_for_js').attr('data-for-js'));}
+return undefined;}}
+function render_footer_html(){if($('#footer_extra').length>0){configDataObj=getFullConfigData();var html='<div class="f-u">';if(configDataObj.S_BRAND_APP_DOWNLOAD!=undefined&&configDataObj.S_BRAND_APP_DOWNLOAD==1)
+{html+='<p style="padding: 0 0 10px 0;">Get the Tapatalk app</p>'+
+'   <ul class="socials">'+
+'       <li data-animation="fade-in" data-delay="100"><a href="https://itunes.apple.com/app/id307880732?mt=8"><img src="https://groups.tapatalk-cdn.com/static/image/apple_store.png" alt=""></a></li>'+
+'       <li data-animation="fade-in" data-delay="150"><a href="https://play.google.com/store/apps/details?id=com.quoord.tapatalkpro.activity"><img src="https://groups.tapatalk-cdn.com/static/image/google_store.png" alt=""></a></li>'+
+'    </ul>';}
+if(configDataObj.S_SHOW_TT_FOOTER!=undefined&&configDataObj.S_SHOW_TT_FOOTER==1)
+{html+='<div class="inner-wrap">'+
+'         <div class="link-f cl-af">'+
+'             <div class="i fl">'+
+'                 <ul>'+
+'                     <li class="ft-bd">PRODUCTS</li>'+
+'                     <li class="ft-ln"><a href="https://www.tapatalk.com/tapatalk_groups" target="_blank">Tapatalk Groups</a></li>'+
+'                     <li class="ft-ln"><a href="https://www.tapatalk.com/tapatalk_mobile" target="_blank">Tapatalk Mobile App</a></li>'+
+'                 </ul>'+
+'             </div>'+
+'             <div class="i fl">'+
+'                 <ul>'+
+'                     <li class="ft-bd">SUPPORT</li>'+
+'                     <li class="ft-ln"><a href="https://www.tapatalk.com/groups/tapatalksupport" target="_blank">Support Forum</a></li>'+
+'                     <li class="ft-ln"><a href="https://www.tapatalk.com/security.php" target="_blank">Submit Security Incident</a></li>'+
+'                 </ul>'+
+'             </div>'+
+'             <div class="i fl">'+
+'                 <ul>'+
+'                     <li class="ft-bd">ABOUT US</li>'+
+'                     <li class="ft-ln"><a href="https://www.linkedin.com/company/quoord-systems-limited/" target="_blank">LinkedIn</a></li>'+
+'                     <li class="ft-ln"><a href="https://www.crunchbase.com/organization/tapatalk" target="_blank">Crunchbase</a></li>'+
+'                 </ul>'+
+'             </div>'+
+'       </div>'+
+'    </div>';}
+html+='</div>'+
+'    <ul class="nav">'+
+'        <li><a href="https://www.tapatalk.com/privacy_policy">Privacy Policy</a></li>'+
+'        <li><a href="https://www.tapatalk.com/privacy_shield">Privacy Shield</a></li>'+
+'        <li><a href="https://www.tapatalk.com/terms_of_use">Terms of Use</a></li>'+
+'        <li><a href="https://www.tapatalk.com/code_conduct">Code of Conduct</a></li>'+
+'        <li><a href="https://www.tapatalk.com/end_user_license_agreement">End-User License Agreement</a></li>'+
+'        <li><a href="https://www.tapatalk.com/forum_owner_license_agreement">Site Owner License Agreement</a></li>'+
+'        <li><a href="https://www.tapatalk.com/api-tos.php">Tapatalk API Terms of Service</a></li>'+
+'        <li id="manage_privacy"><a href="#manage_privacy">Manage Privacy Settings</a></li>';if(configDataObj.CURRENT_YEAR!=undefined&&configDataObj.CURRENT_YEAR>1){html+='        <li class="none"><a href="/">© '+configDataObj.CURRENT_YEAR+' Tapatalk Inc</a></li>'}else{html+='        <li class="none"><a href="/">© Tapatalk Inc</a></li>'}
+html+='</ul>'+
+'    <div style="text-align: center;">\n'+
+'        <a href="https://www.tapatalk.com/privacy_shield" target="_blank"><img src="https://groups.tapatalk-cdn.com/static/email/Privacy-Shield-Certified-logo.png" width="150" /></a>\n'+
+'    </div>'+
+'    <a id="back-top"><div id="menu_top" style="bottom: initial;"></div></a>';$('#footer_extra').prepend(html);$('#manage_privacy').on('click',function(){__ccpa('ccpaApplies',null,null,function(result){if(result=='true'||result==true){__ccpa('showConsentManager',2,(result)=>{console.log(result)});}else{__tcfapi('showConsentManager',2,(result)=>{console.log(result)});}});});}}
+render_footer_html();

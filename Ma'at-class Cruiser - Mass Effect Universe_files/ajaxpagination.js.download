@@ -1,0 +1,104 @@
+var originalPageSaved=false;var videoAdPlayed=false;var isLoadingMore=false;var morePagesAvailable=true;var editorIsQuote=false;function load_blockquote_event(){$('blockquote').each(function(){var $this=$(this);if(!$this.parent().hasClass('content')){return;}
+if($this.find('.has-mask').length>0){return;}
+if($this.hasClass('click_readmore')){return;}
+var $div=$this.children().first();new ResizeSensor($div,function(){if($this.find('.has-mask').length>0){return;}
+if($this.hasClass('click_readmore')){return;}
+if($this.height()+50>=$div.height()){$this.height($div.height());$this.css('max-height',$div.height());}else{$this.addClass('blockquote-collapse');$this.height('unset');$div.addClass('lines-hidden');$div.addClass('has-mask');$this.append(quote_html);}});});}
+$(document).ready(function(){if(IsTopicPage()){var selector='.forumbg.normal ul.topiclist.topics .row';SetupAjaxPagination(selector);window.onpopstate=function(e){if(e.state&&e.state.selector&&e.state.data){DisplayLoading(e.state.selector);RenderList(e.state.selector,e.state.data,true);HideLoading(e.state.selector);}};morePagesAvailable=IsMorePagesAvailable();DoScroll(selector);}
+else if(IsPostPage()){var selector='.viewtopic_wrapper .postrow';SetupAjaxPagination(selector);window.onpopstate=function(e){if(e.state&&e.state.selector&&e.state.data){DisplayLoading(e.state.selector);RenderList(e.state.selector,e.state.data,true);window.scrollTo(0,0);HideLoading(e.state.selector);}};morePagesAvailable=IsMorePagesAvailable();SetupQuickReply(selector);SetupQuickQuote(selector);SetupLoadMore(selector);}});function AddAjaxParam(url){return url+"?forajax=true";}
+function IsMorePagesAvailable(){var morePages=$('.bar-bottom .pagination li:last a').length!==0;if(morePages&&IsTopicPage()){if(!IsTwoColumLayoutActive()){$('#rightcolumn').hide();}
+$('#footer_extra').hide();}
+else{if(!IsTwoColumLayoutActive()){$('#rightcolumn').show();}
+$('#footer_extra').show();}
+return morePages;}
+function IsPostPage(){return SCRIPT_NAME==='viewtopic';}
+function IsTopicPage(){return SCRIPT_NAME==='viewforum'||SCRIPT_NAME==='search';}
+function IsTwoColumLayoutActive(){if(window.sidebarlayoutenabled&&$('#rightcolumn').css('float')=='left'){return true;}
+return false;}
+function SetupAjaxPagination(selector){$('.pagination a[role="button"]').on('click',function(event){if(event.target.href){DoAjaxCall(selector,event.target.href,true);event.preventDefault();}});}
+function DoAjaxCall(selector,href,override){isLoadingMore=true;if(!originalPageSaved){window.history.replaceState({"data":$('html').html(),"selector":selector},"",window.location.href);originalPageSaved=true;}
+DisplayLoading(selector);$.ajax({url:AddAjaxParam(href)}).done(function(data){RenderList(selector,data,override);if(typeof window.OBR!=='undefined')
+{window.OBR.extern.refreshWidget();}
+if(override){window.scrollTo(0,0);}
+RecordPageview(href,override);window.history.pushState({"data":data,"selector":selector},"",href);});}
+function RecordPageview(url,override){ga('set','page','readmore');ga('send','pageview');_paq.push(['setCustomUrl',AddAjaxParam(url)]);_paq.push(['trackPageView']);if(U_IS_VIP_PLUS){ga('VipPlus.set','page','readmore');ga('VipPlus.send','pageview');}}
+function SetupLoadMore(selector){if(IsMorePagesAvailable()){$('#loadmorediv').show();$('#loadmorediv').unbind('click');$('#loadmorediv').on('click',function(event){DoLoadMore(selector);});tryFindRecommentTopicIds();}
+else{$('#loadmorediv').html("End of the topic.");$('#loadmorediv').addClass('button-secondary');$('#loadmorediv').css({cursor:"default"});tryFindRecommentTopicIds();}}
+function DoLoadMore(selector){var nextPageUrl=$('.bar-bottom .pagination li.active + li a').attr('href');DoAjaxCall(selector,nextPageUrl,false);}
+function DisplayLoading(selector){var loadingMoreHtml=$('<div id="ajaxpaginationloading" style="display: block; position: relative; text-align:center"><svg width="200px"  height="60px"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-facebook" style="background: none;"><rect ng-attr-x="{{config.x1}}" ng-attr-y="{{config.y}}" ng-attr-width="{{config.width}}" ng-attr-height="{{config.height}}" ng-attr-fill="{{config.c1}}" x="17.5" y="30" width="15" height="40" fill="#b7b7b7"><animate attributeName="y" calcMode="spline" values="18;30;30" keyTimes="0;0.5;1" dur="1" keySplines="0 0.5 0.5 1;0 0.5 0.5 1" begin="-0.2s" repeatCount="indefinite"></animate><animate attributeName="height" calcMode="spline" values="64;40;40" keyTimes="0;0.5;1" dur="1" keySplines="0 0.5 0.5 1;0 0.5 0.5 1" begin="-0.2s" repeatCount="indefinite"></animate></rect><rect ng-attr-x="{{config.x2}}" ng-attr-y="{{config.y}}" ng-attr-width="{{config.width}}" ng-attr-height="{{config.height}}" ng-attr-fill="{{config.c2}}" x="42.5" y="29.8381" width="15" height="40.3238" fill="#d3d3d3"><animate attributeName="y" calcMode="spline" values="20.999999999999996;30;30" keyTimes="0;0.5;1" dur="1" keySplines="0 0.5 0.5 1;0 0.5 0.5 1" begin="-0.1s" repeatCount="indefinite"></animate><animate attributeName="height" calcMode="spline" values="58.00000000000001;40;40" keyTimes="0;0.5;1" dur="1" keySplines="0 0.5 0.5 1;0 0.5 0.5 1" begin="-0.1s" repeatCount="indefinite"></animate></rect><rect ng-attr-x="{{config.x3}}" ng-attr-y="{{config.y}}" ng-attr-width="{{config.width}}" ng-attr-height="{{config.height}}" ng-attr-fill="{{config.c3}}" x="67.5" y="29.4838" width="15" height="41.0325" fill="#e6e6e6"><animate attributeName="y" calcMode="spline" values="24;30;30" keyTimes="0;0.5;1" dur="1" keySplines="0 0.5 0.5 1;0 0.5 0.5 1" begin="0s" repeatCount="indefinite"></animate><animate attributeName="height" calcMode="spline" values="52;40;40" keyTimes="0;0.5;1" dur="1" keySplines="0 0.5 0.5 1;0 0.5 0.5 1" begin="0s" repeatCount="indefinite"></animate></rect></svg></div>');$(selector).last().after(loadingMoreHtml);$('.post-bar-bottom').hide();$('.share_icon_area').addClass('hide');}
+function HideLoading(selector){$('#ajaxpaginationloading').remove();}
+function DisplayVideoAd(selector){bcPlayerTools.expandAndInjectAdOnlyPlayer({div:document.getElementById('adPlayerDiv'),adTag:"https://pubads.g.doubleclick.net/gampad/ads?iu=/728035918/Video_Test_Ad&description_url=http%3A%2F%2Fwww.tapatalk.com&env=vp&impl=s&correlator=&tfcd=0&npa=0&gdfp_req=1&output=vast&sz=400x300|640x480&unviewed_position_start=1",width:300,animationDuration:200,autoplay:true});}
+function RenderList(selector,data,override){var ajaxHtmlReplacements=['.post-bar-bottom','.bar-bottom .pagination'];if(override===true){ajaxHtmlReplacements.push('.bar-top .pagination');}
+$(ajaxHtmlReplacements).each(function(ix,el){$(el).replaceWith($(data).find(el));});if(override){var parent=$(selector).first().parent();$(selector).remove();var elements=$(data).find(selector);elements.hide();elements.prependTo(parent);elements.fadeIn(1000);}
+else{var elements=$(data).find(selector);elements.hide();elements.insertBefore('#ajaxpaginationloading');elements.fadeIn(1000);}
+if(typeof(RefreshAdsHelper)!=='undefined'){RefreshAdsHelper(override);}
+cacheCurrentTopicIds();SetupAjaxPagination(selector);HideLoading(selector);isLoadingMore=false;morePagesAvailable=IsMorePagesAvailable();if(IsPostPage()){SetupLoadMore(selector);SetupQuickReply(selector);SetupQuickQuote(selector);SetupAllPostJsRequired();MoveQuickEditorToBottom();load_blockquote_event();if(topicDataObj!==undefined&&typeof add_info_for_post=="function"){add_info_for_post();}}}
+function SetupAllPostJsRequired(){$(document).ready(function(){phpbb.registerPageDropdowns();SetupAllModerationActions();SetupPostProfileAndImage();SetupPostJs();DecorateAvatar();});}
+function RenderNewPost(selector,newPostId,data){if(!editorIsQuote){var ajaxHtmlReplacements=['.bar-bottom .pagination','#qr_postform [name=creation_time]','#qr_postform [name=form_token]','#qr_postform [name=topic_cur_post_id]','#qr_postform [name=lastclick]'];$(ajaxHtmlReplacements).each(function(ix,el){$(el).replaceWith($(data).find(el));});}
+sceController.getInstance().val('');newPostHtml=$(data).find('#p_'+newPostId);newPostHtml.hide();if(editorIsQuote){newPostHtml.addClass('post-quoted-indent');newPostHtml.insertBefore('#qr_postform');}
+else{$('.viewtopic_wrapper').append(newPostHtml);}
+newPostHtml.fadeIn(1000);MoveQuickEditorToBottom();SetupAllPostJsRequired();}
+function Onscroll(selector){if(!morePagesAvailable){return;}
+if(isLoadingMore){return;}
+if(!IsScrollNearBottom(selector)){return;}
+if(IsModerating(selector)){return;}
+DoLoadMore(selector);}
+function DoScroll(selector){var scrollTimer;$(window).bind('scroll',function(){if(scrollTimer){clearTimeout(scrollTimer);}
+if(morePagesAvailable){scrollTimer=setTimeout(function(){Onscroll(selector);},100);}});}
+function IsModerating(selector){return $(selector).find("input:checkbox:checked").length!=0;}
+function IsScrollSelectorEndNearTop(selector){var container=$(selector).first().parent();if(SCRIPT_NAME==='viewforum'||SCRIPT_NAME==='search'){if($(window).scrollTop()+($(window).height()/2)>=container.offset().top+container.height()&&$(window).scrollTop()+($(window).height()/4)<=container.offset().top+container.height()){return true;}}
+else if(SCRIPT_NAME==='viewtopic'){if($(window).scrollTop()+($(window).height()/2)>=container.offset().top+container.height()&&$(window).scrollTop()+($(window).height()/5)<=container.offset().top+container.height()){return true;}}
+return false;}
+function IsScrollAtBottom(selector){toScroll=$(document).height()-$(window).height()-50;if($(window).scrollTop()>toScroll){return true;}
+if($(window).scrollTop()+$(window).height()==$(document).height()){return true;}
+return false;}
+function IsScrollNearBottom(selector){var container=$(selector).first().parent();if($(window).scrollTop()+$(window).height()>=container.offset().top+container.height()){return true;}
+return false;}
+function CheckQuickReplyVisibility(){$('#qr_postform').show();if(typeof(append_endoftopicbar)=='function'){append_endoftopicbar();}
+load_blockquote_event();}
+function SetupQuickReply(selector){$('#qr_submit').unbind('click');$('#qr_submit').click(function(e){e.preventDefault();sceController.getInstance().updateOriginal();var form=$('#qr_postform');var url=form.attr('action');$.ajax({type:"POST",url:url+'&ajax=true',data:'post=true&'+form.serialize(),success:function(data){if(data.error){hs_popup(data.message[0]);}
+else{if(data.redirect_url){$.get(data.redirect_url,function(data2){if(editorIsQuote){RenderNewPost(selector,data.new_post_id,data2);editorIsQuote=false;}
+else{SetQuickEditorText('');RenderList(selector,data2,true);$('#p_'+data.new_post_id).scrollIntoView();}});}
+else
+{if(data.S_USER_NOTICE){hs_popup(data.MESSAGE_TEXT);}
+else if(data.message){hs_popup(data.message);}
+else{hs_popup('Something went wrong. Please reload the page');}}}}});});CheckQuickReplyVisibility();}
+function FixAvatarAround(post){var nextPost=post.next('.post');if(post&&nextPost){if(post.find('.postprofile').data('uid')===nextPost.find('.postprofile').data('uid'))
+{var sourcePost=post;while(sourcePost&&sourcePost.length>0&&sourcePost.find('.postprofile').children().length===0){sourcePost=sourcePost.prev('.post');}
+nextPost.find('.postprofile').html(sourcePost.find('.postprofile').html());nextPost.find('.postprofile').addClass('custom_avatar_fromjs');}}}
+function CleanCustomAvatarFromJs(){$('.custom_avatar_fromjs').each(function(i,elem){$(elem).empty();$(elem).removeClass('custom_avatar_fromjs');});}
+function SetupQuickQuote(selector){$('.postcontent_button_quote a').unbind('click');$('.postcontent_button_quote a').click(function(e){e.preventDefault();var quotePostElement=$(e.target).closest('.post');MoveQuickEditorToBottom();FixAvatarAround(quotePostElement);quotePostElement.nextUntil('#qr_postform').insertAfter('#qr_postform');sceController.setFocus();$('#qr_postform').addClass('qr_quoting');$.ajax({type:"POST",url:'posting.php',data:'mode=quote_action_ajax_info&p='+$(e.target).closest('.postcontent_button_quote').data('quote-postid'),success:function(data){if(data.result){editorIsQuote=true;$('#loadmorediv').html("End of the topic.");$('#loadmorediv').addClass('button-secondary');$('#loadmorediv').css({cursor:"default"});tryFindRecommentTopicIds();$('#qr_postform').show();$('#qr_postform').attr('action',data.action);SetQuickEditorText(data.message);cancelButton=$('#qr_cancel').show();cancelButton.click(function(){$('#loadmorediv').show();editorIsQuote=false;cancelButton.hide();MoveQuickEditorToBottom();});sceController.setFocus();$('#qr_postform')[0].scrollIntoView();}
+else{MoveQuickEditorToBottom();if(data.login_url){location.href=data.login_url;}
+else if(data.S_USER_NOTICE){hs_popup(data.MESSAGE_TEXT);}
+else if(data.message){hs_popup(data.message);}
+else{hs_popup('Something went wrong. Please reload the page');}}}});});}
+function SetQuickEditorText(text){sceController.setText(text);}
+function MoveQuickEditorToBottom(){$('#qr_postform').removeClass('qr_quoting');$('#qr_postform').nextAll('.post, .loadmore').insertBefore('#qr_postform');if($('.share_icon_area').length>0){$('.post-bar-bottom').insertBefore('.share_icon_area');$('.share_icon_area').removeClass('hide');}else{$('.post-bar-bottom').insertBefore('#qr_postform');}
+CleanCustomAvatarFromJs();SetQuickEditorText('');CheckQuickReplyVisibility();}
+function gaTrackNextTopicClick(unread){if(unread){gaSendEvent('topic','next-unread-topic','click');}else{gaSendEvent('topic','next-topic','click');}}
+function gaTrackRelatedTopicShow(unread,collapsed){if(unread){if(collapsed){gaSendEvent('topic','related-unread-topic-link','collapsed');}else{gaSendEvent('topic','related-unread-topic-link','show');}}else{if(collapsed){}else{}}}
+function gaTrackRelatedTopicClick(unread){if(unread){gaSendEvent('topic','related-unread-topic-link','click');}else{gaSendEvent('topic','related-topic-link','click');}}
+function relatedTopicLastVisitTime(topicID){if(!TT.lSAva){return null;}
+var topic_cache_key=FORUM_TAPATALK_ID+'_'+topicID;var topic_last_visit_time=TT.storage.getItem(topic_cache_key);if(topic_last_visit_time){return topic_last_visit_time;}
+recordTopicLastVisitTime(topicID);return(new Date()).getTime();}
+function recordTopicLastVisitTime(topicID){if(!TT.lSAva){return;}
+var topic_cache_key=FORUM_TAPATALK_ID+'_'+topicID;var nowtimestamp=(new Date()).getTime();TT.storage.setItem(topic_cache_key,nowtimestamp);}
+function showUnreadRelatedTopicsForMembers(){if(!TT.lSAva){$('#relatedtopicbar').addClass('hide');return;}
+var unread_topics=$('.related-unread-topic');var displayedCount=0;unread_topics.each(function(){var unread_topic=$(this);var topic_last_post_time=$(unread_topic).attr('data-last-post-time')*1000;var topic_id=$(unread_topic).attr('data-topic-id');var topic_last_read_time=relatedTopicLastVisitTime(topic_id);if(displayedCount<4){if(topic_last_read_time<topic_last_post_time){unread_topic.removeClass('hide');displayedCount++;}}});if(displayedCount===0){$('#relatedtopicbar').addClass('hide');}else{$('#relatedtopicbar').removeClass('hide');if(checkRelatedSectionShowUp()){gaTrackRelatedTopicShow(true,false);}else{gaTrackRelatedTopicShow(true,true);}}}
+function showUnreadRelatedTopicsForGuests(){$('#relatedtopicbar').removeClass('hide');if(checkRelatedSectionShowUp()){gaTrackRelatedTopicShow(false,false);}else{gaTrackRelatedTopicShow(false,true);}}
+var collapseRelatedTopicSectionKey='collapseRelatedTopicSection';function storeRelatedSectionShowUp(collapse){if(!TT.lSAva){return;}
+if(collapse){TT.storage.setItem(collapseRelatedTopicSectionKey,1);}else{TT.storage.removeItem(collapseRelatedTopicSectionKey);}
+checkRelatedSectionShowUp();}
+function checkRelatedSectionShowUp(){if(!TT.lSAva){return true;}
+var collapse=TT.storage.getItem(collapseRelatedTopicSectionKey);if(collapse){$('#related-topic-list-collapse').removeClass('hide');$('#related-topic-list-expand').addClass('hide');return false;}else{$('#related-topic-list-collapse').addClass('hide');$('#related-topic-list-expand').removeClass('hide');return true;}}
+function tryFindRecommentTopicIds(){try{var cachedTopicList=getCachedCurrentTopicIds();if(!cachedTopicList){return;}
+for(var i=0;i<cachedTopicList.length;i++)
+{if(currentTopicID==cachedTopicList[i].id){if(i+1<cachedTopicList.length){for(var j=i+1;j<cachedTopicList.length;j++){if(S_USER_LOGGED_IN){if(cachedTopicList[j].unread==1){var next_unread_topic_link='<ul><li><span class="next-topic-title" onclick="location.href=\''+cachedTopicList[j].link+'\';gaTrackNextTopicClick(true);">'+cachedTopicList[j].title+'</span></li></ul>';var topicTitle="Next Unread Topic: ";var topicTitleLink="<span class='next-topic-link'>"+topicTitle+next_unread_topic_link+"</span>";$('#moretopicbar').removeClass('hide');$('#moretopic').removeClass('hide');$('.next-topic-text').removeClass('hide');$('.next-topic-text').html(topicTitleLink);break;}}else{var next_topic_link='<ul><li><span class="next-topic-title" onclick="location.href=\''+cachedTopicList[j].link+'\';gaTrackNextTopicClick(false);">'+cachedTopicList[j].title+'</span></li></ul>';var topicTitle="Next Topic: ";var topicTitleLink="<span class='next-topic-link'>"+topicTitle+next_topic_link+"</span>";$('#moretopicbar').removeClass('hide');$('#moretopic').removeClass('hide');$('.next-topic-text').removeClass('hide');$('.next-topic-text').html(topicTitleLink);break;}}}}}}
+catch(error){console.error('tryFindRecommentTopicIds error');}}
+function getCachedCurrentTopicIds(){if(!TT.lSAva){return null;}
+var topics_cache_key=FORUM_TAPATALK_ID+'current_topics';return JSON.parse(TT.storage.getItem(topics_cache_key));}
+function cacheCurrentTopicIds(){try{if(!IsTopicPage()){return;}
+if(!TT.lSAva){return;}
+var currentTopicList=[];var selector='.forumbg.normal ul.topiclist.topics .row';var topicSelector='.topictitle:first';var elements=$('#maincontainer').find(selector);elements.each(function(){var topic=$(this).find(topicSelector)[0];var topictitle=$(topic).html();var topiclink=$(topic).attr('href');var topicid=$(topic).attr('data-topic_id');var unread=$(this).hasClass('unread');currentTopicList.push({"id":topicid,"title":topictitle,"link":topiclink,"unread":unread});});var topics_cache_key=FORUM_TAPATALK_ID+'current_topics';TT.storage.setItem(topics_cache_key,JSON.stringify(currentTopicList));}
+catch(error){console.error('cacheCurrentTopicIds data error');}}
+cacheCurrentTopicIds();

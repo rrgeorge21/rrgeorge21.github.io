@@ -1,0 +1,210 @@
+$(document).ready(function(){topicDataObj=getFullTopicData();configDataObj=getFullConfigData();var VIEWTOPIC_ACT=getUrlParam('act');var ACT_POST_ID=getUrlParam('p');if(topicDataObj!==undefined){add_info_for_post();}
+if(VIEWTOPIC_ACT!==undefined&&ACT_POST_ID!==undefined&&ACT_POST_ID>0){var act_block=$('#post_content'+ACT_POST_ID);history.pushState?history.pushState('','','viewtopic.php?p='+ACT_POST_ID+'#p'+ACT_POST_ID):(window.location.href='viewtopic.php?p='+ACT_POST_ID+'#p'+ACT_POST_ID);if(act_block.length>0){switch(VIEWTOPIC_ACT){case 'quote':window.setTimeout(function(){act_block.find('.postcontent_button_quote > a').click();},500);break;case 'like':window.setTimeout(function(){act_block.find('.postcontent_button_like > a').click();},500);break;case 'dislike':window.setTimeout(function(){act_block.find('.postcontent_button_dislike > a').click();},500);break;case 'pm':window.setTimeout(function(){act_block.find('.profile-contact-pm > a').click();},500);break;default:return;}}}});if(typeof getFullConfigData!=="function"){function getFullConfigData(){if($('.config_data_for_js').length>0){return JSON.parse($('.config_data_for_js').attr('data-for-js'));}
+return undefined;}}
+function getFullTopicData(){if($('.topic_data_for_js').length>0){return JSON.parse($('.topic_data_for_js').attr('data-topic'));}
+return undefined;}
+function getUrlParam(name){var reg=new RegExp("(^|&)"+name+"=([^&]*)(&|$)");var r=window.location.search.substr(1).match(reg);if(r!=null)return unescape(r[2]);return null;}
+function add_info_for_post(){$('.topic_data_for_js').children('div').each(function(){var p_id=$(this).attr('id');if(p_id!==undefined){p_id=p_id.substring(2);p_id=parseInt(p_id);if(p_id>0&&!$(this).hasClass('runned_js')){var postDataObj=eval('post_data_'+p_id);if(postDataObj==undefined||!postDataObj){return;}
+var li_html='';var M_URL=topicDataObj.MCP_POST_URL+'&p='+p_id+'&i=main&mode=post_details';var origin_url=BOARD_URL+'viewtopic.php?p=';if(!$(this).find('ul.post-buttons').hasClass('runned_js')){if(postDataObj.U_DELETE){li_html+='<li>';if(topicDataObj.U_MCP_DELETE!=undefined&&topicDataObj.U_MCP_DELETE==1){li_html+='<a href="javascript:void(0)" title="'+L_DELETE_POST+'" class="button-icon-only actiondeletepost in_post" name="delete_post">';}else{li_html+='<a href="'+postDataObj.U_DELETE+'" title="'+L_DELETE_POST+'" class="button-icon-only">';}
+li_html+='<span>'+L_DELETE_POST+'</span></a><input name="post_id_list[]" value="'+p_id+'" hidden="hidden" />';}
+else if(HAS_ENABLE_VIP_PLUS&&postDataObj.DELETE_VIP_ADS!=undefined&&postDataObj.DELETE_VIP_ADS==1){li_html+='     <li>'+
+'       <a href="javascript:void(0);" class="button-icon-only vip-plus-btn-event" data-type="vip-plus-delete-post">'+
+'           <span>'+L_DELETE_POST+'</span>'+
+'       </a>'+
+'     </li>'}
+else if(postDataObj.DELETE_VIP_ADS!=undefined&&postDataObj.DELETE_VIP_ADS==2){li_html+='     <li>'+
+'       <a href="javascript:void(0);" class="button-icon-only" data-type="vip-plus-delete-post" onclick=\'hs_confirm({"message":"You can no longer delete the post because of a time limit set by admin."})\'>'+
+'           <span>'+L_DELETE_POST+'</span>'+
+'       </a>'+
+'     </li>'}
+if(postDataObj.U_REPORT!=undefined&&postDataObj.U_REPORT!=2){li_html+='    <li>'+
+'       <a href="'+postDataObj.U_REPORT+'" title="'+L_REPORT_POST+'" class="button-icon-only">'+
+'           <span>'+L_REPORT_POST+'</span>'+
+'       </a>'+
+'    </li>'}
+if(topicDataObj.U_INFO!=undefined&&topicDataObj.U_INFO==1){li_html+='     <li>'+
+'       <a href="'+M_URL+'" title="'+L_INFORMATION+'" class="button-icon-only">'+
+'           <span>'+L_INFORMATION+'</span>'+
+'       </a>'+
+'     </li>'}
+if(topicDataObj.S_CAN_CHGPOSTER_URL!=undefined&&topicDataObj.S_CAN_CHGPOSTER_URL==1){li_html+='     <li>'+
+'       <a href="javascript:void(0)" title="'+L_CHANGE_POSTER+'" class="button-icon-only" onclick="m_chgposter(\''+M_URL+'\')" >'+
+'           <span>'+L_CHANGE_POSTER+'</span>'+
+'       </a>'+
+'     </li>'}
+if(topicDataObj.M_LOCK_POST_URL!=undefined&&topicDataObj.M_LOCK_POST_URL==1){li_html+='     <li>';if(postDataObj.S_POST_LOCKED!=undefined&&postDataObj.S_POST_LOCKED==1){li_html+='     <a href="javascript:void(0)" title="'+L_UNLOCK_POST+'" class="button-icon-only" onclick="m_quickmod_post(\'unlock_post\',\''+M_URL+'\',\'false\',\''+p_id+'\')">'+
+'       <span>'+L_UNLOCK_POST+'</span>'+
+'     </a>';}else{li_html+='     <a href="javascript:void(0)" title="'+L_LOCK_POST+'" class="button-icon-only" onclick="m_quickmod_post(\'lock_post\',\''+M_URL+'\',\'false\',\''+p_id+'\')">'+
+'       <span>'+L_LOCK_POST+'</span>'+
+'     </a>';}
+li_html+='     </li>';}
+if(postDataObj.S_POST_CONTACT_NAME!=undefined){li_html+='    <li class="profile-contact profile-contact-pm">';if(FAST_REGISTER>0){li_html+='       <a href="'+BOARD_URL+'auth.php?action=ttid_login&fast_register=1&action_url='+encodeURIComponent(origin_url+p_id+'&act=pm')+'" title="'+postDataObj.S_POST_CONTACT_NAME+'">'}else{li_html+='       <a href="javascript:void(0)" onclick="showPMCompose(\''+postDataObj.S_POST_CONTACT_URL+'\')"  title="'+postDataObj.S_POST_CONTACT_NAME+'">'}
+li_html+='           <span>'+postDataObj.S_POST_CONTACT_NAME+'</span>'+
+'       </a>'+
+'    </li>';}
+if((topicDataObj.M_SPLIT!=undefined&&topicDataObj.M_SPLIT==1)||(topicDataObj.M_MERGE!=undefined&&topicDataObj.M_MERGE==1)){var M_SPLIT_URL='';var M_MERGE_URL='';if(topicDataObj.M_SPLIT!=undefined&&topicDataObj.M_SPLIT==1){M_SPLIT_URL=topicDataObj.MCP_POST_URL+'&i=main&mode=topic_view&action=split';}
+if(topicDataObj.M_MERGE!=undefined&&topicDataObj.M_MERGE==1){M_MERGE_URL=topicDataObj.MCP_POST_URL+'&i=main&mode=forum_view&action=merge_select';}
+li_html+='     <li>'+
+'       <a href="javascript:void(0)" class="button-icon-only trigger-select-post" onclick="change_checkbox_status(this,\''+M_SPLIT_URL+'\',\''+M_MERGE_URL+'\')" >'+
+'           <span>Select Post to Moderate</span><input type="checkbox" hidden="hidden" name="post_id_list[]" value="'+p_id+'" >'+
+'       </a>'+
+'     </li>'}
+if(li_html!=''&&$(this).find('ul.post-buttons').length>0){var ul_html='                      <li class="dropdown-container">'+
+'                            <a href="javascript:void(0);" class="dropdown-trigger button button-icon-only">'+
+'                                <i class="icon fa-fw fa-angle-down" aria-hidden="true"></i>'+
+'                            </a>'+
+'                            <div class="dropdown">'+
+'                                <div class="pointer">'+
+'                                    <div class="pointer-inner"></div>'+
+'                                </div>'+
+'                                <ul class="dropdown-contents dropdown-nonscroll ">'+
+li_html+
+'                                </ul>'+
+'                            </div>'+
+'                        </li>';$(this).find('ul.post-buttons').removeClass('hide');$(this).find('ul.post-buttons').addClass('runned_js');$(this).find('ul.post-buttons').append(ul_html);}}
+var padding_block=$(this).find('.post-profile-block .thread-user-detail-padding');if(padding_block.length>0){if(configDataObj.S_REGISTERED_USER!=undefined&&configDataObj.S_REGISTERED_USER==1&&postDataObj.U_HAS_PROFILE_ACTION!=undefined&&postDataObj.U_HAS_PROFILE_ACTION==1){var profile_html='<div class="hasbutton thread-user-detail" >';}else{var profile_html='<div class="thread-user-detail" >';}
+if(configDataObj.ENABLED_PROFILE_HATS!=undefined&&configDataObj.ENABLED_PROFILE_HATS!=0&&postDataObj.PROFILE_HAT!=undefined&&postDataObj.PROFILE_HAT!=0){profile_html+='<div class="hat-'+postDataObj.PROFILE_HAT+' avatar-frame" >';}else if(postDataObj.MEMBER_IS_VIP_PLUS!=undefined&&postDataObj.MEMBER_IS_VIP_PLUS!=0&&postDataObj.HIDE_VIP_PLUS!=undefined&&postDataObj.HIDE_VIP_PLUS==0){profile_html+='<div class="vip avatar-frame" >';}else{profile_html+='<div class="avatar-frame" >';}
+if(postDataObj.POSTER_AVATAR!=undefined){profile_html+='<a';if(postDataObj.U_POST_AUTHOR!=undefined&&postDataObj.U_POST_AUTHOR!=''){profile_html+=' href="'+postDataObj.U_POST_AUTHOR+'"';}
+profile_html+=' class="avatar avatar-frame-padding">'+postDataObj.POSTER_AVATAR+'</a>'}
+if(postDataObj.MEMBER_IS_VIP_PLUS!=undefined&&postDataObj.MEMBER_IS_VIP_PLUS!=0){profile_html+='<div class="vip-avatar-badge';if(U_IS_VIP_PLUS){profile_html+=' is_vip';}else{profile_html+=' vip-plus-btn-event';}
+profile_html+='" data-type="post_vip_click" data-tid="'+postDataObj.U_POST_TTID+'"></div>';}
+if(configDataObj.ENABLED_PROFILE_HATS!=undefined&&configDataObj.ENABLED_PROFILE_HATS==1&&postDataObj.PROFILE_HAT!=undefined&&postDataObj.PROFILE_HAT!=0){profile_html+='<div class="avatar-frame-hat hat-style-'+postDataObj.PROFILE_HAT+'"></div>';}
+profile_html+='</div><div class="thread-user-name" style="max-width:unset; padding-top:10px;">';if(postDataObj.U_POST_AUTHOR!=undefined&&postDataObj.U_POST_AUTHOR!=''){profile_html+='<strong>'+postDataObj.POST_AUTHOR_FULL+'</strong>';}else{profile_html+=postDataObj.POST_AUTHOR_FULL;}
+if(postDataObj.S_ONLINE!=undefined&&postDataObj.S_ONLINE!=0&&postDataObj.S_POST_HIDDEN!=undefined&&postDataObj.S_POST_HIDDEN==0){profile_html+='<i class="icon fa-circle online_indicator tooltip" title="'+L_ONLINE+'"></i>';}
+profile_html+='<div class="popup user-statistics">';if(postDataObj.POSTER_POSTS!=undefined&&postDataObj.POSTER_POSTS>0){profile_html+='<span class="nowrap"><i class="fa fa-comment"></i><span>'+postDataObj.POSTER_POSTS+'</span></span>';}
+if(postDataObj.POSTER_LIKED!=undefined&&postDataObj.POSTER_LIKED>0){profile_html+='<span class="nowrap"><i class="fa fa-thumbs-up"></i><span>'+postDataObj.POSTER_LIKED+'</span></span>';}
+if(postDataObj.POSTER_GIFTED!=undefined&&postDataObj.POSTER_GIFTED>0){profile_html+='<span class="nowrap"><i class="fa fa-gift"></i><span>'+postDataObj.POSTER_GIFTED+'</span></span>';}
+profile_html+='</div>';if(postDataObj.POSTER_JOINED!=undefined&&postDataObj.POSTER_JOINED!=''){profile_html+='<div style="border-bottom: 1px solid #F0F0f0;width: 95%;margin: auto;"></div>'+
+'<div class="custom_field">'+
+'<div class="custom_field_key">'+L_JOINED+'</div>'+
+'<div class="custom_field_value">'+postDataObj.POSTER_JOINED+'</div>'+
+'</div>';}
+if(postDataObj.POSTER_LAST_VISIT!=undefined&&postDataObj.POSTER_LAST_VISIT!=0){profile_html+='                <div class="custom_field">'+
+'<div class="custom_field_key">'+L_LAST_ACTIVE+'</div>'+
+'<div class="custom_field_value">'+postDataObj.POSTER_LAST_VISIT+'</div>'+
+'</div>';}
+if(postDataObj.custom_fields!=undefined&&postDataObj.custom_fields!=''){$.each(postDataObj.custom_fields,function(key,val){if(val.S_PROFILE_CONTACT==0&&val.PROFILE_FIELD_VALUE!=''){profile_html+='<div class="custom_field">'+
+'<div class="custom_field_key">'+HtmlUtil.htmlDecode(val.PROFILE_FIELD_NAME)+'</div>'+
+'<div class="custom_field_value">'+HtmlUtil.htmlDecode(val.PROFILE_FIELD_VALUE)+'</div>'+
+'</div>';}});}
+if(configDataObj.ENABLED_PROFILE_HATS!=undefined&&configDataObj.ENABLED_PROFILE_HATS==1&&postDataObj.PROFILE_HAT!=undefined&&postDataObj.U_HAS_PROFILE_ACTION!=0){profile_html+='<div style="height:35px;">';if(postDataObj.U_ADD_FRIEND!=undefined){if(postDataObj.U_IS_FRIEND!=undefined&&postDataObj.U_IS_FRIEND!=0){profile_html+='<span class="thread-user-follow">'+L_FOLLOWING+'</span>';}else{profile_html+='<a href="javascript:followUserFromPost(\''+postDataObj.U_ADD_FRIEND+'\')" class="thread-user-follow ">'+
+'<i class="fa fa-plus"></i>&nbsp;<span>'+L_FOLLOW+'</span></a>';}}
+if(postDataObj.S_POST_CONTACT_URL!=undefined&&postDataObj.S_POST_CONTACT_URL!=''){profile_html+='<a href="javascript:showPMCompose(\''+postDataObj.S_POST_CONTACT_URL+'\')" title="'+L_SEND_PRIVATE_MESSAGE+'" class=" thread-user-message">'+
+'<i class="fa fa-envelope-square"></i>&nbsp;<span>'+L_MESSAGE+'</span></a>';}
+profile_html+='</div>';}
+profile_html+='</div></div>';padding_block.addClass('runned_js');padding_block.append(profile_html);}
+var footer_block=$('#postcontent_footer_icon_area_'+p_id);var html='';if(footer_block.length>0){if(postDataObj.U_QUOTE!=undefined&&postDataObj.U_QUOTE==1){if(postDataObj.S_GUEST_POSTING!=undefined&&postDataObj.S_GUEST_POSTING!=1&&!U_TTID&&(isNaN(U_COOKIE_TTID)||!U_COOKIE_TTID)){html+='                <div class="postcontent_button" data-quote-postid="'+p_id+'" onclick="hs_guest_join(true);gaSendEvent(\'guest-convert\', \'use_feature\', \'quote\');">\n'+
+'                        <a class="hover" title="'+L_REPLY_WITH_QUOTE+'">\n'+
+'                        <i class="fa fa-quote-left"></i><span>'+L_QUOTE+'</span>\n'+
+'                    </a>\n'+
+'                    </div>';}
+else{if(S_USER_TYPE_STATUS!=''){html+='                    <div class="postcontent_button " data-quote-postid="'+p_id+'">\n'+
+'                        <a href="javascript:void(0);" onclick="hs_popup(\'You cannot do this action because your account is inactive/unapproved.\');" title="'+L_REPLY_WITH_QUOTE+'">\n'+
+'                        <i class="fa fa-quote-left"></i><span>'+L_QUOTE+'</span>\n'+
+'                    </a>\n'+
+'                    </div>';}else if(FAST_REGISTER){html+='                    <div class="postcontent_button " data-quote-postid="'+p_id+'">\n'+
+'                        <a href="javascript:void(0);" onclick="fast_register(\'quote\',\''+origin_url+p_id+'&act=quote\')" title="'+L_REPLY_WITH_QUOTE+'">\n'+
+'                        <i class="fa fa-quote-left"></i><span>'+L_QUOTE+'</span>\n'+
+'                    </a>\n'+
+'                    </div>';}else{html+='                    <div class="postcontent_button postcontent_button_quote" data-quote-postid="'+p_id+'">\n'+
+'                        <a href="'+BOARD_URL+'posting.php?mode=quote&f='+topicDataObj.FORUM_ID+'&p='+p_id+'" title="'+L_REPLY_WITH_QUOTE+'">\n'+
+'                        <i class="fa fa-quote-left"></i><span>'+L_QUOTE+'</span>\n'+
+'                    </a>\n'+
+'                    </div>';}}}
+if(postDataObj.U_EDIT!=undefined&&postDataObj.U_EDIT==1){html+='                    <div class="postcontent_button postcontent_button_edit" data-edit-postid="'+p_id+'">\n'+
+'                            <a href="'+BOARD_URL+'posting.php?mode=edit&f='+topicDataObj.FORUM_ID+'&p='+p_id+'" title="'+L_EDIT_POST+'">\n'+
+'                            <i class="fa fa-edit"></i><span>'+L_EDIT+'</span>\n'+
+'                        </a>\n'+
+'                        </div>';}
+else if(postDataObj.EDIT_VIP_ADS!=undefined&&postDataObj.EDIT_VIP_ADS==1&&configDataObj.S_HAS_ENABLE_VIP_PLUS!=undefined&&configDataObj.S_HAS_ENABLE_VIP_PLUS==1){html+='                        <div class="postcontent_button vip-plus-btn-event" data-type="vip-plus-edit-post">\n'+
+'                            <a href="javascript:void(0);" title="'+L_EDIT_POST+'">\n'+
+'                            <i class="fa fa-edit"></i><span>'+L_EDIT+'</span>\n'+
+'                        </a>\n'+
+'                        </div>';}
+else if(postDataObj.EDIT_VIP_ADS!=undefined&&postDataObj.EDIT_VIP_ADS==2){html+='                    <div class="postcontent_button">\n'+
+'                            <a href="javascript:hs_popup(\"You can no longer edit the post because of a time limit set by admin.\");" title="'+L_EDIT_POST+'">\n'+
+'                            <i class="fa fa-edit"></i><span>'+L_EDIT+'</span>\n'+
+'                        </a>\n'+
+'                        </div>';}
+if(postDataObj.S_POST_DELETED!=undefined&&postDataObj.S_POST_DELETED!=1&&postDataObj.S_POST_UNAPPROVED!=undefined&&postDataObj.S_POST_UNAPPROVED!=1){if(postDataObj.S_CAN_LIKE!=undefined&&postDataObj.S_CAN_LIKE==1){html+='<div class="postcontent_button postcontent_button_like '+((postDataObj.S_RECOMMEND_LIKE)?' with-task-bubble ':'')+'">';if(!isNaN(S_USER_LOGGED_IN)){if(postDataObj.S_LIKED!=undefined&&postDataObj.S_LIKED==1){html+='<a name="'+p_id+'-like" class="emotion-post like-post';html+=' liked tapatalk-theme-color Selector selectorFace like18';}else if(postDataObj.S_EMOTION!=undefined&&postDataObj.S_EMOTION!=''){html+='<a name="'+p_id+'-emotion" class="emotion-post like-post';html+=' Selector selectorFace '+postDataObj.S_EMOTION+"18";}else{html+='<a name="'+p_id+'-like" class="emotion-post like-post';}
+if(postDataObj.S_RECOMMEND_LIKE){html+=' member_post_first_like';}
+var a_title='Like the post';if(postDataObj.S_EMOTION){a_title='React the post';}
+html+='" data-url="'+BOARD_URL+'app.php/like/post" data-post_id="'+p_id+'" data-post-ttid="'+postDataObj.U_POST_TTID+'" data-post-name="'+postDataObj.POST_AUTHOR+'" data-post-pm-link="'+BOARD_URL+'ucp.php?i=pm&mode=compose&action=prefillaward&p='+p_id+'" data-post-can-award="'+postDataObj.S_CAN_GIVE_AWARD+'" data-post-can-gift-vip="'+postDataObj.S_CAN_GIVE_VIP+'" title="'+a_title+'">\n';if(postDataObj.S_EMOTION){html+='<input type="hidden" value="'+postDataObj.S_EMOTION+'" class="prueba"/>';}else{html+='<input type="hidden" value="like" class="prueba"/>';}
+if(postDataObj.S_LIKED!=undefined&&postDataObj.S_LIKED==1){html+='<span class="emotion-text">Like</span>';html+='   <i class="fa fa-thumbs-o-up like-reaction" style="display: none;"></i>'+
+'<span name="'+p_id+'-like-like-text" class="span_attitude like-reaction" style="display: none;">';}else if(postDataObj.S_EMOTION!=undefined&&postDataObj.S_EMOTION!=''){html+='<span class="emotion-text">'+postDataObj.S_EMOTION+'</span>';html+='   <i class="fa fa-thumbs-o-up like-reaction" style="display: none;"></i>'+
+'<span name="'+p_id+'-emotion-like-text" class="span_attitude like-reaction" style="display: none;">';}else{html+='<span class="emotion-text hide">Like</span>';html+='   <i class="fa fa-thumbs-o-up like-reaction"></i><span name="'+p_id+'-like-like-text" class="span_attitude like-reaction">';}
+html+=L_LIKE;html+='</span></a>';if(postDataObj.S_RECOMMEND_LIKE){html+='<div id="bubble_task_first_like" style="display:none;"></div>';}}else{if(!U_TTID&&(isNaN(U_COOKIE_TTID)||!U_COOKIE_TTID)){html+='              <a class="hover" title="'+L_LOGIN_LOGOUT+'" onclick="hs_guest_join(true);gaSendEvent(\'guest-convert\', \'use_feature\', \'like\');">\n'+
+'                                        <i class="fa fa-thumbs-o-up like-reaction"></i><span>'+L_LIKE+'</span>\n'+
+'                 </a>';}else{if(S_USER_TYPE_STATUS!=''){html+='              <a href="javascript:void(0);" onclick="hs_popup(\'You cannot do this action because your account is inactive/unapproved.\');" title="'+L_LIKE+'">\n'+
+'                                        <i class="fa fa-thumbs-o-up like-reaction"></i><span>'+L_LIKE+'</span>\n'+
+'                 </a>';}else if(FAST_REGISTER){html+='              <a href="javascript:void(0);" onclick="fast_register(\'like\',\''+origin_url+p_id+'&act=like\')" title="'+L_LIKE+'">\n'+
+'                                        <i class="fa fa-thumbs-o-up like-reaction"></i><span>'+L_LIKE+'</span>\n'+
+'                 </a>';}else{html+='              <a href="'+U_LOGIN_URL+'" tsitle="'+L_LOGIN_LOGOUT+'">\n'+
+'                                        <i class="fa fa-thumbs-o-up like-reaction"></i><span>'+L_LIKE+'</span>\n'+
+'                 </a>';}}}
+html+='</div>';}
+if(postDataObj.S_CAN_DISLIKE!=undefined&&postDataObj.S_CAN_DISLIKE==1){html+='<div class="postcontent_button postcontent_button_dislike">';if(!isNaN(S_USER_LOGGED_IN)){html+='<a name="'+p_id+'-dislike" class="like-post';if(postDataObj.S_DISLIKED!=undefined&&postDataObj.S_DISLIKED==1){html+=' liked tapatalk-theme-color ';}
+html+='" data-url="'+BOARD_URL+'app.php/like/post" data-post_id="'+p_id+'" title="Dislike the post">\n'+
+'                            <i class="fa fa-thumbs-o-down"></i><span name="'+p_id+'-dislike-like-text" class="span_attitude">';if(postDataObj.S_DISLIKED!=undefined&&postDataObj.S_DISLIKED==1){html+=L_DISLIKED;}else{html+=L_DISLIKE;}
+html+='</span></a>';}else{if(!U_TTID&&(isNaN(U_COOKIE_TTID)||!U_COOKIE_TTID)){html+='              <a class="hover" title="'+L_LOGIN_LOGOUT+'" onclick="hs_guest_join(true);gaSendEvent(\'guest-convert\', \'use_feature\', \'dislike\');">\n'+
+'                                        <i class="fa fa-thumbs-o-down"></i><span>'+L_DISLIKE+'</span>\n'+
+'                 </a>';}else{if(S_USER_TYPE_STATUS!=''){html+='              <a href="javascript:void(0);" onclick="hs_popup(\'You cannot do this action because your account is inactive/unapproved.\');" title="'+L_DISLIKE+'">\n'+
+'                                        <i class="fa fa-thumbs-o-up"></i><span>'+L_DISLIKE+'</span>\n'+
+'                 </a>';}else if(FAST_REGISTER){html+='              <a href="javascript:void(0);" onclick="fast_register(\'dislike\',\''+origin_url+p_id+'&act=dislike\')" title="'+L_DISLIKE+'">\n'+
+'                                        <i class="fa fa-thumbs-o-up"></i><span>'+L_DISLIKE+'</span>\n'+
+'                 </a>';}else{html+='              <a href="'+U_LOGIN_URL+'" title="'+L_LOGIN_LOGOUT+'">\n'+
+'                                        <i class="fa fa-thumbs-o-down"></i><span>'+L_DISLIKE+'</span>\n'+
+'                 </a>';}}}
+html+='</div>';}
+if(configDataObj.S_SHARE_DISABLED!=undefined&&configDataObj.S_SHARE_DISABLED!=1){html+='                    <div class="sr-b dropdown-container dropdown-right postcontent_button">\n'+
+'                            <span class="dropdown-trigger" onclick="share_gaSendEvent(this, \'click\')" title="'+L_SHARE+'">\n'+
+'                            <a>\n'+
+'                            <i class="fa fa-share-alt"></i><span class="">'+L_SHARE+'</span>\n'+
+'                        </a>\n'+
+'                        </span>';html+=share_button_dropdown_html(topicDataObj.TOPIC_ID,p_id,topicDataObj.FORUM_ID);html+='</div>';}
+if(postDataObj.U_PIN_TOPIC!=undefined&&postDataObj.U_PIN_TOPIC==1){html+='                    <div class="postcontent_button">\n';if(!isNaN(S_USER_LOGGED_IN)){html+='       <a class="pin-topic" data-post-topic_id="'+topicDataObj.TOPIC_ID+'" title="Pin post to all forum">\n'+
+'                            <i class="icon fa-thumb-tack" ></i><span>'+L_PIN_TOPIC+'</span>\n'+
+'                        </a>\n';}
+else{if(!U_TTID&&(isNaN(U_COOKIE_TTID)||!U_COOKIE_TTID)){html+='                        <a class="hover" title="'+L_LOGIN_LOGOUT+'" onclick="hs_guest_join(true);gaSendEvent(\'guest-convert\', \'use_feature\', \'pin_topic\');">\n'+
+'                            <i class="icon fa-thumb-tack" ></i><span>'+L_PIN_TOPIC+'</span>\n'+
+'                        </a>\n';}
+else{html+='                        <a href="'+U_LOGIN_URL+'" title="'+L_LOGIN_LOGOUT+'">\n'+
+'                            <i class="icon fa-thumb-tack" ></i><span>'+L_PIN_TOPIC+'</span>\n'+
+'                        </a>\n';}}
+html+='</div>';}
+if(postDataObj.S_CAN_GIVE_VIP!=undefined&&postDataObj.S_CAN_GIVE_VIP==1&&!isNaN(S_USER_LOGGED_IN)){html+='                        <div class="postcontent_button">\n'+
+'                            <a name="'+p_id+'-give-vip" class="vip-gift-award ';if(postDataObj.S_GIVEN_AWARD!=undefined&&postDataObj.S_GIVEN_AWARD==1){html+='given tapatalk-theme-color ';}
+html+='" data-post_id="'+p_id+'" data-post-ttid="'+postDataObj.U_POST_TTID+'" data-post-name="'+postDataObj.POST_AUTHOR+'" data-post-pm-link="'+BOARD_URL+'ucp.php?i=pm&mode=compose&action=prefillaward&p='+p_id+'" title="Give vip to the post">\n'+
+'                            <i class="fa fa-gift"></i><span class="span_attitude" name="'+p_id+'-give-award-title">';if(postDataObj.S_GIVEN_AWARD!=undefined&&postDataObj.S_GIVEN_AWARD==1){html+=L_GIFTED_AWARD;}else{html+=L_GIVE_VIP;}
+html+='</span>\n'+
+'                        </a>\n'+
+'                        </div>';}
+else if(postDataObj.S_CAN_GIVE_AWARD!=undefined&&postDataObj.S_CAN_GIVE_AWARD==1&&!isNaN(S_USER_LOGGED_IN)){html+='                        <div class="postcontent_button">\n'+
+'                            <a name="'+p_id+'-give-award" class="give-award ';if(postDataObj.S_GIVEN_AWARD!=undefined&&postDataObj.S_GIVEN_AWARD==1){html+='given tapatalk-theme-color ';}
+html+='" data-post_id="'+p_id+'" data-post-ttid="'+postDataObj.U_POST_TTID+'" data-post-name="'+postDataObj.POST_AUTHOR+'" data-post-pm-link="'+BOARD_URL+'ucp.php?i=pm&mode=compose&action=prefillaward&p='+p_id+'" title="Give award to the post">\n'+
+'                            <i class="fa fa-gift"></i><span class="span_attitude" name="'+p_id+'-give-award-title">';if(postDataObj.S_GIVEN_AWARD!=undefined&&postDataObj.S_GIVEN_AWARD==1){html+=L_GIFTED_AWARD;}else{html+=L_GIVE_AWARD;}
+html+='</span>\n'+
+'                        </a>\n'+
+'                        </div>';}}
+footer_block.append(html);if(postDataObj.S_RECOMMEND_LIKE){html+='<div id="bubble_task_first_like" style="display:none;"></div>';CheckHintBubble(3);}}
+$(this).addClass('runned_js');phpbb.registerPageDropdowns();SetupAllModerationActions();SetupPostProfileAndImage();SetupPostJs();DecorateAvatar();}}})
+$('.prueba').faceMocion();}
+function share_button_dropdown_html(tid,pid,fid){if(tid==undefined){return '';}
+var html='<div class="pp-bdr ';if(configDataObj.S_USER_AGENT_TYPE!=undefined&&configDataObj.S_USER_AGENT_TYPE!='desktop'){html+='sr-dp-m';}else{html+='sr-dp';}
+html+=' dropdown share-index ">'+
+'        <div class="lbl_1 cl-af">\n';if(configDataObj.S_USER_AGENT_TYPE!=undefined&&configDataObj.S_USER_AGENT_TYPE=='desktop'){html+='    <span class="l">'+L_SHARE_WITH+L_COLON+'</span>\n';}
+html+='    <span class="r">\n'+
+'        <i class="sr-ic b fb" onclick="share_gaSendEvent(this, \'facebook\')"></i>\n'+
+'        <i class="sr-ic b tw" onclick="share_gaSendEvent(this, \'twitter\')"></i>\n'+
+'        <i class="sr-ic b tl" onclick="share_gaSendEvent(this, \'tumble\')"></i>\n';if(configDataObj.TOPIC_EMAIL!=undefined&&configDataObj.TOPIC_EMAIL==1&&configDataObj.U_EMAIL_TOPIC!=undefined&&configDataObj.U_EMAIL_TOPIC!=0){html+='<a href="'+configDataObj.U_EMAIL_TOPIC+'" target="_blank" onclick="share_gaSendEvent(this, \'click email\')"><i class="sr-ic b et"></i></a>';}
+html+='    </span></div>\n';if(configDataObj.S_USER_AGENT_TYPE!=undefined&&configDataObj.S_USER_AGENT_TYPE=='desktop'){html+='    <div class="lbl_2">\n'+
+'        <span class="l">'+L_LINK+L_COLON+'</span>\n'+
+'    <span class="r">\n'+
+'        <input type="text" id="';if(pid!=undefined&&pid>0){html+='cp_'+pid;}else{html+='ct_'+tid;}
+html+='" onfocus="this.select();" class="inputbox" title="'+L_LINK+'" readonly value="';if(SCRIPT_NAME=='index'){if(configDataObj.U_SITE_HOME!=undefined&&configDataObj.U_SITE_HOME!=''){html+=configDataObj.U_SITE_HOME;}else{html+=configDataObj.U_INDEX;}}else if(SCRIPT_NAME=='viewforum'){html+=BOARD_URL+'viewforum.php?f='+fid;}else if(SCRIPT_NAME=='viewtopic'){if(pid!=undefined&&pid>0){html+=BOARD_URL+'viewtopic.php?p='+pid+'#p'+pid;}}
+html+='"> <span class="button cp-btn tapatalk-theme-background" data-clipboard-target="#';if(pid!=undefined&&pid>0){html+='cp_'+pid;}else{html+='ct_'+tid;}
+html+='" onclick="share_gaSendEvent(this, \'copy\')" >'+L_COPY_LINK+'</span>\n'+
+'        </span>\n'+
+'        </div>\n'+
+'        <i class="fa fa-close btn-cls"></i>\n';}
+html+='</div>';return html;}
