@@ -1,0 +1,5 @@
+var quote_html='<button class="blockquote-readmore" onclick="blockquote_readmore_click(this)">Click to expand...</button>';function blockquote_event(id){$('#p_'+id).find('blockquote').each(function(){var $this=$(this);if(!$this.parent().hasClass('content')){return;}
+var $div=$this.children().first();new ResizeSensor($div,function(){if($this.find('.has-mask').length>0){return;}
+if($this.hasClass('click_readmore')){return;}
+if($this.height()+50>=$div.height()){$this.height($div.height());$this.css('max-height',$div.height());}else{$this.addClass('blockquote-collapse');$this.height('unset');$div.addClass('lines-hidden');$div.addClass('has-mask');$this.css('max-height','unset');$this.append(quote_html);}});});}
+$(document).ready(function(){if(window.innerWidth>700){window.onscroll=function(){check_post_container();};}});
